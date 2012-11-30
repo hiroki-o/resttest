@@ -1,0 +1,36 @@
+シェーダ リファレンス
+
+Unity のシェーダは、次の 3 つの方法のいずれかで記述できます。
+
+* __surface shaders__ として
+* __vertex shders__ および__fragment shaders__ として
+* __fixed function shaders__ として
+
+ニーズに応じた適切なタイプを選ぶには、[[Shaders | shader tutorial]] を参照してください。
+
+選択したタイプに関係なく、シェーダ コードの実際の本体は、ShaderLab と呼ばれる言語で常にラップされます。これは、シェーダ構造を整理するのに使用されます。 以下のような感じになります。
+
+[@Shader "MyShader" {
+    Properties {
+        _MyTexture ("Texture", 2D) = "white" {}
+        // 色やベクトルなどのその他のプロパティはここでもうまく行きます。
+    }
+    SubShader {
+        // ここの中身は
+        // - surface shaderまたは、
+	// - vertex shders および fragment shaders、または、
+        // - fixed function shaders になります
+    }
+    SubShader {
+        // より古いグラフィック カードで実行できる、上記サブシェーダのもっと簡単なものを始めましょう。
+    }
+} @]
+
+最初に下記のセクションで ShaderLab 構文の基本的なコンセプトを読んでから、他のセクションでsurface shaderまたはvertex shders および fragment shadersに移ることをお勧めします。 fixed function shadersは ShaderLab のみを用いて記述されているため、ShaderLab のリファレンスに詳細が記載されています。
+
+下記のリファレンスには、各種シェーダのサンプルが多く含まれています。 特に、surface shaderのサンプルについては、[[http://www.unity3d.com/support/resources/assets/built-in-shaders | Resources section]] から、Unity の組み込みシェーダのソースを利用できます。 Unity の [[comp-ImageEffects | Image Effects]] パッケージには、多くの興味深いvertex shders および fragment shadersが含まれています。
+
+シェーダ リファレンスを読んでから、[[Shaders | shader tutorial]] を参照してください。
+
+
+(:tocportion:)

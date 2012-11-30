@@ -1,0 +1,16 @@
+! オーディオ フィルタ（Unity Proのみ）
+
+[[class-AudioSource | AudioSources]] または [[class-AudioListener | AudioListener]] がアタッチされているのと同じゲームオブジェクトにフィルタコンポーネントを追加することによってフィルタコンポーネントを適用することができます。フィルタ効果は次のようなコンポーネントの順序で実行さます：
+
+Attach:FilterGraph1.png Attach:FilterGraph2.png\\
+
+フィルタコンポーネントを有効/無効にするとことでフィルタをスキップすることが出来る。高度に最適化されているものの、いくつかのフィルタは、CPU負荷が大きいです。Audioタブの[[Profiler#Audio | profiler]] のオーディオCPU使用率を監視することができます。
+
+
+各フィルタータイプの詳細については、次ページを参照してください。
+* [[class-AudioLowPassFilter | ローパスフィルタ]]
+* [[class-AudioHighPassFilter |ハイパスフィルタ]]
+* [[class-AudioEchoFilter |エコーフィルタ]]
+* [[class-AudioDistorionFilter |歪みフィルタ]]
+* [[class-AudioReverbFilter |リバーブフィルタ]]
+* [[class-AudioChorusFilter |コーラスフィルタ]]

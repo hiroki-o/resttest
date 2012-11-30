@@ -1,0 +1,36 @@
+! Unity コンテンツをロードする HTML コード
+
+Unity コンテンツは、Unity $$Web Player$$ プラグインによってブラウザにロードされます。 HTML　コードは通常、このプラグインと直接通信せず、$$UnityObject$$ というスクリプトを通じて通信します。 その主な作業は、ユーザーをブラウザやプラットフォーム固有の各種問題から保護することで、Unity コンテンツに非常にシンプルな作業を組み込みさせることです。 また、これによって、ウェブ プレイヤーを簡単にインストールできます。
+
+ウェブ プレイヤー作成時に Unity が生成した HTML ファイルには、一般に必要とされる機能がすべて含まれます。 ほとんどの場合、HTML ファイルを編集する必要はありません。 本書の残りで、このファイルの内部での動作について説明します。
+
+使用する前に、UnityObject スクリプトをロードする必要があります。 これは、''<head>''の上部で行われます。
+
+[@
+<script type="text/javascript">
+<!--
+var unityObjectUrl = "http://webplayer.unity3d.com/download_webplayer-3.x/3.0/uo/UnityObject.js";
+if (document.location.protocol == 'https:')
+	unityObjectUrl = unityObjectUrl.replace("http://", "https://ssl-");
+document.write('<script type="text/javascript" src="' + unityObjectUrl + '"></script>');
+-->
+</script>
+@]
+
+グローバルな''unityObject''変数を使用して、各種 Unity 関連の作業を行うことができます。 最も重要な作業は、Unity コンテンツを組み込むことです。 これは、複数のパラメータを受け入れる''embedUnity''メソッドを呼び出すことで行われます。 最初のパラメータは、Unity コンテンツに置換される HTML 要素の''ID]を指定します。 最も一般的である''<div>''のある HTML 要素が該当します。 Unity が置換する一時的なプレースホルダーと考えてください。 2 番目のパラメータは、表示されるウェブ プレイヤーへのパスを指定します。 次の 2 つのパラメータは、ウェブ プレイヤーの内容に対する表示エリアの幅と高さを指定します。 渡される値は、(''600''、''450''など) またはパーセント値 (''50%''、''100%'') のいずれかになります。
+
+[@
+unityObject.embedUnity("unityPlayer", "WebPlayer.unity3d", 600, 450);
+@]
+
+最後に、HTML プレースホルダーは、''<body>''内に配置されます。 これは、''<div id="unityPlayer" />''のようにシンプルな形になります。 しかし、最大限の互換性を得るには、ブラウザが JavaScript をサポートしておらず、プレースホルダーが UnityObject で置換されない場合は、警告メッセージを配置するのがベストです。
+
+[@
+<div id="unityPlayer">
+	<div class="missing">
+		<a href="http://unity3d.com/webplayer/" title="Unity ウェブ プレイヤーを インストールしてください!">
+			<img alt="Unity ウェブ プレイヤーを インストールしてください!" src="http://webplayer.unity3d.com/installation/getunity.png" width="193" height="63" />
+		</a>
+	</div>
+</div>
+@]

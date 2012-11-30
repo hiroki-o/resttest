@@ -1,0 +1,17 @@
+! Screen Overlay
+
+$$Screen Overlay$$画像効果は、独特の見栄えやエフェクトを得るために、画面全体に異なるテクスチャをブレンドを作成する簡単??な方法です。
+
+Attach:OverlayExample2.png\\
+Overlayを用いて低品質の``light leak``（光漏れ）エフェクトを作成した例
+
+その他の [[comp-ImageEffects|image effects]] 同様、この効果は Unity Pro 専用です。 必ず、[[HOWTO-InstallStandardAssets|Pro Standard Assets]] をインストールしてください。
+
+!! プロパティ
+
+||PROPS
+||``Blend Mode`` ||テクスチャを適用するときのブレンドモード。||
+||``Intensity`` ||重ねあわせるテクスチャがで適用され強度や不透明度。||
+||``Texture`` ||重ね合わせるテクスチャそのもの。||
+
+(:include imagefx-SM2:)

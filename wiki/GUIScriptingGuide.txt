@@ -1,0 +1,66 @@
+! GUI スクリプティング ガイド
+
+
+!! 概要
+
+UnityGUI により、機能を備えた多様な GUI を非常に素早く、簡単に作成できます。 GUI オブジェクトを作成し、手動で配置し、その機能を処理するスクリプトを記述する代わりに、このすべてを小さいコードで一度に行います。 これは、$$GUI Controls$$のインスタンス化、配置、定義、の全てを一度の関数呼び出しで行います。
+
+例えば、次のコードにより、エディタやその他で作業することなく、ボタンの作成とハンドリングが出来ます:
+
+[@
+// JavaScript
+function OnGUI () {
+	if (GUI.Button (Rect (10,10,150,100), "I am a button")) {
+		print ("You clicked the button!");
+	}
+}
+
+
+// C#
+using UnityEngine;
+using System.Collections;
+
+public class GUITest : MonoBehaviour {
+			
+	void OnGUI () {
+		if (GUI.Button (new Rect (10,10,150,100), "I am a button")) {
+			print ("You clicked the button!");
+		}
+	}
+}
+@]
+
+Attach:guiScripting-simpleButton.png\\
+''前述のコードで作成されたボタン''
+
+この例は非常に簡単ですが、UnityGUI で使用できる非常に強力で、複雑な手法があります。GUI構築は幅広いテーマですが、次の項で、できる限り早くスピードに乗れるお手伝いをします。本ガイドはそのまま読むか、参考資料として活用できます。
+
+
+!! [[gui-Basics | UnityGUI Basics]]
+
+このセクションでは、UnityGUIの最も重要なコンセプトをカバーし、プロジェクトにコピー＆ペーストできるいくつかのサンプルの他、概要を提供します。 UnityGUI は、非常に扱いやすいため、始めるにはこれは良い場所です。
+
+
+!! [[gui-Controls | Controls]]
+
+このセクションでは、UnityGUI で使用できるすべてのコントロールを一覧表示します。  本項では、コードのサンプルと処理結果の画像を提供します。
+
+
+!! [[gui-Customization | Customization]]
+
+GUIの外観をゲームの雰囲気にあわせて変更するのは大事なことです。UnityGUIでのコントロールはすべて$$GUIStyles$$と$$GUISkins$$でカスタマイズ出来、このセクションでは、その使用方法について説明します。
+
+
+!! [[gui-Layout | Layout Modes]]
+
+UnityGUIには、GUIを配置するための2つの方法があります。画面上で各コントロールを配置するか、HTMLテーブルと同じような働きをする自動レイアウトシステムを使用できます。どちらのシステムも好きに使用することが可能であり、2つを自由にミックスすることもできます。このセクションでは、例を含む、2つのシステム間の機能的差を説明します。
+
+
+!! [[gui-Extending | Extending UnityGUI]]
+
+UnityGUIは、新しいコントロールのタイプで非常に簡単に拡張できます。 この章では、Unityのイベントシステムへの統合を備えた、簡単な「複合」コントロールを作成する方法を示します。
+
+
+!! [[gui-ExtendingEditor | Extending Unity Editor]]
+
+UnityエディタのGUIは、実際にUnityGUIを使用して記述されています。すなわち、ゲーム上のGUIに使用するコードと同等の方法で、エディタも完全に拡張できます。 また、カスタムのエディタ GUI作成時に便利な、エディタ固有のGUIウィジェットがいくつかあります。

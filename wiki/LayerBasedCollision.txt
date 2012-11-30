@@ -1,0 +1,16 @@
+!!レイヤーベースの衝突検出
+Unity 3.x では、レイヤー ベースの衝突検出を導入しています。これにより、$$Game Object$$ を特定のレイヤーに連結された別の $$Game Object$$ に衝突させることができます。
+
+Attach:LayerBasedCollision.png\\
+''自身のレイヤーとして衝突するオブジェクト''
+
+上記の画像には、6 つの GameObject （3 つの平面と 3の立方体) と、右側にどのオブジェクトがどのレイヤーと衝突するかを記述している''Collision Matrix''があります。
+例では、同じレイヤーに属する GameObject のみが衝突できるよう、''Collision Matrix''を設定しています。
+
+!レイヤーに基づいて衝突を検出するよう GameObject を設定
+# GameObject が属するレイヤーを選択します。
+  Attach:LayerBasedCollisionLayer.png
+# レイヤーへの GameObject の割り当てが終了するまで、各 GameObject に 1 を繰り返します。
+# ^^Edit->Project Settings->Physics^^ を選択して、物理特性設定パネルを開きます。
+# レイヤーにチェックを入れ、衝突マトリクスで、どのレイヤーが他のレイヤーと相互作用するかを選択します。
+  Attach:LayerCollisionMatrix.png

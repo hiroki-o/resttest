@@ -1,0 +1,101 @@
+!ソーシャルAPI
+
+ソーシャルAPIはUnityのソーシャル機能をアクセスするための接点であり：
+
+* ユーザプロファイル
+* フレンドリスト
+* ゲーム実績（Achievements）
+* 統計/ランキング（Statistics / Leaderboards）
+
+これにより$$XBox Live$$あるいは$$GameCenter$$への統一的なインタフェースが提供され、ゲームプロジェクトのプログラマにより主に使用されます。
+
+ソーシャルAPIは主に非同期APIであり、標準的な使い方は関数呼び出しを行い関数の完了後にコールバックを登録します。非同期の関数は副作用があり、APIで特定の状態変数に値を生成したり、コールバックはサーバで処理すべきデータを含む可能性があります。
+
+ソーシャルクラスはUnityEngine名前空間にあるため、常に利用可能ですが、ソーシャルAPIクラスは別の名前空間であるUnityEngine.SocialPlatformsにあります。さらにソーシャルAPIの実装はSocialPlatforms.GameCenterなど名前空間の下位の階層にあります。
+
+次がソーシャルAPIの使用例です(JavaScript)：
+
+[@
+import UnityEngine.SocialPlatforms;
+
+function Start () {
+    // 認証を行い、ProcessAuthenticationコールバックを登録
+    // 他のソーシャルAPIの呼び出しを行う前にこの呼び出しを行う必要があります。
+    Social.localUser.Authenticate (ProcessAuthentication);
+}
+
+// この関数は認証が完了した後に呼び出しされます
+// 処理が正常終了した場合、Social.localUserにはサーバから取得したデータを含むことに留意して下さい。
+function ProcessAuthentication (success: boolean) {
+    if (success) {
+        Debug.Log ("認証完了、Achievementsをチェックしています");
+
+        // ロードされているAchievementsをリクエストし、それを処理するためのコールバックを登録します。
+        Social.LoadAchievements (ProcessLoadedAchievements);
+    }
+    else
+        Debug.Log ("認証失敗");
+}
+
+// LoadAchievement呼び出しが完了するとこの関数が呼び出しされます。
+function ProcessLoadedAchievements (achievements: IAchievement[]) {
+    if (achievements.Length == 0)
+        Debug.Log ("エラー：Achievementsは見つかりませんでした。");
+    else
+        Debug.Log ("取得：" + achievements.Length + " achievements");
+    
+    // また、次のように関数を中で呼び出しすることも出来ます
+    Social.ReportProgress ("Achievement01", 100.0, function(result) {
+        if (result)
+            Debug.Log ("正常にをAchievementの進捗をレポート");
+        else
+            Debug.Log ("Achievementのレポートに失敗");
+    });
+}
+@]
+
+同じサンプルでC#を使用した例です。
+
+[@
+using UnityEngine;
+using UnityEngine.SocialPlatforms;
+
+public class SocialExample : MonoBehaviour {
+	
+    void Start () {
+    // 認証を行い、ProcessAuthenticationコールバックを登録
+    // 他のソーシャルAPIの呼び出しを行う前にこの呼び出しを行う必要があります。
+        Social.localUser.Authenticate (ProcessAuthentication);
+    }
+
+// この関数は認証が完了した後に呼び出しされます
+// 処理が正常終了した場合、Social.localUserにはサーバから取得したデータを含むことに留意して下さい。
+    void ProcessAuthentication (bool success) {
+        if (success) {
+            Debug.Log ("認証完了、Achievementsをチェックしています");
+
+        // ロードされているAchievementsをリクエストし、それを処理するためのコールバックを登録します。
+            Social.LoadAchievements (ProcessLoadedAchievements);
+        }
+        else
+            Debug.Log ("認証失敗");
+    }
+
+    // LoadAchievement呼び出しが完了するとこの関数が呼び出しされます。
+    void ProcessLoadedAchievements (IAchievement[] achievements) {
+        if (achievements.Length == 0)
+            Debug.Log ("エラー：Achievementsは見つかりませんでした。");
+        else
+            Debug.Log ("取得：" + achievements.Length + " achievements");
+	    
+        // また、次のように関数を中で呼び出しすることも出来ます
+        Social.ReportProgress ("Achievement01", 100.0, result => {
+            if (result)
+                Debug.Log ("正常にをAchievementの進捗をレポート");
+            else
+                Debug.Log ("認証失敗");
+        });
+    }
+}
+@]
+ソーシャルAPIの詳細については[[ScriptRef:Social.html|Social API Scripting Reference]] を参照ください。

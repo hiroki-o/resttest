@@ -1,0 +1,44 @@
+! Detail Mesh(詳細メッシュ)
+
+TreeやGrassでない、地形の装飾は$$Detail Mesh$$(詳細メッシュ)として作成されるべきです。岩や3Dの茂み、その他の静的な物に最適です。 追加するには$$Paint Foliage$$ボタンを使用します。Attach:TerrainGuide-PaintFoliageButton.png 次に^^Edit Details button->Add Detail Mesh^^を選択します。$$Add Detail Mesh$$（詳細メッシュの追加）ダイアログが表示されます。
+
+
+Attach:TerrainGuide-AddDetailMeshDialog.png\\
+''Add Detail Mesh（詳細メッシュの追加）ダイアログ''
+
+||PROPS
+||``Detail`` ||詳細に使用されるメッシュ ||
+||``Noise Spread`` ||``Detail``にノイズより生成されるクラスタの大きさ。小さいほどノイズが少ない。||
+||``Random Width`` ||全ての詳細オブジェクトの間の幅のバラツキの制限 ||
+||``Random Height`` ||全ての詳細オブジェクトの高さのバラツキの制限 ||
+||``Healthy Color`` ||健康的な詳細オブジェクトの色。``Noise Spread``クラスタの中心で目立ちます。||
+||``Dry Color`` ||乾燥した詳細オブジェクトの色。``Noise Spread``クラスタの外の縁で目立ちます。 ||
+||``Grayscale Lighting`` ||有効な場合、詳細オブジェクトは、Terrain上を照らす光の色に影響されません。 ||
+||``Lightmap Factor`` ||詳細オブジェクトが、ライトマップにより影響を受けるか ||
+||``Render Mode`` ||Grassライティングと通常の頂点ライティングのどちらで、この種類の詳細オブジェクトを照らすかを設定します。岩のような詳細オブジェクトは頂点ライティングを使用すべきです。||
+
+
+^^Add^^ボタンをクリックすると、詳細メッシュが$$Inspector$$に表示されます。詳細メッシュとGrassは隣り合っています。
+
+Attach:TerrainGuide-DetailMeshInspector.png\\
+''追加された詳細メッシュが、インスペクタで、Grassオブジェクトの隣に表示された''
+
+!! 詳細メッシュのペイント(Painting Detail Meshes)
+
+詳細メッシュのペイントは、テクスチャ、Tree、Grassと同様です。描画したいDetail（詳細）を選択して、シーンビューの地形に描画します。
+
+Attach:TerrainGuide-PaintingDetailMeshes.png\\
+''詳細メッシュのペイントはとてもシンプルです。''
+
+__注意:__ ブラシが選択された状態で、マウスをシーンビュー内のTerrain上で動かし、^^F^^キーを押して下さい。これによりシーンビューがマウスポインタの位置にセンタリングされブラシの大きさ(``Brush Size``)に合わせて、自動的にズームします。これにより、編集中に最も素早く簡単に地形をナビゲーションする方法です。
+
+!!詳細オブジェクトの編集(Editing Details)
+
+詳細メッシュのインポートパラメータを変更するには、それを選択して^^Edit Details button->Edit^^をクリックします。詳細メッシュの編集($$Edit Detail Mesh$$)ダイアログが表示され、上記のパラメータを変更できます。
+
+!! ソースアセットのリフレッシュ(Refreshing Source Assets)
+
+詳細メッシュアセットのソースファイルを更新した場合、Terrainに手動でインポートする必要があります。このためには^^Terrain->Refresh Tree and Detail Prototypes^^を使用します。これはソースアセットを変更して保存した後に行われ、地形上の詳細メッシュをただちににリフレッシュします。
+
+!! ヒント:
+* 詳細メッシュオブジェクトのUVは0-1の範囲とする必要があり、なぜなら詳細メッシュで使用されている全ての各々のテクスチャはひとつのテクスチャアトラスにパックされているためです。

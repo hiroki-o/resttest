@@ -1,0 +1,11 @@
+! Normal Bumped Specular
+
+Attach:Shaders./Shader-NormalBumpSpec.png
+
+(:include shader-BumpSubsetImport:)
+
+(:include shader-SpecularSubsetImport:)
+
+!!パフォーマンス
+
+一般に、このシェーダでは安価でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

@@ -1,0 +1,171 @@
+! エディタの拡張
+
+!! はじめに
+
+$$Editor Windows$$ を通じて、Unity 内でカスタムの設計ツールを作成できます。  [[ScriptRef:EditorWindow.html | EditorWindow]] の代わりに、[[ScriptRef:MonoBehaviour.html | MonoBehaviour]] から派生するスクリプトは、[[ScriptRef:EditorGUI.html | GUI]]/[[ScriptRef:GUI.html | GUILayout]] と [[ScriptRef:GUILayout.html | EditorGUI]]/[[ScriptRef:EditorGUILayout.html | EditorGUILayout]] コントロールの両方を利用できます。 また、$$Custom Inspectors$$ を使用して、GameObject Inspector でこれらの GUI コントロールを晒すことができます。
+
+
+!! エディタ ウィンドウ
+
+アプリケーションで多くのカスタム ウィンドウを作成できます。 これらは、インスペクタやシーン、またはその他の組み込み内容と同様に動作します。 これは、ゲームのサブシステムにユーザー インターフェースを追加するのに便利です。
+
+Attach:CustomEditorWindow.png\\
+''Serious Games Interactive社のカットシーンのアクションを記述するのに使用されるカスタム エディタインターフェース''
+
+カスタムのエディタ ウィンドウに、次の簡単なステップを盛りこませます。
+* エディタ ウィンドウから派生するスクリプトを作成します。
+* コードを使用して、ウィンドウにそれ自体を表示させます。
+* ツールに GUI　コードを実行します。
+
+!!! エディタ ウィンドウからの派生
+エディタ ウィンドウを作成するには、スクリプトを''Editor''と呼ばれるフォルダ内に格納する必要があります。  エディタ ウィンドウから派生するこのスクリプトにクラスを作成します。 次に、内部の OnGUI 関数に GUI コントロールを記述します。
+
+[@
+class MyWindow extends EditorWindow {
+    function OnGUI () {
+        // 実際のウィンドウ コードは以下
+    }
+}
+@]
+''MyWindow.js - プロジェクト内の''Editor''と呼ばれるフォルダに置かれます。''
+
+!!! ウィンドウの表示
+画面上にウィンドウを表示するには、それを表示するメニュー項目を作成します。 これは、$$MenuItem$$ プロパティによって起動される関数を作成 
+することで行われます。 
+
+Unity では、ウィンドウのリサイクルがデフォルトの動作です (そのため、メニュー項目を再度選択すると、既存のウィンドウが遅くなります)。 これは、以下のように関数 [[ScriptRef:EditorWindow.GetWindow.html | EditorWindow.GetWindow]] を使用して行われます。
+[@
+class MyWindow extends EditorWindow {
+    @MenuItem ("Window/My Window")
+    static function ShowWindow () {
+        EditorWindow.GetWindow (MyWindow);
+    }
+
+    function OnGUI () {
+        // 実際のウィンドウ コードは以下
+    }
+}
+@]
+''MyWindow の表示''
+
+これにより、起動間の位置を保存し、カスタムのレイアウトで使用できる、標準の、ドッキング可能なエディタ ウィンドウが作成されます。作成したものをより制御するのに、[[ScriptRef:EditorWindow.GetWindowWithRect.html | GetWindowWithRect]] を使用できます。
+
+!!! ウィンドウの GUI の実施
+
+ウィンドウの実際の内容は、OnGUI 関数を実施することでレンダリングされます。 ゲーム内の GUI (''GUI''と''GUILayout'') に使用するのと同じ UnityGUI クラスを使用できます。 さらに、エディタ専用のクラスの''EditorGUI''と''EditorGUILayout''にある追加の GUI コントロールを提供します。 これらのクラスは、通常のクラスですでに使用できるコントロールに追加されるため、自由にミックスおよび一致させることができます　。
+
+以下のC#コードはカスタムエディタウィンドウでどうやってGUI要素を加えるかのサンプルです。:
+[@
+using UnityEditor;
+using UnityEngine;
+
+public class MyWindow : EditorWindow
+{
+	string myString = "Hello World";
+	bool groupEnabled;
+	bool myBool = true;
+	float myFloat = 1.23f;
+	
+	// Add menu item named "My Window" to the Window menu
+	[MenuItem("Window/My Window")]
+	public static void ShowWindow()
+	{
+		//Show existing window instance. If one doesn't exist, make one.
+		EditorWindow.GetWindow(typeof(MyWindow));
+	}
+	
+	void OnGUI()
+	{
+		GUILayout.Label ("Base Settings", EditorStyles.boldLabel);
+		myString = EditorGUILayout.TextField ("Text Field", myString);
+        
+		groupEnabled = EditorGUILayout.BeginToggleGroup ("Optional Settings", groupEnabled);
+			myBool = EditorGUILayout.Toggle ("Toggle", myBool);
+			myFloat = EditorGUILayout.Slider ("Slider", myFloat, -3, 3);
+		EditorGUILayout.EndToggleGroup ();
+	}
+}
+@]
+
+この例の結果はこのような感じに表示されます:
+Attach:ExampleEditorWindow.png\\
+''Custom Editor Window created using supplied example.''
+
+詳細については、 [[ScriptRef:EditorWindow.html | EditorWindow page]] のサンプルおよび文書を参照してください。
+
+!! カスタム インスペクタ
+ゲーム作成の速度を上げるためのキーは、よく使用されるコンポーネントにカスタムのインスペクタを作成することです。 例示のため、常に一点でオブジェクトを表示させ続ける非常に簡単な以下のスクリプトを使用します。
+
+[@
+var lookAtPoint = Vector3.zero;
+
+function Update () {
+    transform.LookAt (lookAtPoint);
+}
+@]''LookAtPoint.js''
+
+これにより、オブジェクトを世界空間の点に向けさせます。 かっこよく演出しましょう!
+
+エディタでこれを適切に機能させるための最初のステップは、ゲームをネスト化していない時もスクリプトを実行させることです。 ExecuteInEditMode 属性をそこに追加することでこれを実行します。
+
+[@
+@script ExecuteInEditMode()
+
+var lookAtPoint = Vector3.zero;
+
+function Update () {
+    transform.LookAt (lookAtPoint);
+}
+@]
+
+このスクリプトをメイン カメラに追加し、シーン ビューにドラッグしてみてください。
+
+!!! カスタム エディタの作成
+これは文句のつけようがないのですが、インスペクタをカスタマイズすることで、インスペクタをより適した形にできます。 これを行うには、インスペクタに''エディタ''を作成する必要があります。 Editorフォルダに LookAtPointEditor という JavaScript を作成します。
+
+[@
+@CustomEditor (LookAtPoint)
+class LookAtPointEditor extends Editor {
+    function OnInspectorGUI () {
+        target.lookAtPoint = EditorGUILayout.Vector3Field ("Look At Point", target.lookAtPoint);
+        if (GUI.changed)
+            EditorUtility.SetDirty (target);
+    }
+}
+@]
+
+このクラスはエディタから派生させる必要があります。 @CustomEditor 属性は、Unity にこの属性がエディタとして動作する対象であるコンポーネントを通知します。
+
+Unity がインスペクタを表示する時は常に OnInspectorGUI 内のコードが実行されます。 ここに GUI　コードを入れることができます。これは、ゲームに対して OnGUI が機能するように機能しますが、インスペクタ内で実行されます。 エディタは、検査されているオブジェクトにアクセスするのに使用できる対象のプロパティを定義します。
+
+GUI.changed　をチェックすることで、いずれかの値が変更された場合、EditorUtility.SetDirty コードが実行されます。
+
+この場合、以下のように、トランスフォーム インスペクタで使用されるように Vector3 フィールドの 1 つを作成します。
+Attach:CustomInspector.png\\
+''輝いているインスペクタができました''
+
+ここでできることはたくさんありますが、今はこれで十分です。他にもっと大切なことがあります。
+
+!!! シーン ビューの追加
+カスタムエディタで OnSceneGUI を実行することで、シーン ビューにさらにコードを追加できます。 この場合、2 つ目の位置ハンドルのセットを追加し、ユーザーがシーン ビューに見る点をドラッグできるようにします。
+
+[@
+@CustomEditor (LookAtPoint)
+class LookAtPointEditor extends Editor {
+    function OnInspectorGUI () {
+        target.lookAtPoint = EditorGUILayout.Vector3Field ("Look At Point", target.lookAtPoint);
+        if (GUI.changed)
+            EditorUtility.SetDirty (target);
+    }
+    
+    function OnSceneGUI () {
+        target.lookAtPoint = Handles.PositionHandle (target.lookAtPoint, Quaternion.identity);
+        if (GUI.changed)
+            EditorUtility.SetDirty (target);
+    }
+}
+@]
+
+OnSceneGUI は、シーン ビューで実行される点を除くと、OnInspectorGUI と同じく機能します。 編集インターフェースの作成に役立つ、[[ScriptRef:Handles.html | Handles]] クラスで定義された関数を使用できます。 そこでの関数はすべて、3D シーン ビューで作業するために設計されています。
+
+2D GUI オブジェクト (GUI、EditorGUI およびその仲間) を入れるたい場合、Handles.BeginGUI() と Handles.EndGUI() の呼び出しにこれらをラップする必要があります。

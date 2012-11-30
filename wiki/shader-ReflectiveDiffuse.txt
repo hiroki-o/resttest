@@ -1,0 +1,11 @@
+!反射デフューズ
+
+Attach:Shaders./Shader-ReflDiffuse.png
+
+(:include shader-ReflectiveFamilyImport:)
+
+(:include shader-DiffuseSubsetImport:)
+
+!!パフォーマンス
+
+一般に、このシェーダでは少ない費用でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

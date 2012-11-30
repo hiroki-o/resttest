@@ -1,0 +1,43 @@
+! 葉のプロパティ（Leaf Group Properties）
+
+Leaf Groupは、葉の形状を生成します。プリミティブから、ユーザ定義されたメッシュのいずれかから生成します。
+
+!! 葉の分布（Distribution）
+グループ内の葉の数と配置を調整します。カーブを使用して位置、回転、スケールを微調整して下さい。カーブは、親の枝に対して定義されます。
+
+Attach:TreeNode-LeafNodePropertiesDistribution.png
+
+||``Group Seed``  ||葉（Leaf Group）のシード。プロシージャルな自動生成（乱数）のバリエーションのために変更します。||
+||``Frequency``   ||各々の親の枝に対する葉の数を調整。||
+||``Distribution``||葉が親に沿って分布している方法を選択します。||
+||``Twirl``       ||親の枝の周りに回転させます。||
+||``Whorled Step``||一ステップの輪生ノード数、輪生（Whorled）分布の場合。本物の植物の場合、通常はフィボナッチ数である。||
+||``Growth Scale``||親ノードに沿ってノードのスケールを定義。カーブとスライダを使用してエフェクトをフェードイン、フェードアウトします。||
+||``Growth Angle``||親ノードに対する成長の初期角度を指定。カーブとスライダを使用してエフェクトをフェードイン、フェードアウトします。||
+
+!! 葉の形状（Geometry）
+葉（Leaf Group）に使用される形状と、どのマテリアルが適用されるかを選択します。カスタムメッシュを使用している場合は、その材料が使用されます。
+
+Attach:TreeNode-LeafNodePropertiesGeometry.png
+
+||``Geometry Mode``||葉（Leaf Group）の形状。Meshオプションを選択してカスタム定義のメッシュを使用でき、花、果実などに最適です。||
+||``Material``     ||葉のために使用されるマテリアル。||
+||``Mesh``         ||葉に使用するメッシュ。||
+
+!! 葉の形（Shape）
+葉の形や成長を調節します。
+
+Attach:TreeNode-LeafNodePropertiesShape.png
+
+||``Size``               ||葉の大きさを調整し、つまみ幅で最小と最大の範囲もを調整できます。||
+||``Perpendicular Align``||葉が親の枝に対して垂直に整列するか調整します。||
+||``Horizontal Align``   ||葉が水平に整列するか調整します。||
+
+!! アニメーション
+葉（Leaf Group）をアニメーションするために使用されるパラメータを調整します。風（Wind Zone）は再生時のみ有効です。Main WindとMain Turbulenceの値が大きすぎると葉が枝から離れて浮くことがあります。
+
+Attach:TreeNode-LeafNodePropertiesAnimation.png
+
+||``Main Wind``       ||一次的な風のエフェクト。通常、これは親の枝から離れて浮いてしまう葉を避けるため、低い値に保つ必要があります。||
+||``Main Turbulence`` ||二次的乱流（Turbulence）効果。葉の場合、通常は、低い値に保つ必要があります。||
+||``Edge Turbulence``||風の乱流（Turbulence）が、葉のエッジに沿ってどれぐらい発生するか定義します。||

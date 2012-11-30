@@ -1,0 +1,76 @@
+! ネットワーク　レベルロード
+
+以下でマルチプレイヤーゲームでレベルロードする簡単なサンプルを示します。レベルロードの途中でネットワークメッセージの処理が行われないことをチェックしてます。さらにすべて準備が整った後でないかぎりメッセージ送信が行われないこともあわせてチェックしてます。最後にレベルロード完了時に全てのスクリプトにメッセージ送信を行いレベルロードが終わってなんらかの処理を受け付けできることを示します。``SetLevelPrefix``関数により新しくロードしたレベルに不要なネットワーク更新が行われないようにします。不要な更新とは例えば前のレベルでの更新です。このサンプルではグループを使用してゲームデータとグループへのレベルロード通信を分離します。グループ0はゲームデータのトラふぃくで使用されグループ1はレベルロードに使用します。レベルロードの途中ではグループ0はブロックされますがグループ1は開放されていて、レベルロードの際にチャット通信も別に行うことが出来るよう開放されてます。
+
+[@
+var supportedNetworkLevels : String[] = [ "mylevel" ];
+var disconnectedLevel : String = "loader";
+private var lastLevelPrefix = 0;
+
+function Awake ()
+{
+    // Network level loading is done in a separate channel.
+    DontDestroyOnLoad(this);
+    networkView.group = 1;
+    Application.LoadLevel(disconnectedLevel);
+}
+
+function OnGUI ()
+{
+	if (Network.peerType != NetworkPeerType.Disconnected)
+	{
+		GUILayout.BeginArea(Rect(0, Screen.height - 30, Screen.width, 30));
+		GUILayout.BeginHorizontal();
+
+		for (var level in supportedNetworkLevels)
+		{
+			if (GUILayout.Button(level))
+			{
+				Network.RemoveRPCsInGroup(0);
+				Network.RemoveRPCsInGroup(1);
+				networkView.RPC( "LoadLevel", RPCMode.AllBuffered, level, lastLevelPrefix + 1);
+			}
+		}
+		GUILayout.FlexibleSpace();
+		GUILayout.EndHorizontal();
+		GUILayout.EndArea();
+	}
+}
+
+@RPC
+function LoadLevel (level : String, levelPrefix : int)
+{
+	lastLevelPrefix = levelPrefix;
+
+		// これからレベルロードを行うところでありオブジェクトはいずれにせよ削除されるため、
+		// ネットワーク上のデフォルトチャネルでこれ以上データを送信する理由はありません
+		Network.SetSendingEnabled(0, false);	
+
+		// 最初のレベルロードが完了する必要があるため受信も停止する必要があります。
+		// レベルがロードした後は、RPC更新やその他のオブジェクトにアタッチされた状態更新は実行可能になります
+		Network.isMessageQueueRunning = false;
+
+		// あるレベルでロードされた全てのネットワークビューはNetworkViewIDの頭文字が付与されます。
+		// これによりクライアントから古い更新情報が新しいシーンに流入することを防止します。
+		Network.SetLevelPrefix(levelPrefix);
+		Application.LoadLevel(level);
+		yield;
+		yield;
+
+		// 再度データ受信を許可する
+		Network.isMessageQueueRunning = true;
+		// この時点でレベルはロードされ、クライアントにデータ送信することが出来ます。
+		Network.SetSendingEnabled(0, true);
+
+
+		for (var go in FindObjectsOfType(GameObject))
+			go.SendMessage("OnNetworkLoadedLevel", SendMessageOptions.DontRequireReceiver);	
+}
+
+function OnDisconnectedFromServer ()
+{
+	Application.LoadLevel(disconnectedLevel);
+}
+
+@script RequireComponent(NetworkView)
+@]

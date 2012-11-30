@@ -1,0 +1,10 @@
+!透明頂点ライティング
+
+Attach:Shaders./Shader-TransVertex.png
+
+(:include shader-TransFamilyImport:)
+
+(:include shader-VertexLitSubsetImport:)
+
+!! パフォーマンス
+一般に、このシェーダでは少ない費用でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

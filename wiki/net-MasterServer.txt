@@ -1,0 +1,98 @@
+! マスターサーバ
+
+マスターサーバ（Master Server）はプレイヤークライアントがゲームインスタンスに接続するための出会いの場所です。ポート番号やIPアドレスは隠蔽され、ネットワーク接続を確立する際は、ファイアウォールのハンドリングやNATパンチスルー（NAT punchthrough）など、技術的なタスクを実行します。
+
+各々の実行中のゲームインスタンスはマスターサーバに$$Game Type$$を提供します。プレイヤーがマスターサーバに接続すると、$$Game Type$$が一致するかクエリー実行して、サーバは実行中のゲームの一覧とそれぞれのプレイヤー数、またプレイするためにパスワードが必要であるかを応答します。このデータ交換を行うための関数はサーバ向けの[[ScriptRef:MasterServer.RegisterHost.html | MasterServer.RegisterHost()]] とプレイヤークライアント向けの[[ScriptRef:MasterServer.RequestHostList.html | MasterServer.RequestHostList()]] です。
+
+``RegisterHost``をコールするとき3つの引数が必要で、''gameTypeName''（さきほどの$$Game Type$$）、''gameName''、''comment''をもとにホスト登録を行います。``RequestHostList``は接続したいホスト''gameTypeName''を引数にとります。そのGame Typeで登録されているホストがリクエストクライアントに戻されます。これは非同期処理であり、完全に受信した後に``PollHostList()``により完全なリストを受信することが出来ます。
+
+マスターサーバによるNATプルスルーは$$Facilitator$$という別処理によりハンドリングされますが、Unityのマスターサーバは両方のサービスを並列処理します。
+
+$$Game Type$$は各々のゲームを一意に識別する名前であるべきです（ただしUnityはこれを保証する中央登録システムはもってません）。他で使用されることのない独自の名前を選択します。もしゲームに異なるバージョンがある場合、ユーザに警告を行いクライアントが実行サーバとバージョンが対応してないことを知らせます。バージョン情報はcommentフィールドで渡します。（バイナリデータであるためバージョンは好みのフォーマットで渡せます）。ゲームの名前は単にセットアップした人が提供した特定のゲームインスタンスの名前です。
+
+commentフィールドはマスターサーバを適切に設定すればより高度な方法で使用することが出来ます。（この詳細については[[#advanced | 以下]] を参照下さい。）例えば、commentの最初の10バイトをパスワードにしてマスターサーバでホスト更新が行われたときにホスト更新を受信したときにマスターサーバ上でパスワードを展開することができます。もしパスワードチェックに失敗した場合、ホスト更新を拒否することが出来ます。
+
+
+!! ゲーム登録
+
+ゲーム登録の前にホストでサポートされているかによってNAT機能を有効・無効にすることが大事です。これは[[ScriptRef:Network.InitializeServer.html | Network.InitializeServer]] の``useNat``の引数で行うことが出来ます。
+
+サーバは次のようなコードで始まるかもしれません：
+
+[@
+function OnGUI() {
+	if (GUILayout.Button ("サーバを開始します"))
+	{
+		// パブリックIPがない場合はNATパンチスルーを使用します
+		Network.InitializeServer(32, 25002, !Network.HavePublicAddress());
+		MasterServer.RegisterHost("MyUniqueGameType", "JohnDoes game", "l33t game for all");
+	}
+}
+@]
+
+ここではNATパンチスルーが必要であるかを、マシンにパブリックIPアドレスがあるかどうかをチェックして判断します。 [[ScriptRef:Network.TestConnection.html | Network.TestConnection]] というより洗練された関数によりホストマシンがNATを出来るかどうか判断させることも出来ます。さらにパブリックIPアドレスに対して接続テストを行いゲームポートに対してファイアウォールがブロックしているかチェックします。パブリックIPアドレスのあるマシンはつねにNATテストを通過しますが、接続テストに失敗した場合にホストはNATクライアントに__接続できません__。そのようなケースでは、ゲームを動かすにはポートフォワーディングが必要であることがユーザに知らされます。ローカルのブロードバンド接続は通常NATアドレスがありますが、ポートフォワーディングをセットアップすることが出来ません（パブリックIPアドレスを持たないため）。これらのケースでは、NATテストが失敗した場合、ローカルネットワークのクライアントしか接続することが出来ないためサーバを実行することが推奨されないことが、ユーザに知らされます。
+
+もしホストがNAT機能を必要でないのに有効化した場合もアクセス可能となります。しかし、NATパンチスルーできないクライアントはサーバがNATを有効化していないために接続できないと誤解する可能性があります。
+
+
+!! ゲームへの接続
+
+``HostData``オブジェクトはホスト登録やクエリーの際に送信されます。次のホストに関する情報を保持しています：
+||boolean ||``useNat`` ||ホストがNATパンチスルーを使用するか示します。
+||String ||``gameType`` ||ホストのゲームタイプ
+||String ||``gameName`` ||ホストのゲーム名
+||int ||``connectedPlayers`` ||プレイヤー／クライアントの同時接続数
+||int ||``playerLimit`` ||プレイヤー／クライアントの最大同時接続数
+||String[] ||``IP`` ||ホストの内部IPアドレス。パブリックIPアドレスをもつサーバにおいては内部、外部のIPアドレスは同じです。内部接続する場合に、全てのIPアドレスとマシンの全ての印tフェースを紐付けてチェックする必要があるため、このフィールドは配列として定義されています。
+||int ||``port`` ||ホストのポート
+||boolean ||``passwordProtected`` ||ホスト接続にパスワードが必要であるか
+||String ||``comment`` ||ホスト登録の際にセットされたコメント
+||String ||``guid`` ||ホストのネットワークGUID。NATパンチスルーで接続するために必要
+
+この情報はクライアントにより、ホストが接続できるかどうかみるために使用されます。NATが有効化された場合、接続する際にホストのGUIDが必要です。これは接続する際に``HostData``が受信されたときに自動的にハンドリングされます。接続のルーチンは次のようなものになります：
+
+[@
+function Awake() {
+	MasterServer.RequestHostList("MadBubbleSmashGame");
+}
+
+function OnGUI() {
+	var data : HostData[] = MasterServer.PollHostList();
+	// ホスト一覧のホストを全てチェックする
+	for (var element in data)
+	{
+		GUILayout.BeginHorizontal();	
+		var name = element.gameName + " " + element.connectedPlayers + " / " + element.playerLimit;
+		GUILayout.Label(name);	
+		GUILayout.Space(5);
+		var hostInfo;
+		hostInfo = "[";
+		for (var host in element.ip)
+			hostInfo = hostInfo + host + ":" + element.port + " ";
+		hostInfo = hostInfo + "]";
+		GUILayout.Label(hostInfo);	
+		GUILayout.Space(5);
+		GUILayout.Label(element.comment);
+		GUILayout.Space(5);
+		GUILayout.FlexibleSpace();
+		if (GUILayout.Button("Connect"))
+		{
+			// HostData構造体に接続し、内部的に正しい接続方法が使用されます（NATの場合はGUID）。
+			Network.Connect(element);			
+		}
+		GUILayout.EndHorizontal();	
+	}
+}
+@]
+このサンプルではマスターサーバから戻される関連する全てのホスト情報が出力されます。ping情報やホストの地理情報のように便利な情報もこれに加えることが出来ます。
+
+!! NATパンチスルー
+
+NATパンチスルーが可能であるかにより、特定のコンピュータがサーバとして適切であるか示します。いくつかのクライアントは接続できる可能性があるものの、NATサーバへの接続で問題が発生するクライアントが出る可能性があります。
+
+デフォルトでは、NATパンチスルーはマスターサーバの協力により提供されますが、必ずしもこの方法でなくとも問題ありません。NATパンチスルーのサービスに使用されるファシリテータ（Facilitator）プロセスです。もし二つのマインがファシリテータで接続されている場合、外部IPアドレスとポートが使用されるかぎり、両方とも互いに接続できるように見えます。マスターサーバは、他の方法では判断することが難しい、この外部IPとポート情報を提供するために使用されます。マスターサーバとファシリテータが密接に統合されているのはこのためです。マスターサーバはデフォルトで同一のIPアドレスであり、いずれかを変更するには、 [[ScriptRef:MasterServer-ipAddress.html | MasterServer.ipAddress]] 、[[ScriptRef:MasterServer-port.html | MasterServer.port]] 、[[ScriptRef:Network-natFacilitatorIP.html | Network.natFacilitatorIP]] および[[ScriptRef:Network-natFacilitatorPort.html | Network.natFacilitatorPort]] のいずれかを使用します。
+
+
+[[#advanced]]
+!! 応用
+Unity Technologiesではテスト目的で、完全にデプロイされたマスターバーがあり、このサーバが実際にデフォルトで使用されます。しかしソースコードは無償で提供されておりWindows、LinuxおよびMac OSで使用可能です。プロジェクトをソースから構築する方法に加えて、マスターサーバが情報のハンドリングする方法や、通信方法を修正したいケースがあるかもしれません。例えば、ホストデータのハンドリングを最適化したり、ホスト一覧に戻されるクライアントの数を限定することが出来ます。このような変更はソースコードの変更を伴い、この方法の詳細については[[net-MasterServerBuild | Master Server Build page]] を参照下さい。

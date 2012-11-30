@@ -1,0 +1,10 @@
+!自己発光頂点ライティング
+
+Attach:Shaders./Shader-IllumVertex.png
+
+(:include shader-SelfIllumFamilyImport:)
+
+(:include shader-VertexLitSubsetImport:)
+
+!! パフォーマンス
+一般に、このシェーダでは少ない費用でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

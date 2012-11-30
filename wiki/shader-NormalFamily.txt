@@ -1,0 +1,82 @@
+!Normal Shader Family
+
+これらのシェーダはUnityの基本的なシェーダです。これらは特殊な側面は一切なく、ほとんどの不透明オブジェクトでの使用に適しています。オブジェクトがTransparent（透明）、Emitting Light（発光）の場合は適していません。
+
+!! [[shader-NormalVertexLit|Vertex Lit]]
+
+[[shader-NormalVertexLit | Attach:Shaders./Thumb-NormalVertex.png]]
+
+'''必要アセット：'''
+* ``Base``テクスチャ一つ、アルファチャネル必要なし
+
+
+!! [[shader-NormalDiffuse|Diffuse]]
+
+[[shader-NormalDiffuse| Attach:Shaders./Thumb-NormalDiffuse.png]]
+
+'''必要アセット：'''
+* ``Base``テクスチャ一つ、アルファチャネル必要なし
+
+
+!! [[shader-NormalSpecular|Specular]]
+
+[[shader-NormalSpecular| Attach:Shaders./Thumb-NormalSpec.png]]
+
+'''必要アセット：'''
+* ``Base``テクスチャ一つ、Specular Map（鏡面反射マップ）向けのアルファチャネルあり
+
+
+!! [[shader-NormalBumpedDiffuse|Normal mapped]]
+
+[[shader-NormalBumpedDiffuse| Attach:Shaders./Thumb-NormalBump.png]]
+
+'''必要アセット：'''
+* ``Base``テクスチャ一つ、アルファチャネル必要なし
+* ``Normal map``（法線マップ）一つ
+
+
+!! [[shader-NormalBumpedSpecular|Normal mapped Specular]]
+
+[[shader-NormalBumpedSpecular| Attach:Shaders./Thumb-NormalBumpSpec.png]]
+
+'''必要アセット：'''
+* ``Base``テクスチャ一つ、Specular Map（鏡面反射マップ）向けのアルファチャネルあり
+* ``Normal map``（法線マップ）一つ
+
+
+!! [[shader-NormalParallaxDiffuse|Parallax]]
+
+[[shader-NormalParallaxDiffuse| Attach:Shaders./Thumb-NormalParallaxBump.png]]
+
+'''必要アセット：'''
+* ``Base``テクスチャ一つ、アルファチャネル必要なし
+* ``Normal map``（法線マップ）一つ
+* ``Height``テクスチャ一つ、Parallax Depth（パララックスデプス）向けのアルファチャンネルあり
+
+
+!! [[shader-NormalParallaxSpecular|Parallax Specular]]
+
+[[shader-NormalParallaxSpecular| Attach:Shaders./Thumb-NormalParallaxBumpSpec.png]]
+
+'''必要アセット：'''
+* ``Base``テクスチャ一つ、Specular Map（鏡面反射マップ）向けのアルファチャネルあり
+* ``Normal map``（法線マップ）一つ
+* ``Height``テクスチャ一つ、Parallax Depth（パララックスデプス）向けのアルファチャンネルあり
+
+
+!! [[shader-NormalDecal|Decal]]
+
+[[shader-NormalDecal| Attach:Shaders./Thumb-NormalDecal.png]]
+
+'''必要アセット：'''
+* ``Base``テクスチャ一つ、アルファチャネル必要なし
+* ``Decal``テクスチャ一つ、Decal（デカール）透過向けのアルファチャネルあり
+
+
+!! [[shader-NormalDiffuseDetail|Diffuse Detail]]
+
+[[shader-NormalDiffuseDetail| Attach:Shaders./Thumb-NormalDiffuseDetail.png]]
+
+'''必要アセット：'''
+* ``Base``テクスチャ一つ、アルファチャネル必要なし
+* ``Detail``グレースケールテクスチャ一つ、50%グレーの中間色あり

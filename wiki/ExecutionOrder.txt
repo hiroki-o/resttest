@@ -1,0 +1,73 @@
+! イベント関数の実行順
+Unity のスクリプティングには、スクリプトが実行される所定の順番で実行される多くのイベント関数があります。 以下に実行順を記載します。
+
+!! 最初のシーンロード
+これらの関数は、シーンが始まると呼び出されます (シーン内の各オブジェクトに対して一度)。
+* __Awake:__ この関数は常に Start 関数の前およびプレハブのインスタンス化直後に呼び出されます。 (If a GameObject is in-active during start up Awake is not called until it is made active, or a function in any script attached to it is called.)
+* __OnEnable:__ (オブジェクトがアクティブな場合にのみ呼び出されます): この関数は、オブジェクトを有効化した直後に呼び出されます。This happens when a MonoBehaviour is instance is created, such as when a level is loaded or a GameObject with the script component is instantiated. 
+
+!! 最初のフレームのアップデート前
+* __Start:__ スクリプトのインスタンスが有効になると、最初のフレームのアップデート前に Start が呼び出されます。
+
+!! フレーム間
+* __OnApplicationPause:__ This is called at the end of the frame where the pause is detected, effectively between the normal frame updates. One extra frame will be issued after ``OnApplicationPause`` is called to allow the game to show graphics that indicate the paused state.
+
+!! アップデート順
+ゲーム ロジック、インタラクション、アニメーション、カメラ位置などを追跡している場合、各種イベントを使用できます。  共通のパターンは、''Update()''関数内のほとんどのタスクを実行することですが、その他の関数も使用できます。
+
+* __FixedUpdate:__ ''FixedUpdate()''は''Update()''よりも頻繁に呼び出されることが多くあります。  フレーム レートが低くい場合には、フレームごとに数回呼び出すことができますが、フレーム レートが高い場合は、フレーム間で呼び出すことができません。  ''FixedUpdate()''直後にすべての物理特性の計算とアップデートが発生します。  ''FixedUpdate()''内で移動計算を適用する際、''Time.deltaTime''で値を乗算する必要はありません。  これは、フレーム レートとして独立して、''FixedUpdate()''が信頼できるタイマーで呼び出されます。
+
+* __Update:__ ''Update()''はフレームごとに一度呼び出されます。  これは、フレームのアップデートに対する主力関数です。
+
+* __LateUpdate:__ ''LateUpdate()''は、''Update()''後にフレームごとに一度呼び出されます。  ''Update()''で実行される計算は、''LateUpdate()''が始まると完了します。  ''LateUpdate()''の一般的な使用は次の三人称カメラです。  ''Update()''内でキャラクターを動かし、回転させる場合、''LateUpdate()''でカメラの移動と回転の計算をすべて実行できます。  これにより、キャラクターがカメラがその位置を追跡する前に完全に移動します。
+
+
+!!レンダリング
+* __OnPreCull:__ カメラがシーンを間引く前に呼び出されます。 カリングにより、カメラにどのオブジェクトを表示するかが決定されます。 OnPreCull は、カリングが発生する直前に呼び出されます。
+* __OnBecameVisible/OnBecameInvisible:__ オブジェクトがカメラに対して表示または非表示になる際に呼び出されます。
+* __OnWillRenderObject:__ オブジェクトが表示されると、各カメラに対して __一度__ 呼び出されます。
+* __OnPreRender:__ カメラがシーンのレンダリングを開始する前に呼び出されます。
+* __OnRenderObject:__ すべてのシーン レンダリング終了後に呼び出されます。 GL クラスまたは Graphics.DrawMeshNow を使用して、この点にカスタムのジオメトリを描画できます。
+* __OnPostRender:__ カメラがシーンのレンダリングを終了した後に呼び出されます。
+* __OnRenderImage(Pro only):__ 画面レンダリングが完了し、画面画像の処理が可能になった後に呼び出されます。
+* __OnGUI:__ GUI イベントに応じて、フレームごとに複数回呼び出されます。 レイアウトおよびリペイント イベントが最初に処理され、その後にレイアウトおよびキーボード/マウスイベントが各入力イベントに対して処理されます。
+* __OnDrawGizmos__ 可視化のためにシーン ビュー内でのギズモの描画に使用されます。
+
+!! コルーチン
+法線コルーチン アップデートは、Update 関数が返した後で実行されます。 コルーチンは、所定の YieldInstruction が終了するまで、その実行 (生成) を中止できる関数です。
+コルーチンには下記の用法があります。
+* __yield;__ コルーチンは、次のフレームですべての Update 関数が呼び出された後に続行します。
+* __yield WaitForSeconds(2);__ フレームに対してすべての Update 関数が呼び出された後、指定された時間遅延後に続行します。
+* __yield WaitForFixedUpdate();__ すべてのスクリプトですべての FixedUpdate 呼び出し後に続行します。
+* __yield WWW__ WWW ダウンロード完了後に続行します。
+* __yield StartCoroutine(MyFunc);__ コルーチンを連鎖し、MyFunc コルーチンが最初に完了するのを待ちます。
+
+!! オブジェクト破棄時
+
+* __OnDestroy:__ This function is called after all frame updates for the last frame of the object's existence (the object might be destroyed in response to Object.Destroy or at the closure of a scene).
+
+
+!! 終了時
+これらの関数は、シーン内のすべてのアクティブなオブジェクトで呼び出されます。
+* __OnApplicationQuit:__ この関数は、アプリケーション終了前に、すべてのゲーム オブジェクトで呼び出されます。 エディタでは、ユーザーが再生モードを停止すると呼び出されます。 ウェブ プレイヤーでは、ウェブ ビューが閉じられると呼び出されます。
+* __OnDisable:__ この関数は、動作が無効になると呼び出されます。
+
+!!!そのため、コルーチンでは、これが所定のスクリプトに対する実行順になります。
+
+* すべての Awake 呼び出し 
+* すべての Start 呼び出し 
+*__while__ (可変デルタ時間に対するステッピング)
+** すべての FixedUpdate 関数 
+** 物理特性シミュレーション 
+** OnEnter/Exit/Stay トリガー関数 
+** OnEnter/Exit/Stay 衝突関数 
+ 
+リジッドボディ補間は、transform.position および rotation を適用します。 
+* OnMouseDown/OnMouseUp などのイベント 
+** すべての Update 関数 
+* アニメーションが、トランスフォームに対して、進行、ブレンドおよび適用されます。 
+** すべての LateUpdate 関数 
+* レンダリング
+
+!! ヒント
+* コルーチンは、すべての Update 関数後に実行されます。

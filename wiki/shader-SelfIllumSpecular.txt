@@ -1,0 +1,11 @@
+!自己発光スペキュラ
+
+Attach:Shaders./Shader-IllumSpec.png
+
+(:include shader-SelfIllumFamilyImport:)
+
+(:include shader-SpecularSubsetImport:)
+
+!! パフォーマンス
+
+一般に、このシェーダでは少ない費用でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

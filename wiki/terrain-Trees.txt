@@ -1,0 +1,100 @@
+! Tree
+
+UnityのTerrain（地形）エンジンはTreeを特別にサポートしています。Terrain上に木の数千本を配置し、実用的なフレームレートでゲーム内でそれらをレンダリングすることができます。カメラの近くのTreeはフル3Dでレンダリングし、遠くのTreeを2Dビルボードに移行してレンダリングすることで実現されます。遠いビルボードは、様々な角度から見らても正しい向きに更新されます。この移行システムは、詳細なTree環境をパフォーマンス上シンプルに処理できるようにします。Meshからビルボードへの移行のパラメータを微調整することについて、完全に制御することが可能であり、最高のパフォーマンスを得ることが出来ます。
+
+Attach:terrain-PlacingTrees.png\\
+''このように、多くのTreeと美しい環境を、簡単に描くことができます。''
+
+!! Treeの追加
+
+$$Inspector$$から$$Place Trees$$ボタン Attach:terrain-TreesButton.png を選択します。
+
+Treeを地形に追加する前に、使用可能なTreeのライブラリを追加しなければなりません。 ^^Edit Trees button->Add Tree^^をクリックします。 $$Add Tree$$ダイアログが表示されます。
+
+Attach:terrain-AddTreeDialog.png\\
+''Add Treeダイアログ''
+
+Treeを$$Project View$$ーから選択し、``Tree``変数にドラッグします。また、``Bend Factor``を編集すると、"風になびく"アニメーション効果を樹木に追加できます。準備ができたら^^Add^^をクリックします。Treeが、インスペクタに選択された状態で現れます。
+
+Attach:terrain-AddedTree.png\\
+新しく追加されたTreeが、インスペクタに選択された状態で現れます。
+
+好きなだけTreeを追加できます。それぞれのTreeは、Terrainに追加するために、インスペクタで選択できます。
+
+Attach:terrain-AddedMultipleTrees.png\\
+''選択されたTreeは青色にハイライトされます。''
+
+!! Treeのペイント（木の描画）
+
+Place Trees（木の配置）ツールを使っているとき、地形をクリックするとTreeを配置できます。木を取り除くには、^^Shift^^ボタンを押しながら、Terrainをクリックします。
+
+Attach:TerrainGuide-PaintingTrees.png\\
+''Treeのペイント（木の描画）は、ペイントブラシを使うのと同様、簡単です。''
+
+Treeを置く場合に、オプションが幾つかあります。
+
+||PROPS
+||``Brush Size`` ||Tree配置ブラシの半径(メートル)||
+||``Tree Spacing`` ||Treeの間の距離のパーセンテージ||
+||``Color Variation`` ||各Treeの間の色のバリエーション||
+||``Tree Height`` ||アセットと比べたTreeの高さ調整||
+||``Height Variation`` ||各Treeの高さのバリエーション||
+||``Tree Width`` ||アセットと比べたTreeの幅調整||
+||``Width Variation`` ||各Treeの幅のバリエーション||
+
+
+!!! Treeのペイント（木の描画）のヒント
+
+Attach:TerrainGuide-TreeBrushSize.png\\
+''異なるブラシは、異なるエリアサイズをカバーします''
+
+Attach:TerrainGuide-TreeSpacing.png\\
+''``Tree Spacing``を調整し、Treeを描画する時の、密度を調整します。''
+
+
+!! Treeの編集
+
+追加したTreeのインポートパラメータを変更するには、詳細(Detail)を選択し、^^Edit Trees button->Edit Detail^^をクリックしますまたは、編集したい樹木をダブルクリックします。すると、$$Edit Tree$$ダイアログが表示され、設定を変更することができます。
+
+!! 大量に配置する場合
+
+Treeを描画して配置するのではなく、森全体を生成したい場合は、^^Terrain->Mass Place Trees^^を使用します。$$Mass Place Trees$$ダイアログが表示されます。配置したいTreeの数を設定すると、すぐにそれらが配置されます。Terrainに追加されたTree全てが、大量の配置に使用されます。
+
+Attach:TerrainGuide-MassPlacedTrees.png\\
+''10,000本のTreeを一度に配置''
+
+!! ソースアセットのリフレッシュ
+
+Treeアセットのソースファイルを更新した場合、手動でTerrainにインポートしなければなりません。 ^^Terrain->Refresh Tree and Detail Prototypes^^を使用して、行います。 ソースアセットを変更して、保存した後、これをすることで、Terrain上のTreeを即座にリフレッシュします。
+
+!! Treeの作成
+
+木はTerrainエンジンにより2つの方法で作成することができます：
+
+最初の方法はUnity内臓の[[class-Tree | Tree creator]] を作成する方法で、二つめの方法はUnityが対応しているサードパーティのモデリングソフトを使用する方法で、この場合全てのTreeは全ての樹木は、1つのメッシュと2つの$$Materials$$を含みます。 １つは幹で、もうひとつは葉です。
+
+パフォーマンスの問題から、平均的なTreeでは、三角形の数は2000以下に抑えるべきです。少ない三角形の数である程よいでしょう。TreeメッシュのピボットポイントはTreeの根元でなければなりません。その位置で、Treeは地面の上に配置されることになります。こうすることで、他のモデリングアプリケーションからUnityへのインポートが容易になります。
+
+Treeは``Nature/Soft Occlusion Leaves``および``Nature/Soft Occlusion Bark shader``を使用する必要があります。これらのシェーダを使うために、Treeは"Ambient-Occlusion"の名前を含む、特別なフォルダに配置しなければなりません。モデルをフォルダに配置したり、再インポートしたりすると、UnityはTreeに特化された、Soft Ambient Occlusionを計算します。  "Nature/Soft Occlusion"シェーダには、この情報が必要です。もし、命名ルールに従わなければ、樹木は真っ黒な変なものに見えてしまうでしょう。
+
+Unityはまた、いくつかの高品質のTreeを"Terrain Demo.unitypackage"に含んでいます。ゲームの中で、これらを使用することができます。
+
+
+!! ローポリのTreeを使用
+
+Attach:lowpolytree.png
+
+１つの枝と葉が、たった6枚の三角形で作られ、しっかりと曲がって見えます。もっと曲面を表現するために、三角形を追加できます。しかし、重要な点は、Treeを作るとき、四角形ではなく、三角形を使うことです。もし、四角形を使うと、枝の湾曲を表現するために、三角形を使う場合の2倍の量が必要になります。
+
+Treeは、アルファで見えない部分がほとんどの、大きなポリゴンを持っており、塗りつぶし時間を無断にします。パフォーマンスの観点から、避けられるべきで、もちろん、密集したTreeを作ることが目的です。 Oblivionの木が、非常に良く見えるのもこのためです。葉の間から向こうが見えないほど密集しています。
+
+
+!!Treeとの衝突のセットアップ
+
+TreeでColliderを活用するのはとても簡単です。Treeアセットファイルをインポートしたとき、しなければならないことはシーンビューにインスタンス化し、$$Capsule Collider$$(カプセルコライダ)を追加し、ゲームオブジェクトを新たなプレハブにします。これで、TreeをTerrainに追加するとき、カプセルコライダを持った、Treeのプレハブが追加されます。Treeとの衝突についてはCapsule Colliderのみ使用できます。
+
+!!Treeと衝突させる
+Attach:TerrainCollider.png\\
+''インスペクタ上のTerrain Collider''
+
+TreeをRigidbodyと衝突するようにしたい場合 ''Create Tree Colliders''をオンにするようにして下さい、しない場合はオブジェクトがTreeを通り抜けます。Unityが使用するのPhysXエンジンがひとつのシーンで使用できるColliderは65536が最大値であることに注意してください。あなたが、それ以上の数のTree（すでにシーンで使用されている他のコライダーも引く）を使用する場合は、Tree Colliderがエラーで失敗します。

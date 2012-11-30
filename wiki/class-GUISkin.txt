@@ -1,0 +1,113 @@
+! GUI スキン
+
+$$GUISkins$$ は、GUI に適用できる $$GUIStyles$$ です。  $$Control$$ はその種類によって、型の定義が異なります。  スキンは、単独の制御の代わりに、UI 全体にスタイルを適用させることをができます。
+
+Attach:Inspector-GUISkin.png\\
+''$$Inspector$$ で確認される GUI スキン''
+
+GUI スキンを作成するには、メニューバーから ^^Assets->Create->GUI Skin^^  を選択します。
+
+GUI スキンは、$$UnityGUI$$ システムの一部です。  UnityGUI の詳細については[[GUI Scripting Guide]] を参照してください。
+
+
+!! プロパティ
+
+GUI スキン内のプロパティはすべて、[[class-GUIStyle | GUIStyle]] となります。  スタイルの使用法の詳細については、[[class-GUIStyle | GUIStyle]] ページを参照してください。
+
+||PROPS
+||``Font`` ||GUI でのすべての制御に対して使用されるグローバル フォント。 ||
+||``Box`` ||すべてのボックスに使用される [[class-GUIStyle | Style]] 。||
+||``Button`` ||すべてのボタンに使用される [[class-GUIStyle | Style]] 。||
+||``Toggle`` ||すべてのトグルに使用される [[class-GUIStyle | Style]] 。||
+||``Label`` ||すべてのラベルに使用される [[class-GUIStyle | Style]] 。 ||
+||``Text Field`` ||すべてのテキスト フィールドに使用される [[class-GUIStyle | Style]] 。||
+||``Text Area`` ||すべてのテキスト エリアに使用される [[class-GUIStyle | Style]] 。 ||
+||``Window`` ||すべてのウィンドウに使用される [[class-GUIStyle | Style]] 。 ||
+||``Horizontal Slider`` ||すべての水平スライダ バーに使用される [[class-GUIStyle | Style]] 。 ||
+||``Horizontal Slider`` ||すべての水平スライダ サム ボタンに使用される [[class-GUIStyle | Style]] 。 ||
+||``Vertical Slider`` ||すべての垂直スライダ バーに使用される [[class-GUIStyle | Style]] 。 ||
+||``Vertical  Slider`` ||すべての垂直スライダ サム ボタンに使用される [[class-GUIStyle | Style]] 。 ||
+||``Horizontal Scrollbar`` ||すべての水平スクロール バーに使用される [[class-GUIStyle | Style]] 。 ||
+||``Horizontal Scrollbar Thumb`` ||すべての水平スクロールバー サム ボタンに使用される [[class-GUIStyle | Style]] 。||
+||``Horizontal Scrollbar Left Button`` ||すべての水平スクロールバー左ボタンに使用される [[class-GUIStyle | Style]] 。||
+||``Horizontal Scrollbar Right Button`` ||すべての水平スクロールバー右ボタンに使用される [[class-GUIStyle | Style]] 。||
+||``Vertical Scrollbar`` ||すべての垂直スクロール バーに使用される [[class-GUIStyle | Style]] 。 ||
+||``Vertical Scrollbar Thumb`` ||すべての垂直スクロールバー サム ボタンに使用される [[class-GUIStyle | Style]] 。||
+||``Vertical Scrollbar Up Button`` ||すべての垂直スクロールバー上ボタンに使用される [[class-GUIStyle | Style]] 。||
+||``Vertical Scrollbar Down Button`` ||すべての垂直スクロールバー下ボタンに使用される [[class-GUIStyle | Style]] 。||
+||``Custom 1-20`` ||制御に適用できる追加のカスタムのスタイル。||
+||``Custom Styles`` ||制御に適用できる追加のカスタムのスタイルの配列。||
+||``Settings`` ||GUI 全体の追加の設定。||
+||>>>``Double Click Selects Word`` ||有効にした場合、単語をダブルクリックすると、その単語が選択されます。||
+||>>>``Triple Click Selects Word`` ||有効にした場合、単語をトリプルクリックすると、その単語が選択されます。||
+||>>>``Cursor Color`` ||キーボード カーソルの色。||
+||>>>``Cursor Flash Speed`` ||テキスト コントロール編集時に、テキスト カーソルが点滅する速度。||
+||>>>``Selection Color`` ||テキストの選択したエリアの色。||
+
+
+!! 詳細
+
+ゲームに対して、GUI 全体を作成する際、異なる制御タイプすべてに対して、多くのカスタマイズを行う必要がある場合があります。  リアルタイム戦略ゲームやロールプレイングなど、多くの各ジャンルで、1 つ 1 つの制御タイプが必要になります。
+
+個々の制御は特定のスタイルを使用するため、10 数個の個々のスタイルを作成し、そのすべてを手動で割り当てても意味がありません。  GUI スキンはこの問題を解決します。  GUI スキンを作成することで、個々の制御すべてに対して、事前定義された各種スタイルを設定できます。  1 つのコード行でスキンを適用することで、個々の制御に対してスタイルを手動で指定する必要がなくなります。
+
+
+!!! GUI スキンの作成
+
+GUI スキンはアセット ファイルです。  GUI スキンを作成するには、メニューバーから ^^Assets->Create->GUI Skin^^  を選択します。  これにより、$$Project View$$ に新しい GUIスキンが置かれます。
+
+Attach:GUISkin-ProjectView.png\\
+''プロパティ ビューでの新しい GUIスキン''
+
+
+!!! GUI スキンの編集
+
+GUIスキン 作成後、インスペクタに含まれるすべての  [[class-GUIStyle | Styles]] を編集できます。  例えば、''Text Field''の [[class-GUIStyle | Style]] がすべてのテキスト フィールド制御に適用できます。
+
+Attach:GUISkin-EditingTextField.png\\
+''GUI スキンでのテキスト フィールド スタイルの編集''
+
+スクリプトで作成したテキスト フィールドの数に関係なく、すべてこの  [[class-GUIStyle | Style]] を使用します。  もちろん、必要な場合、別のテキスト フィールドに対する 1 つのテキスト フィールドのスタイル変更を制御できます。  どのように行われるかについては後述します。
+
+
+!!! GUI スキンの適用
+
+GUI にGUIスキンを適用するには、制御にスキンを読み込み、適用する簡単なスクリプトを使用する必要があります。
+
+[@
+//GUIスキンを割り当てられるパブリック変数を作成します
+var customSkin : GUISkin;
+
+// OnGUI() 関数でスキンを適用します
+function OnGUI () {
+	GUI.skin = customSkin;
+
+	// 希望する制御が作成され、カスタムのスキンと共に表示されます
+	GUILayout.Button ("私は再スキンされたボタンです");
+
+	// スキンを変更または削除できる制御とできない制御があります
+	GUI.skin = null;
+
+	// 個々で作成された制御は、デフォルトのスキンを使用しますが、カスタムのスキンは使用しません
+	GUILayout.Button ("このボタンはデフォルトの UtilityGUI スキンを使用します");
+}
+@]
+
+スタイルが異なる同じ制御が 2 つ必要になる場合があります。  このために、新しいスキンを作成し、それを再度割り当てても意味がありません。  代わりに、スキンで''Custom''スタイルの 1 つを使用します。  カスタムのスタイルに''Name''を与えると、その名前を、個々の制御の最後の引数として使用できます。
+
+[@
+// このスキンのカスタムのスタイルの 1 つには、''MyCustomControl''という名前を持っています
+var customSkin : GUISkin;
+
+function OnGUI () {
+	GUI.skin = customSkin;
+
+	// 制御関数の最後の引数として使用したいスタイルの名前を与えます。
+	GUILayout.Button ("私は再スキンされたボタンです"、"MyCustomControl");
+
+	// カスタムのスタイルを無視し、スキンのデフォルトのボタン スタイルを使用することもできます
+	GUILayout.Button ("私は再スキンされたボタンです");
+}
+@]
+
+GUIスタイルの扱いに関する詳細については、[[class-GUIStyle | GUIStyle]] ページを参照してください。  UnityGUI の使用に関する詳細については、[[GUI Scripting Guide]] を参照してください。

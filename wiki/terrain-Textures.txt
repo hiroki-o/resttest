@@ -1,0 +1,69 @@
+! テクスチャ
+
+$$Terrain Textures$$（地形テクスチャ）をTerrain全体にタイルとして並べることによりマップを塗りつぶすことが出来る。Terrainテクスチャをブレンドし、組み合わせることで、1つのマップから別のマップへ円滑な移行、あるいは周囲を様々保つためことができます。
+
+TerrainテクスチャはSplat Mapとも呼ばれています。これが意味することは、繰り返し使用する高解像度テクスチャを定義して任意に相互にブレンドし、直接アルファマップを
+Terrain上にペイントできる、ということです。テクスチャは地形の大きさに比べて大きくないため、テクスチャの配布時におけるファイル容量は非常に小さいです。
+
+__注意 __ テクスチャの量を4の倍数とすることで、Terrainアルファマップのパフォーマンスとファイル容量にとって最大の恩恵を受けます。
+
+テクスチャで作業をするには、Inspector上で$$Paint Textures$$ボタンをクリックします。\
+Attach:TerrainGuide-SplatMapsButton.png \
+
+
+!! Terrainテクスチャの追加
+
+Terrainテクスチャでペイントをする前に、プロジェクトフォルダに少なくとも1つのTerrainテクスチャをTerrainに追加します。^^Options Button->Add Texture...を選択します。^ ^。
+
+Attach:TerrainGuide-AddTextureMenu.png
+
+これによりAdd Terrain Textureダイアログが表示されます。
+
+Attach:TerrainGuide-AddTextureDialog1.png\\
+''Add Terrain Textureダイアログ''
+
+ここで``Splat``プロパティにてタイルに使用するテクスチャを選択します。プロジェクトビューからプロパティにテクスチャをドラッグするか、ドロップダウンリストから選択するか、いずれかの方法で出来ます。
+
+次に、``Tile Size X``および``Tile Size Y``プロパティを設定します。数値を大きくするほど、テクスチャの各々のテクスチャのタイルが大きく拡大されます。大きい``Tile Sizes``である場合、テクスチャが全体のTerrainで繰り返される数は少なくなります。数値を小さくするほどより多くの回数だけ、より小さいタイルで多くの回数繰り返すことになります。
+
+>>u40<<
+Unity 4では、法線マップテクスチャを割り当てることができます。法線マップが効果を発揮するためには、Terrainは法線マップ対応のシェーダを使用している必要があり、法線マップTerrainシェーダつきのマテリアルを[[terrain-OtherSettings | Terrain Settings]] タブで割り当てます。
+>><<
+
+ ^^Add^^ボタンをクリックすると、最初のTerrainがTerrain全体にタイルとして表示されます。
+
+Attach:TerrainGuide-FirstTextureAdded.png
+
+Terrainテクスチャ好きな回数だけこのプロセスを繰り返します。
+
+!! Terrain Textureをペイントする
+
+少なくとも2つのTerrainテクスチャを追加すれば、様々な方法でそれらをブレンドすることができます。この部分は本当に面白いところなので、最も良いところから早速始めてみましょう。
+
+使用したいTerrainテクスチャを選択します。現在選択されているTerrainテクスチャが青で強調表示されます。
+
+Attach:TerrainGuide-PaintTexture1.png
+
+使用したいブラシを選択します。現在選択しているブラシは、青色で強調表示されます。
+
+Attach:TerrainGuide-PaintTexture2.png
+
+ブラシの``Size``、``Opacity``、``Target Strength``を選択します。
+
+__Size__はブラシの大きさで、Terrainのグリッドの四角形の対する相対的な大きさで示します。
+
+__Opacity__テクスチャの透明度、あるいは一定の時間だけペイントする間に適用されるテクスチャの量です。
+
+__Target Strength__ ペイントし続けることによって、達することができる最大の不透明度です。
+
+Attach:TerrainGuide-PaintTexture3.png
+
+Terrain上でクリックし、ドラッグすることで、Terrain Texgtureを描画することが出来ます。
+
+Attach:TerrainGuide-PaintTexture3.5.png
+
+ブクスチャ、ブラシ、サイズ、Opacityで多様な設定にすることで、ブレンドしたスタイルも多様に作成することが出来ます。
+
+Attach:TerrainGuide-PaintTexture4.png
+
+__Note:__ブラシを選択したら、シーンビューのTerrainの上でマウスを移動し^^F^^を押します。これによりシーンビューをマウスポインタ位置にセンタリングし、``Brush Size``距離にズームインします。これは、Terrainを作成しているときにTerrainをナビゲーションする最速かつ最も簡単な方法です。

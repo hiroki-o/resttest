@@ -1,0 +1,41 @@
+!パーティクルシステムCurve Editor
+!!MinMax Curve
+
+パーティクルシステム　モジュールのプロパティの多くは時間の経過とともに値が変化します。そういう変更は $$MinMax Curves$$（最大最小カーブ）を通じて表現できます。
+これらの時間により活性化するプロパティ（たとえば``size`` および``speed``）、は右側にプルダウンメニューがあり、それを選択することが出来ます。
+Attach:MinMaxDropDown.png
+
+``Constant``: プロパティの値が時間とともに変化しないので、$$Curve Editor$$に表示されません。
+
+``Random between constants``: プロパティの値は、2つの定数間のランダム値に設定されます。
+
+``Curve``:プロパティの値が時間とともに$$Curve Editor$$のカーブに基づいて変化します。
+
+Attach:ParticleSystemOneCurve.png
+カーブでアニメーションされたプロパティ
+
+``Random between curves``: プロパティの値は、2つの最大、最小のカーブの間でランダムに設定され、値は時とともに生成されたカーブに基づいて変化します。
+Attach:BetweenTwoCurves.png
+``Random Between Two Curves``として活性化されたプロパティ。
+
+$$Curve Editor$$で0と``Duration``プロパティで指定した値の間で時間を"X"'軸上に散らせたうえで、"Y"軸は各々の時間における活性化されたプロパティの値を示します。
+"Y"軸の範囲は$$Curve Editor$$右上隅にある数字フィールドで調整することができます。現時点で、$$Curve Editor$$はパーティクルシステムの全てのカーブを同じウィンドウで表示します。
+
+
+Attach:ShurikenMultipleCurves.png 
+同じCurve Editorで複数のカーブを表示。
+
+なお、右下隅の" - "は現在選択されているカーブを削除する一方で"+"はそれを"最適化"します（これにより、高々3つのキーをもつパラメータ化されたカーブとなります）。
+
+
+3D空間でのベクトルを表現する活性化されたプロパティにはTripleMinMaxカーブを用意していて、これは単にx軸、y軸、z軸を横に並べたシンプルなカーブであり、次のように表示されます：
+
+Attach:ShurikenTripleMinMaxCurves.png
+
+!!Curve Editorで複数のカーブの管理
+$$Curve Editor$$で混乱を防ぐためには、インスペクタでそクリックすることで、カーブのオンとオフに切り替えることが可能です。パーティクルシステムのCurve Editorを、あなたがこのようなものが表示されるはずです。その後``Particle System Curves``タイトルバー上で右クリックして、インスペクタから切り離すことができます：
+
+Attach:DetachedCurveEditor.png 
+他のウィンドウと同様で、Curve Editorのウィンドウをドックすることが出来ます。
+
+カーブの働きに関する情報については、[[EditingCurves|Curve Editorドキュメンテーションを参照のこと。]]

@@ -1,0 +1,217 @@
+! カスタマイズ
+
+
+!! GUI コントロールのカスタマイズ
+
+関数コントロールはゲームに必要で、これらのコントロールの外観はゲームの見た目に非常に重要です。  UnityGUI で、多くの詳細を含むコントロールの外観を微調整できます。  コントロールの外観は、$$GUIStyles$$ で決まります。  デフォルトでは、GUIStyle を定義せずに、コントロールを作成する際に、Unity のデフォルトの GUIStyle が適用されます。  このスタイルは、Unity の内部にあり、パブリッシュされたゲームでプロトタイピング、またはコントロールのスタイルを設定しないことを選択した場合に使用できます。
+
+多くの各種 GUIStyles を連携させる際に、1 つの $$GUISkin$$ 内ですべてのスタイルを定義できます。  GUISkin は、GUIStyle の集合に過ぎません。
+
+
+!!! Style が GUI コントロールの見た目をどのように変えるか
+
+GUIStyles は、ウェブ ブラウザに対して、カスケーディング スタイル シート (CSS) を模倣するために設計されています。  スタイリングの個々の状態プロパティの差別化や、内容や外観の分離多くの各種 CSS 方法が採用されています。
+
+コントロールが内容を定義すると、Style が外観を定義します。 これにより、通常の''Button''のように見える関数の''Toggle''のような組み合わせを作成できます。
+
+Attach:gsg-ToggleStyles.png\\
+''別々のスタイルを設定した 2 つの Toggle コントロール''
+
+
+!!! Skin と Style 間の差
+
+前述の通り、GUISkin は、GUISｔyle の集合です。  Style は GUI コントロールの外観を定義します。  Style を使用したい場合は、Skin を使用する必要はありません。
+
+Attach:GuiStyleInspector.png\\
+''インスペクタに表示される 1 つの GUISｔｙle''
+
+Attach:Inspector-GUISkin.png\\
+''インスペクタに表示される 1 つの GUISkin - 複数の GUISｔｙle が含まれていることを確認してください'' 
+
+
+!! !!スタイルの取り扱い
+
+GUI コントロール関数はすべて、オプションの最終パラメータ、 コントロールの表示に使用する GUI スタイルを持っています。  主お略すると、Unity のデフォルトの GUI スタイルが使用されます。  これは、コントロールのタイプの名前を文字列として適用させることで機能します。そのため、''GUI.Button()''は、''button''スタイルを使用し、''GUI.Toggle()''は''toggle''スタイルを使用します。最終パラメータとして、コントロールを指定することで、コントロールに対するデフォルトの GUI スタイルを無効にできます。
+
+[@
+/* UnityGUI デフォルトの Styles 内の異なるスタイルで、デフォルトのコントロール スタイルを無効にします。*/
+
+
+// JavaScript
+function OnGUI () {
+	// ''box'' GUIStyle を使用するラベルを作成します。
+	GUI.Label (Rect (0,0,200,100), "Hi - I'm a label looking like a box", "box");
+
+	// ''toggle'' GUIStyle を使用するラベルを作成します。
+	GUI.Button (Rect (10,140,180,20), "This is a button", "toggle");
+}
+
+
+// C#
+using UnityEngine;
+using System.Collections;
+
+public class GUITest : MonoBehaviour {
+					
+	void OnGUI () {
+		// ''box'' GUIStyle を使用するラベルを作成します。
+		GUI.Label (new Rect (0,0,200,100), "Hi - I'm a label looking like a box", "box");
+	
+		// ''toggle'' GUIStyle を使用するラベルを作成します。
+		GUI.Button (new Rect (10,140,180,20), "This is a button", "toggle");
+	}
+
+}
+@]
+
+Attach:gsg-DifferentDefaultStyles.png\\
+''前述のコードで作成されたコントロール''
+
+
+!!! パブリック変数 GUISｔｙle の作成
+
+
+パブリック GUISｔｙle 変数を宣言すると、スタイル内のすべての要素が $$Inspector$$ に表示されます。 ここで、各種変数をすべて編集できます。
+
+[@
+/* デフォルトのコントロール スタイルを自身で定義したスタイルで無効にします */
+
+
+// JavaScript
+var customButton : GUIStyle;
+
+function OnGUI () {
+	// ボタンを作成します。 上記で定義した GUIStyle を使用するスタイルとして渡します。
+	GUI.Button (Rect (10,10,150,20), "I am a Custom Button", customButton);
+}
+
+
+// C#
+using UnityEngine;
+using System.Collections;
+
+public class GUITest : MonoBehaviour {
+					
+	public GUIStyle customButton;
+	
+	void OnGUI () {
+		// ボタンを作成します。 上記で定義した GUIStyle を使用するスタイルとして渡します。
+		GUI.Button (new Rect (10,10,150,20), "I am a Custom Button", customButton);
+	}
+	
+}
+@]
+
+
+!!! 各種スタイル要素の変更
+
+GUIStyle を宣言している場合、インスペクタでそのスタイルを編集できます。  数多くの状態を定義し、どのタイプのコントロールにも適用できます。
+
+Attach:ModifyingStyleInInspector.png\\
+''スタイルはスクリプトごと、GameObject ベースごとに編集されます''
+
+コントロールには、指定した''Text Color''を適用する前に、''Background''色を割り当てる必要があります。
+
+GUI スタイルの扱いに関する詳細については、[[class-GUIStyle | GUIStyle Component Reference page]] ページを参照してください。
+
+
+!! !!カメラの取り扱い
+
+より複雑な GUI システムの場合、1 つの場所にスタイルの集合を保管する方がよいでしょう。  これが GUISkin の動作です。  GUI スキンは、複数の異なるスタイルを含み、主にすべての GUI コントロールへの完全な手直しを提供します。  
+
+
+!!! GUI スキンの新規作成
+
+GUI スキンを作成するには、メニューバーから ^^Assets->Create->GUI Skin^^  を選択します。 これにより、Project フォルダに GUI スキンが作成されます。 インスペクタ内のスキンによって定義されたすべての GUI スタイルを表示するよう選択します。
+
+
+!!! GUI へのスキンの適用
+
+作成したスキンを使用するには、''OnGUI()''関数内の''GUI.skin''を割り当てます。
+
+[@
+/* 使用したいスキン片参照を含むプロパティを作成します */
+
+
+// JavaScript
+var mySkin : GUISkin;
+
+function OnGUI () {
+	// 現在使用中のスキンにスキンを割り当てます。
+	GUI.skin = mySkin;
+
+	// ボタンを作成します。 これにより、デフォルトの''ボタン''スタイルが mySkin に割り当てたスキンから作成されます。
+	GUI.Button (Rect (10,10,150,20), "Skinned Button");
+}
+
+
+// C#
+using UnityEngine;
+using System.Collections;
+
+public class GUITest : MonoBehaviour {
+					
+	public GUISkin mySkin;
+	
+	void OnGUI () {
+		// 現在使用中のスキンにスキンを割り当てます。
+		GUI.skin = mySkin;
+	
+		// ボタンを作成します。 これにより、デフォルトの''ボタン''スタイルが mySkin に割り当てたスキンから作成されます。
+		GUI.Button (new Rect (10,10,150,20), "Skinned Button");
+	}
+		
+}
+@]
+
+''OnGUI()''を 1 回呼び出すことで、好きなだけスキンを切り替えることができます。
+
+[@
+/* 同じ OnGUI() 呼び出しによるスキン切り替えの例 */
+
+
+// JavaScript
+var mySkin : GUISkin;
+
+var toggle = true;
+
+function OnGUI () {
+	// 現在使用中のスキンにスキンを割り当てます。
+	GUI.skin = mySkin;
+
+	// トグルを作成します。 これにより、デフォルトの''ボタン''スタイルが mySkin に割り当てたスキンから作成されます。
+	toggle = GUI.Toggle (Rect (10,10,150,20), toggle, "Skinned Button", "button");
+
+	// Unity のデフォルトのスキンに現在のスキンを割り当てます。
+	GUI.skin = null;
+
+	// ボタンを作成します。 これにより、デフォルトの''ボタン''スタイルが組み込みスキンから作成されます。
+	GUI.Button (Rect (10,35,150,20), "Built-in Button");
+}
+
+
+// C#
+using UnityEngine;
+using System.Collections;
+
+public class GUITest : MonoBehaviour {
+					
+	public GUISkin mySkin;
+	private bool toggle = true;
+	
+	void OnGUI () {
+		// 現在使用中のスキンにスキンを割り当てます。
+		GUI.skin = mySkin;
+	
+		// トグルを作成します。 これにより、デフォルトの''ボタン''スタイルが mySkin に割り当てたスキンから作成されます。
+		toggle = GUI.Toggle (new Rect (10,10,150,20), toggle, "Skinned Button", "button");
+	
+		// Unity のデフォルトのスキンに現在のスキンを割り当てます。
+		GUI.skin = null;
+	
+		// ボタンを作成します。 これにより、デフォルトの''ボタン''スタイルが組み込みスキンから作成されます。
+		GUI.Button (new Rect (10,35,150,20), "Built-in Button");
+	}
+		
+}
+@]

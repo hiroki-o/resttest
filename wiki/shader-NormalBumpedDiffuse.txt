@@ -1,0 +1,11 @@
+! Bumped Diffuse
+
+Attach:Shaders./Shader-NormalBump.png
+
+(:include shader-BumpSubsetImport:)
+
+(:include shader-DiffuseSubsetImport:)
+
+!!パフォーマンス
+
+一般に、このシェーダでは安価にレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

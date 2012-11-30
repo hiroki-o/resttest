@@ -1,0 +1,207 @@
+! UnityGUI の拡張
+
+ニーズに合うよう、UnityGUI を活用し、拡張する方法がいくつかあります。  コントロールは、混合し、作成できますが、GUI へのユーザー入力がどのように処理されるかに影響する多くの機能があります。
+
+
+!! 合成物コントロール
+
+GUI では、2 種類のコントロールが常に一緒に表示される状況が存在する場合があります。  例えば、いくつかの水平スライダのあるキャラクター作成画面を作成しているとします。  これらのスライダはすべて、自身を識別するためのラベルが必要なため、プレイヤーは何を調整しているかが分かります。  この場合、''GUI.HorizontalSlider()''を呼び出して、''GUI.Label()''のすべての呼び出しと提携するか、ラベルとスライダの両方を含む $$Compound Control$$ を作成できます。
+
+[@
+/* ラベルとスライダ合成物コントロール */
+
+
+// JavaScript
+var mySlider : float = 1.0;
+
+function OnGUI () {
+	mySlider = LabelSlider (Rect (10, 100, 100, 20), mySlider, 5.0, "Label text here");
+}
+
+function LabelSlider (screenRect : Rect, sliderValue : float, sliderMaxValue : float, labelText : String) : float {
+	GUI.Label (screenRect, labelText);
+	screenRect.x += screenRect.width; // <- スライダをラベルの右端に押します
+	sliderValue = GUI.HorizontalSlider (screenRect, sliderValue, 0.0, sliderMaxValue);
+	return sliderValue;
+}
+
+
+// C#
+using UnityEngine;
+using System.Collections;
+
+public class GUITest : MonoBehaviour {
+		
+	private float mySlider = 1.0f;
+	
+	void OnGUI () {
+		mySlider = LabelSlider (new Rect (10, 100, 100, 20), mySlider, 5.0f, "Label text here");
+	}
+	
+	float LabelSlider (Rect screenRect, float sliderValue, float sliderMaxValue, string labelText) {
+		GUI.Label (screenRect, labelText);
+	
+		// &lt;- スライダをラベルの右端に押します
+		screenRect.x += screenRect.width; 
+	
+		sliderValue = GUI.HorizontalSlider (screenRect, sliderValue, 0.0f, sliderMaxValue);
+		return sliderValue;
+	}
+
+}
+@]
+
+この例では、''LabelSlider()''を呼び出し、正しい引数を渡すと、水平スライダのあるラベルを提供します。  合成物コンポーネントを記述する際、インタラクティブとなるよう、必ず関数の最後で正しい値を返すようにしてください。
+
+Attach:gsg-LabelSlider.png\\
+''上記合成物コントロールは常にこのコントロールのペアを作成します''
+
+!!! スタティック合成物コントロール
+
+$$Static$$ 関数を使用することで、自身の内蔵型合成物コントロールの集合全体を作成できます。  このように、使用したい同じスクリプトで関数を宣言する必要はありません。
+
+[@
+/* これは、合成物コントロールと呼ばれます */
+
+
+// JavaScript
+static function LabelSlider (screenRect : Rect, sliderValue : float, sliderMaxValue : float, labelText : String) : float {
+	GUI.Label (screenRect, labelText);
+	screenRect.x += screenRect.width; // <- スライダをラベルの右端に押します
+	sliderValue = GUI.HorizontalSlider (screenRect, sliderValue, 0.0, sliderMaxValue);
+	return sliderValue;
+}
+
+
+// C#
+using UnityEngine;
+using System.Collections;
+
+public class CompoundControls : MonoBehaviour {		
+	
+	public static float LabelSlider (Rect screenRect, float sliderValue, float sliderMaxValue, string labelText) {
+		GUI.Label (screenRect, labelText);
+	
+		// &lt;- スライダをラベルの右端に押します
+		screenRect.x += screenRect.width; 
+	
+		sliderValue = GUI.HorizontalSlider (screenRect, sliderValue, 0.0f, sliderMaxValue);
+		return sliderValue;
+	}
+
+}
+@]
+
+^^CompoundControls^^ と呼ばれるスクリプトに上記の例を保存することで、ただ''CompoundControls.LabelSlider()''を入力し、引数を渡すことで、他のスクリプトから''LabelSlider()''関数を呼び出すことができます。
+
+!!! 詳細な合成物コントロール
+
+合成物コントロールでよりクリエイティブにすることができます。  好きなように配置したり、グループ化することができます。  次の例では、再利用可能な RGB スライダを作成します。
+
+[@
+/* RGB スライダ合成物コントロール */
+
+
+// JavaScript
+var myColor : Color;
+
+function OnGUI () {
+	myColor = RGBSlider (Rect (10,10,200,10), myColor);
+}
+
+function RGBSlider (screenRect : Rect, rgb : Color) : Color {
+	rgb.r = GUI.HorizontalSlider (screenRect, rgb.r, 0.0, 1.0);
+	screenRect.y += 20; // <- 次のコントロールを若干下に移動して、重なりを避けます。
+	rgb.g = GUI.HorizontalSlider (screenRect, rgb.g, 0.0, 1.0);
+	screenRect.y += 20; // <- 次のコントロールを若干下に移動して、重なりを避けます。
+	rgb.b = GUI.HorizontalSlider (screenRect, rgb.b, 0.0, 1.0);
+	return rgb;
+}
+
+
+// C#
+using UnityEngine;
+using System.Collections;
+
+public class GUITest : MonoBehaviour {
+		
+	public Color myColor;
+	
+	void OnGUI () {
+		myColor = RGBSlider (new Rect (10,10,200,10), myColor);
+	}
+	
+	Color RGBSlider (Rect screenRect, Color rgb) {
+		rgb.r = GUI.HorizontalSlider (screenRect, rgb.r, 0.0f, 1.0f);
+	
+		// &lt;- 次のコントロールを若干下に移動して、重なりを避けます。
+		screenRect.y += 20; 
+		rgb.g = GUI.HorizontalSlider (screenRect, rgb.g, 0.0f, 1.0f);
+	
+		// &lt;- 次のコントロールを若干下に移動して、重なりを避けます。
+		screenRect.y += 20; 
+	
+		rgb.b = GUI.HorizontalSlider (screenRect, rgb.b, 0.0f, 1.0f);
+		return rgb;
+	}
+}
+@]
+
+Attach:gsg-RGBSlider.png\\
+''前述の例で作成された RGB スライダ''
+
+今度は、他の合成物コントロール内で合成物コントロールをどのように作成できるかを示すため、合成物コントロールを互いの上に作成します。  これを行うため、上記のような RGB スライダを新規作成しますが、そのため、LabelSlider を使用します。  このように、ラベルがどのスライダがどの色に対応しているかを伝えさせるようにします。
+
+[@
+/* RGB ラベル スライダ合成物コントロール */
+
+
+// JavaScript
+var myColor : Color;
+
+function OnGUI () {
+	myColor = RGBLabelSlider (Rect (10,10,200,20), myColor);
+}
+
+function RGBLabelSlider (screenRect : Rect, rgb : Color) : Color {
+	rgb.r = CompoundControls.LabelSlider (screenRect, rgb.r, 1.0, "Red");
+	screenRect.y += 20; // <- 次のコントロールを若干下に移動して、重なりを避けます
+	rgb.g = CompoundControls.LabelSlider (screenRect, rgb.g, 1.0, "Green");
+	screenRect.y += 20; // <- 次のコントロールを若干下に移動して、重なりを避けます。
+	rgb.b = CompoundControls.LabelSlider (screenRect, rgb.b, 1.0, "Blue");
+	return rgb;
+}
+
+
+// C#
+using UnityEngine;
+using System.Collections;
+
+public class GUITest : MonoBehaviour {
+		
+	public Color myColor;
+	
+	void OnGUI () {
+		myColor = RGBSlider (new Rect (10,10,200,30), myColor);
+	}
+	
+	Color RGBSlider (Rect screenRect, Color rgb) {
+		rgb.r =  CompoundControls.LabelSlider (screenRect, rgb.r, 1.0f, "Red");
+	
+		// &lt;- 次のコントロールを若干下に移動して、重なりを避けます。
+		screenRect.y += 20; 
+		rgb.g = CompoundControls.LabelSlider (screenRect, rgb.g, 1.0f, "Green");
+	
+		// &lt;- 次のコントロールを若干下に移動して、重なりを避けます。
+		screenRect.y += 20; 
+	
+		rgb.b = CompoundControls.LabelSlider (screenRect, rgb.b, 1.0f, "Blue");
+		
+		return rgb;
+	}	
+	
+}
+@]
+
+Attach:gsg-RGBLabelSlider.png\\
+''前述のコードで作成された合成物 RGB ラベル スライダ''

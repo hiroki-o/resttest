@@ -1,0 +1,19 @@
+!　ナビメッシュエージェント （Unity Proのみ）
+
+''ナビメッシュエージェント''（NavMesh Agent）コンポーネントは経路探索（Pathfinding）と連動して使用し、このエージェントが[[NavmeshandPathfinding | ナビメッシュ]] を移動する際の変数を定義する。使用の際はメニューの^^Component→Navigation→NavMesh Agent^^を選択します。
+
+Attach:NavMeshAgent.png
+
+||PROPS
+||``Radius``||エージェントの半径（経路探索の目的のみで使用され、実際のオブジェクトの半径と一致せずやや大きくなります）. ||
+||``Speed`` ||エージェントが目的地まで移動する速度の最大値||
+||``Acceleration`` ||加速度の最大値||
+||``Angular Speed`` ||回転速度（角度/秒）の最大値||
+||``Stopping distance`` ||停止距離。 エージェントは目的地までの距離がこの範囲に収まると減速を始めます||
+||``Auto Traverse OffMesh Link``	||オフメッシュリンク（OffMesh Link）からの出入りの動作を自動化します
+||``Height``||エージェントの高さ（デバッグ時の描画で使用）
+||``Base offset`` ||縦方向において、実際のオブジェクトとコライダ（Collider）の差分の距離
+||``Obstacle Avoidance Type`` ||回避動作の品質レベル
+||``NavMesh Walkable`` ||エージョントがその上を移動できる[[class-NavMeshLayers|ナビメッシュレイヤ]] のタイプ
+
+([[NavmeshandPathfinding| ナビゲーションと経路探索]] に戻る)

@@ -1,0 +1,21 @@
+!Animator Controller
+
+~~Animator Controller~~ビューからキャラクター動作を表示、セットアップすることができます。（メニューから^^Window > Animator Controller^^を選択）
+
+``Animator Controller``は~~Project View~~から作成することができます。（メニューから^^Create > Animator Controller^^を選択）
+これにより @@.controller@@アセットがディスク上に作成され、~~Project Browser~~で次のように表示されます。
+
+Attach:MecanimAnimatorControllerIcon.png
+ディスク上のAnimator Controllerアセット
+
+ステートマシンのセットアップが行われた後、~~Hierarchy View~~でAvatarで任意のキャラクターのAnimatorコンポーネント上にコントローラをドラッグ＆ドロップすることができます。
+
+Attach:MecanimAnimatorControllerWindow.png
+->Animator Controllerウィンドウ
+
+~~Animator Controllerウィンドウ~~は以下を含みます： 
+* ~~Animation Layerウィジェット~~ (左上隅、[[Animation Layers]] を参照)
+* ~~Event Parameters ウィジェット~~ (左下、 [[Animation Parameters]] を参照)
+* [[AnimationStateMachines |ステートマシン自体]] の表示。
+
+~~Animator Controller ウィンドウ~~は現在読み込まれているかのシーンが何であるかにかかわらず、常に最近選択された@@.controller@@アセットからステートマシンを表示することに注意して下さい。

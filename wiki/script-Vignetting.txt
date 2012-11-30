@@ -1,0 +1,33 @@
+! Vignetting (および Chromatic Aberration)
+
+$$Vignetting$$（ビネット）画像効果により暗くしたりぼかしたり、およびChromatic Aberration（色収差の補正）を画像の四隅に対して行います。これはカメラレンズを覗き込んだような効果を再現しますが、抽象的なエフェクトとしても使用できます。
+Attach:ImageEffects./VignetteExample.png\\
+''Vignetting and chromatic Aberrationの例。画面の四隅が暗くなり、色収差の補正により紫やわずかに緑のフリンジができることに留意下さい。''
+
+その他の [[comp-ImageEffects|image effects]] 同様、この効果は Unity Pro 専用です。 必ず、[[HOWTO-InstallStandardAssets|Pro Standard Assets]] をインストールしてください。
+
+!! プロパティ
+
+||PROPS
+||``Vignetting`` ||画面の四隅を暗くする度合い。0をセットすると機能を無効化してパフォーマンスを高めます。||
+||``Blurred Corners`` ||画面の四隅に与えるBlur（ぼかし）の量。0をセットすると機能を無効化してパフォーマンスを高めます。 ||
+||``Blur Distance`` ||Blur（ぼかし）フィルタを使用して画面の四隅をぼかす際のサンプリング距離 ||
+
+||``Aberration Mode`` ||``Advanced``にセットするとAberrationエフェクトを強化します。``Simple``にすると接線のAberrationを生成。（処理は四隅に限定されます）||
+||``Strength`` ||全体的なAberration強度（カラーオフセット距離と混同しないよう注意）デフォルトは1.0。 ||
+||``Tangential Aberration`` ||接線方向のChromatic Aberrationの度合い。 ||
+||``Axial Aberration`` ||Axial Chromatic Aberrationの度合いです。画像平面の四隅までの距離を短くしても大きさが変化します ||
+||``Contrast Dependency`` ||この値が大きいほどAberration処理がトリガーされるしきい値となるコントラストが増します。高い値のほうが現実世界に近くなります。（この場合入力はHDRとすることが推奨です。） ||
+
+!! Advancedモード
+
+Advancedモードは負荷が高いが、より現実世界に近いChromatic Aberrationが得られます。
+
+Attach:AberrationExample.png\\
+''``Advanced``モードによりChromatic Aberrationのモデリングを強力にコントロールできます。別名で緑あるいは紫のフリンジとして知られていて、カメラ写真で一般的に知られている現象です（下図も参照下さい。）''
+
+Attach:ColorFringing.png\\
+''カラーフリンジの拡大図。コントラストが大きい領域で緑や紫が表れていることに留意して下さい。このエフェクトは使用するカメラとレンズに依存します。この効果は異なる波長が異なる平面に投影されるという原理にもとづいています。''
+
+
+(:include imagefx-SM2:)

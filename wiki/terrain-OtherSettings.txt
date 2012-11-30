@@ -1,0 +1,30 @@
+! その他の設定(Other Settings)
+
+Terrainインスペクタでは^^Terrain Settings^^ボタンの下に、Attach:terrain-TerrainSettings.png いくつかのオプションが有ります。
+
+Attach:terrain-OtherSettings.png\\
+'全ての追加のTerrain設定''
+
+!! Base Terrain
+
+* ``Pixel Error``: Terrain形状表示の際に許容されるエラーの数を制御します。これは本質的にLOD形状の設定にあたり、値が大きいほどTerrain形状は密集度が低くなります。
+*  ``Base Map Dist.``:Terrainテクスチャが、高解像度で表示される距離。この距離より遠い場合は低解像度のテクスチャが表示されます。
+* ``Cast Shadows``: 地形に影を投影するかどうか指定。
+
+マテリアル（``Material``）スロットにTerrainのカスタムマテリアルを割り当てることが出来ます。このマテリアルはTerrainのレンダリングが出来る[[Shaders|shader]] を使用すべきであり、例えば``Nature/Terrain/Diffuse`` (マテリアルの割り当てがない場合に使用されるシェーダ）あるいは``Nature/Terrain/Bumped Specular``です。
+
+!! Tree & Detail Settings
+
+* ``Draw``: 有効な場合、Tree、Grass、詳細メッシュが描かれます。
+* ``Detail Distance``: 詳細オブジェクトが表示されなくなるカメラからの距離。
+* ``Tree Distance``: Treeが表示されなくなるカメラからの距離。値が大きければ、遠くのTreeが表示されます。
+* ``Billboard Start``: Treeがメッシュではなくビルボードとして表示されはじめる距離。
+* ``Fade Length``: Treeが、ビルボードの向きからメッシュの向きに変わるときの、総距離の差。
+* ``Max Mesh Trees``: Terrainに許容されるメッシュTreeの総数。
+
+!! Wind Settings
+
+* ``Speed``: 風がGrassを吹き抜ける速度
+* ``Size``: 風で一度に影響を受けるGrassの領域
+* ``Bending``: 風によって曲げられるGrassの量
+* ``Grass Tint``: Grassと詳細メッシュの全体的な色合いの量
