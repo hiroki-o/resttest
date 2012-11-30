@@ -1,0 +1,266 @@
+<!--#set var="HUMAN_TITLE" value='Advanced Unity Mobile Scripting' -->
+<!--#set var="PATH" value='<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/android-GettingStarted.html">Getting Started with Android Development</a> &gt; <a href="../Manual/android-API.html">Android Scripting</a> &gt; <a href="../Manual/Android-Advanced.html">Advanced Unity Mobile Scripting</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Android-Keyboard.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Android-DotNet.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<p><a name='iOS' id='iOS'></a>
+</p><a class='iosRef' id='iosRef' href="javascript:ShowHideDiv('iosRef','specific-ios', 'iOS');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>iOS</h1></a>
+<div class='specific-ios' style='display: block;' id='specific-ios' > 
+<h1>Advanced iOS scripting</h1>
+<h2>Determining Device Generation</h2>
+<p>Different device generations support different functionality and have widely varying performance. You should query the device's generation and decide which functionality should be disabled to compensate for slower devices.
+</p>
+<p class='vspace'>You can find the device generation from the <a class='urllink' href='../ScriptReference/iPhone-generation.html' rel='nofollow'>iPhone.generation</a> property. The reported generation can be one of the following:
+</p><ul><li><span class='doc-prop'>iPhone</span>
+</li><li><span class='doc-prop'>iPhone3G</span>
+</li><li><span class='doc-prop'>iPhone3GS</span>
+</li><li><span class='doc-prop'>iPhone4</span>
+</li><li><span class='doc-prop'>iPodTouch1Gen</span>
+</li><li><span class='doc-prop'>iPodTouch2Gen</span>
+</li><li><span class='doc-prop'>iPodTouch3Gen</span>
+</li><li><span class='doc-prop'>iPodTouch4Gen</span>
+</li><li><span class='doc-prop'>iPad1Gen</span>
+</li></ul><p class='vspace'>You can find more information about different device generations, performance and supported functionality in our <a href="../Manual/iphone-Hardware.html">iPhone Hardware Guide</a>.
+</p>
+<div class='vspace'></div><h2>Device Properties</h2>
+<p>There are a number of device-specific properties that you can access:-
+</p><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'><a class='urllink' href='../ScriptReference/SystemInfo-deviceUniqueIdentifier.html' rel='nofollow'>SystemInfo.deviceUniqueIdentifier</a></span></td><td >Unique device identifier.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><a class='urllink' href='../ScriptReference/SystemInfo-deviceName.html' rel='nofollow'>SystemInfo.deviceName</a></span></td><td >User specified name for device.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><a class='urllink' href='../ScriptReference/SystemInfo-deviceModel.html' rel='nofollow'>SystemInfo.deviceModel</a></span></td><td >Is it iPhone or iPod Touch?</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><a class='urllink' href='../ScriptReference/SystemInfo-operatingSystem.html' rel='nofollow'>SystemInfo.operatingSystem</a></span></td><td >Operating system name and version.</td></tr>
+</table>
+<div class='vspace'></div><h2>Anti-Piracy Check</h2>
+<p>Pirates will often hack an application from the AppStore (by removing Apple DRM protection) and then redistribute it for free. Unity iOS comes with an anti-piracy check which allows you to determine if your application was altered <b>after</b> it was submitted to the AppStore.
+</p>
+<p class='vspace'>You can check if your application is genuine (not-hacked) with the <a class='urllink' href='../ScriptReference/Application-genuine.html' rel='nofollow'>Application.genuine</a> property. If this property returns <span class='doc-keyword'>false</span> then you might notify the user that he is using a hacked application or maybe disable access to some functions of your application.
+</p>
+<p class='vspace'><b>Note:</b> accessing the <a class='urllink' href='../ScriptReference/Application-genuine.html' rel='nofollow'>Application.genuine</a> property is a fairly expensive operation and so you shouldn't do it during frame updates or other time-critical code. 
+</p>
+<div class='vspace'></div><h2>Vibration Support</h2>
+<p>You can trigger a vibration by calling <a class='urllink' href='../ScriptReference/Handheld.Vibrate.html' rel='nofollow'>Handheld.Vibrate</a>. Note that iPod Touch devices lack vibration hardware and will just ignore this call.
+</p>
+<div class='vspace'></div></div>
+<p class='vspace'><a name='Android' id='Android'></a>
+</p><a class='androidRef' id='androidRef' href="javascript:ShowHideDiv('androidRef','specific-android', 'Android');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>Android</h1></a>
+<div class='specific-android' style='display: block;' id='specific-android' > 
+<h1>Advanced Android scripting</h1>
+<h2>Determining Device Generation</h2>
+<p>Different Android devices support different functionality and have widely varying performance. You should target specific devices or device families and decide which functionality should be disabled to compensate for slower devices. There are a number of device specific properties that you can access to which device is being used.
+</p>
+<p class='vspace'><b>Note:</b> Android Marketplace does some additional compatibility filtering, so you should not be concerned if an ARMv7-only app optimised for OGLES2 is offered to some old slow devices.
+</p>
+<div class='vspace'></div><h2>Device Properties</h2>
+<table ><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'><a class='urllink' href='../ScriptReference/SystemInfo-deviceUniqueIdentifier.html' rel='nofollow'>SystemInfo.deviceUniqueIdentifier</a></span></td><td >Unique device identifier.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><a class='urllink' href='../ScriptReference/SystemInfo-deviceName.html' rel='nofollow'>SystemInfo.deviceName</a></span></td><td >User specified name for device.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><a class='urllink' href='../ScriptReference/SystemInfo-deviceModel.html' rel='nofollow'>SystemInfo.deviceModel</a></span></td><td >Is it iPhone or iPod Touch?</td></tr>
+<tr ><td  align='left'><span class='doc-prop'><a class='urllink' href='../ScriptReference/SystemInfo-operatingSystem.html' rel='nofollow'>SystemInfo.operatingSystem</a></span></td><td >Operating system name and version.</td></tr>
+</table>
+<div class='vspace'></div><h2>Anti-Piracy Check</h2>
+<p>Pirates will often hack an application (by removing Apple DRM protection) and then redistribute it for free. Unity Android comes with an anti-piracy check which allows you to determine if your application was altered <b>after</b> it was submitted to the AppStore.
+</p>
+<p class='vspace'>You can check if your application is genuine (not-hacked) with the <a class='urllink' href='../ScriptReference/Application-genuine.html' rel='nofollow'>Application.genuine</a> property. If this property returns <span class='doc-keyword'>false</span> then you might notify user that he is using a hacked application or maybe disable access to some functions of your application.
+</p>
+<p class='vspace'><b>Note:</b> <a class='urllink' href='../ScriptReference/Application-genuineCheckAvailable.html' rel='nofollow'>Application.genuineCheckAvailable</a> should be used along with <span class='doc-keyword'>Application.genuine</span> to verify that application integrity can actually be confirmed. Accessing the <a class='urllink' href='../ScriptReference/Application-genuine.html' rel='nofollow'>Application.genuine</a> property is a fairly expensive operation and so you shouldn't do it during frame updates or other time-critical code. 
+</p>
+<div class='vspace'></div><h2>Vibration Support</h2>
+<p>You can trigger a vibration by calling <a class='urllink' href='../ScriptReference/Handheld.Vibrate.html' rel='nofollow'>Handheld.Vibrate</a>. However, devices lacking vibration hardware will just ignore this call.
+</p>
+<div class='vspace'></div></div>
+</p><small>Page last updated: 2012-07-12</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Android-Keyboard.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Android-DotNet.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

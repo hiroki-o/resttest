@@ -1,0 +1,232 @@
+<!--#set var="HUMAN_TITLE" value='Asset Import and Creation' -->
+<!--#set var="PATH" value='<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Asset Import and Creation.html">Asset Import and Creation</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Terrains.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Importing Assets.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<p>A large part of making a game is utilizing your asset source files in your <span class='doc-keyword'>GameObjects</span>. This goes for textures, models, sound effects and behaviour scripts. Using the <span class='doc-keyword'>Project View</span> inside Unity, you have quick access to all the files that make up your game:
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Asset Import and Creation-0.jpg' /><br /><em>The Project View displays all source files and created <span class='doc-keyword'>Prefabs</span></em></div>
+<p class='vspace'>This view shows the organization of files in your project's Assets folder. Whenever you update one of your asset files, the changes are immediately reflected in your game!
+</p>
+<p class='vspace'>To import an asset file into your project, move the file into <span class='doc-menu'>(your Project folder)-&gt;Assets</span> in the Finder, and it will automatically be imported into Unity. To apply your assets, simply drag the asset file from the Project View window into the <span class='doc-keyword'>Hierarchy</span> or <span class='doc-keyword'>Scene View</span>.  If the asset is meant to be applied to another object, drag the asset over the object.
+</p>
+<div class='vspace'></div><h2>Hints</h2>
+<ul><li>It is always a good idea to add labels to your assets when you are working with big projects or when you want to keep organized all your assets, with this you can search for the labels associated to each asset in the <em>search field</em> in the project view.
+</li><li>When backing up a project folder <b>always</b> back up <em>Assets</em>, <em>ProjectSettings</em> and <em>Library</em> folders. The Library folder contains all meta data and all the connections between objects, thus if the Library folder gets lost, you will lose references from scenes to assets. Easiest is just to back up the whole project folder containing the Assets, ProjectSettings and Library folders.
+</li><li>Rename and move files to your heart's content inside Project View; nothing will break.
+</li><li><b>Never</b> rename or move anything from the Finder or another program; everything will break. In short, Unity stores lots of metadata for each asset (things like import settings, cached versions of compressed textures, etc.) and if you move a file externally, Unity can no longer associate metadata with the moved file.
+</li></ul><p class='vspace'>Continue reading for more information:
+</p>
+<div class='vspace'></div><ul><li class='toclink'><a href="../Manual/Importing Assets.html">Importing Assets</a>
+</li><li class='toclink'><a href="../Manual/Meshes.html">Mesh</a>
+<ul><li class='toclink'><a href="../Manual/3D-formats.html">3Dフォーマット</a>
+</li></ul></li><li class='toclink'><a href="../Manual/Legacy Animation system.html">Animations (Legacy)</a>
+</li><li class='toclink'><a href="../Manual/Materials.html">Materials and Shaders</a>
+</li><li class='toclink'><a href="../Manual/Textures.html">Textures</a>
+</li><li class='toclink'><a href="../Manual/Procedural Materials.html">Procedural Materials</a>
+</li><li class='toclink'><a href="../Manual/Video Files.html">Movie Textures</a>
+</li><li class='toclink'><a href="../Manual/Audio Files.html">Audio Files</a>
+<ul><li class='toclink'><a href="../Manual/TrackerModules.html">Tracker Modules</a>
+</li></ul></li><li class='toclink'><a href="../Manual/Scripting.html">Using Scripts</a>
+</li><li class='toclink'><a href="../Manual/Asset Store.html">Asset Store</a>
+</li><li class='toclink'><a href="../Manual/Asset Server.html">Asset Server (Pro Only)</a>
+<ul><li class='toclink'><a href="../Manual/Asset Cache Server.html">Cache Server (Team license only)</a>
+</li><li class='toclink'><a href="../Manual/Cache Server FAQ.html">Cache Server FAQ</a>
+</li></ul></li><li class='toclink'><a href="../Manual/Behind the Scenes.html">Behind the Scenes</a>
+</li></ul>
+</p><small>Page last updated: 2012-01-08</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Terrains.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Importing Assets.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

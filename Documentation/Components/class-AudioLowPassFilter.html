@@ -1,0 +1,218 @@
+<!--#set var="HUMAN_TITLE" value='オーディオ　ローパスフィルター（Unity Proのみ）' -->
+<!--#set var="PATH" value='<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-AudioGroup.html">オーディオ コンポーネント</a> &gt; <a href="../Components/class-AudioEffect.html">オーディオ フィルタ（Unity Proのみ）</a> &gt; <a href="../Components/class-AudioLowPassFilter.html">オーディオ　ローパスフィルター（Unity Proのみ）</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/class-AudioEffect.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-AudioHighPassFilter.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<p><span class='doc-keyword'>Audio Low Pass Filter</span> フィルタは、<a href="../Components/class-AudioSource.html">AudioSource</a> の低周波または <a href="../Components/class-AudioListener.html">AudioListener</a> に達しているすべての音声を渡し、「Cutoff Frequency」よりも高い周波数をカットします。<br />「Lowpass resonance Q」（別名: ローパス共鳴品質係数）は、フィルタの自己共鳴が抑制される度合いを決定します。 
+「Lowpass resonance Q」が高いということは、エネルギー損失率が下がる、つまり、共振の消滅がより遅くなるということです。
+<span class='doc-keyword'>Audio Low Pass Filter</span> は、 Rolloff 曲線と関連付けられており、これにより、オーディオ ソースとオーディオ リスナー間の距離にわたって、「Cutoff Frequency」を設定できます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-AudioLowPassFilter-0.jpg' /><br />「オーディオ ロー パス フィルタ プロパティはインスペクタにあります。」</div>
+<div class='vspace'></div><h2>プロパティ</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Cutoff Frequency</span></td><td >ロー パス カットオフ周波数 （単位: Hz）。 10.0 ～ 22000.0。 デフォルト = 5000.0。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Lowpass Resonance Q</span></td><td >ロー パス共鳴 Q の値。 範囲は、10.0 ～ 10.0。 デフォルト = 1.0。</td></tr>
+</table>
+<div class='vspace'></div><h2>ロー パス フィルタの追加</h2>
+<p>ロー パス フィルタを所定のオーディオ ソースに追加するには、インスペクタ内でオブジェクトを選択し、[Component-&gt;Audio-&gt;Audio Low Pass Filter] を選択します。
+</p>
+<div class='vspace'></div><h2> ヒント</h2>
+<ul><li>音声は環境によってその伝播の仕方が異なります。例えば、視覚的な霧の効果の補完は、微妙なローパスのオーディオ リスナーへの追加になります。
+</li><li>ドアの後ろで発せられる音声の高周波はリスナーには届きません。ドアを開く際に、「Cutoff Frequency」を変更するだけ、これをシミュレートできます。
+</li></ul>
+</p><small>Page last updated: 2012-11-11</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/class-AudioEffect.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-AudioHighPassFilter.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

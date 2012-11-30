@@ -1,0 +1,259 @@
+<!--#set var="HUMAN_TITLE" value='オーディオ ソース' -->
+<!--#set var="PATH" value='<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-AudioGroup.html">オーディオ コンポーネント</a> &gt; <a href="../Components/class-AudioSource.html">オーディオ ソース</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/class-AudioListener.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-AudioEffect.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<p><span class='doc-keyword'>Audio Source</span> は、シーンで <a href="../Components/class-AudioClip.html">Audio Clip</a> を再生します。 オーディオ クリップが 3D クリップの場合、ソースは、所定の位置で再生され、距離が離れると弱まります。 オーディオはスピーカー間で広がり （ステレオ - 7.1）(「スプレッド」)、3D と 2D 間で変わります (「パン レベル」)。 これは、フォールオフ曲線で長距離で制御できます。 また、<a href="../Components/class-AudioListener.html">listener</a> が 1 時間以内または、複数の <a href="../Components/class-AudioReverbZone.html">Reverb Zones</a> である場合、反響がソースに適用されます。 (PRO のみ) より鮮やかなオーディオを得るのに、個々のフィルターを各オーディオ ソースに適用できます。 詳細については、<a href="../Components/class-AudioEffect.html">Audio Effects</a> を参照してください。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-AudioSource-0.jpg' /><br />「<span class='doc-keyword'>Scene View</span> でのオーディオ ソース機器と <span class='doc-keyword'>inspector</span> でのその設定。」</div>
+<div class='vspace'></div><h2>!!プロパティ</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Audio Clip</span></td><td  align='left'>再生される音声クリップを参照します。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mute</span></td><td  align='left'>有効にすると、音声は再生されますが、ミュートになります。.</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bypass Effects</span></td><td >オーディオ ソースに適用されるフィルター効果を素早く「バイパス」します。 簡単にすべての効果をオン・オフできます。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Play On Awake</span></td><td  align='left'>有効にすると、シーン開始時に音声の再生が始まります。 無効にすると、スクリプティングから「Play()」を使用して開始する必要があります。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Loop</span></td><td  align='left'>有効にすると、最後に達した時に、「オーディオ クリップ」がループします。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Priority</span></td><td >シーンにある他のすべてのオーディオ ソースの間でこのオーディオ ソースの優先度を決定します。 (優先度:  0 = 最重要、 256 = 最も重視しない、 デフォルト = 128）。 音楽トラックが時々スワップアウトするのを避けるには、0 を使用します。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Volume</span></td><td  align='left'><span class='doc-keyword'>Audio Listener</span>　からの 1 つの世界単位 （1 メートル） ノ距離での音声の大きさ。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Pitch</span></td><td  align='left'>「オーディオ クリップ」での減速 / 加速によるピッチの変化量。  1 が普通の再生速度になります。</td></tr>
+<tr ><td ><span class='doc-prop'><b>3D Sound Settings</b></span></td><td >3D 音声の場合にオーディオ ソースに適用される設定。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Pan Level</span></td><td  align='left'>3D エンジンがオーディオ ソースに与える効果の程度を設定します。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Spread</span></td><td  align='left'>スピーカー空間内の 3D ステレオまたはマルチチャンネル音声に広がり角を設定します。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Doppler Level</span></td><td >このオーディオ ソースに適用するドップラー効果の量を決定します （0 に設定すると、効果は適用されません）。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Min Distance</span></td><td >MinDistance 内は、音声は最も低くなります。 MinDistance 外では、音声が弱まり始めます。  音声の MinDistance を増やすと、3D ワールドでの音声が「大きく」なります。減らすと、3D ワールドでの音声が「小さく」なります。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Max Distance</span></td><td >音が弱まるのを止める距離。 この地点を超えると、リスナーからの MaxDistance 単位で到達する音量を維持し、これ以上下がることはありません。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Rolloff Mode</span></td><td >音声がフェードする速度。 この値が高いほど、音声を聞く前にリスナーがより近づく必要があります （グラフによって決定されます）。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Logarithmic Rolloff</span></span></td><td >オーディオ ソースに近づくと音声が大きくなりますが、オブジェクトから離れると、かなりの速さで低くなります。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Linear Rolloff</span></span></td><td >オーディオ ソースから離れるほど、聞こえにくくなります。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Custom Rolloff</span></span></td><td >オーディオ ソースからの音声が、ロール オフのグラフの設定状態に応じて動作します。</td></tr>
+<tr ><td ><span class='doc-prop'><b>2D Sound Settings</b></span></td><td >3D 音声の場合にオーディオ ソースに適用される設定。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Pan 2D</span></td><td  align='left'>3D エンジンがオーディオ ソースに与える効果の程度を設定します。</td></tr>
+</table>
+<p class='vspace'><a name='rolloff' id='rolloff'></a>
+</p><h2>Rolloff の種類</h2>
+<p>3つの Rolloff モードには、 対数、直線およびカスタム Rolloff があります。 カスタム  Rolloff は、後述するように、音量距離曲線を修正することで修正できます。 対数または直線に設定する際に、音量距離関数を修正しようとすると、自動的にカスタム  Rolloff.に変わります。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-AudioSource-1.jpg' /><br />「オーディオ ソースが持つことができる Rolloff モード。」</div>
+<div class='vspace'></div><h2>距離関数</h2>
+<p>オーディオ ソースとオーディオ リスナー間の距離の関数として修正できる音声のプロパティがいくつかあります。
+</p>
+<p class='vspace'><span  style='color: red;'><span class='doc-keyword'>Volume</span></span>: 距離に対する振幅 (0.0 - 1.0)。<br /><span  style='color: green;'><span class='doc-keyword'>Pan</span></span>: 距離に対する左 (-1.0) 対右 (1.0)。<br /><span  style='color: blue;'><span class='doc-keyword'>Spread</span></span>: 距離に対する角度 (0.0 - 360.0°)。<br /><span  style='color: #B838CF;'><span class='doc-keyword'>Low-Pass</span></span> (オーディオ ソースにローパスフィルタが追加されている場合のみ): 距離に対するカットオフ頻度 (22000.0 - 360.0°)。<br />
+</p><div><img class='figure' src='../Images/manual/class-AudioSource-2.jpg' /><br />「音量、パン、拡散、ローパス音声フィルタのための距離関数。 オーディオ リスナーまでの現在の距離にグラフで印が付けられます。」</div>
+<p class='vspace'>距離関数を修正するには、曲線を直接編集します。 詳細については、<a href="../Components/EditingCurves.html">Editing Curves</a> を参照してください。
+</p>
+<div class='vspace'></div><h2>オーディオ ソースの作成</h2>
+<p>オーディオ ソースは、割り当てられた「オーディオ クリップ」がないと、何もしません。  クリップは、再生される実際の音声ファイルです。  ソースは、そのクリップの再生を開始・停止したり、その他のオーディオ プロパティを修正するためのコントローラのようなものです。
+</p>
+<p class='vspace'>オーディオ ソースの新規作成
+</p><ol><li>Unity プロジェクトにオーディオ ファイルをインポートします。  これらがオーディオ クリップになります。
+</li><li>メニューバーから <span class='doc-menu'>GameObject-&gt;Create Empty</span> に移動します。
+</li><li>新しい GameObject を選択して、<span class='doc-menu'>Component-&gt;Audio-&gt;Audio Source</span> を選択します。
+</li><li>インスペクタでオーディオ ソース コンポーネントの「オーディオ クリップ」プロパティを割り当てます。
+</li></ol><p class='vspace'><b>注意:</b> Assets フォルダにある 1 つの「オーディオ クリップ」に対してのみオーディオ ソースを作成したい場合、その「オーディオ クリップ」をシーン ビューにドラッグ &amp; ドロップすると、そのシーン ビューに対して、「オーディオ ソース」ゲーム オブジェクトが自動的に作成されます。オーディオクリップをすでにあるゲームオブジェクトにドラッグ＆ドロップすると、オーディオクリップをと新しいオーディオソースをアタッチする（すでにオーディオソースがなかった場合）ことになります。もしオブジェクトにオーディオソースがあった場合、ドラッグ＆ドロップすることで、新しいオーディオクリップはすでにあるオーディオソースを上書きします。
+</p>
+<div class='vspace'></div><h2>プラットフォーム固有の詳細</h2>
+<a class='iosRef' id='iosRef' href="javascript:ShowHideDiv('iosRef','specific-ios', 'iOS');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>iOS</h1></a>
+<div class='specific-ios' style='display: block;' id='specific-ios' > 
+<p>携帯プラットフォーム上では、より高速に解凍するため、圧縮オーディオは MP3 として符号化されます。 この圧縮により、クリップの最後のサンプルが削除され、「完全ループ」のクリップを破壊する可能性があることに注意してください。 サンプルのクリッピングを避けるため、クリップが MP3 サンプルの境界にあることを確認してください （これを行うためのツールが広く利用可能です）。
+パフォーマンス上の理由から、オーディオ クリップは、Apple ハードウェア コーデックを使用して再生できます。 これを有効にするには、インポート設定の「ハードウェアを使用する」チェックボックスにチェックを入れます。 詳細については、<a href="../Components/class-AudioClip.html">Audio Clip</a> を参照してください。
+</p></div>
+<a class='androidRef' id='androidRef' href="javascript:ShowHideDiv('androidRef','specific-android', 'Android');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>Android</h1></a>
+<div class='specific-android' style='display: block;' id='specific-android' > 
+<p>携帯プラットフォーム上では、より高速に解凍するため、圧縮オーディオは MP3 として符号化されます。 この圧縮により、クリップの最後のサンプルが削除され、「完全ループ」のクリップを破壊する可能性があることに注意してください。 サンプルのクリッピングを避けるため、クリップが MP3 サンプルの境界にあることを確認してください （これを行うためのツールが広く利用可能です）。
+</p></div>
+</p><small>Page last updated: 2012-11-11</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/class-AudioListener.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-AudioEffect.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

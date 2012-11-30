@@ -1,0 +1,245 @@
+<!--#set var="HUMAN_TITLE" value='オーディオ クリップ' -->
+<!--#set var="PATH" value='<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Components.html">Components</a> &gt; <a href="../Components/comp-AssetsGroup.html">Assets　Component</a> &gt; <a href="../Components/class-AudioClip.html">オーディオ クリップ</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/comp-AssetsGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Cubemap.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<p><span class='doc-keyword'>Audio Clip</span> は、<a href="../Components/class-AudioSource.html">Audio Source</a> によって使用されるオーディオ データです。  Unity は、モノ、ステレオおよびマルチ チャンネル （8 つまで） のオーディオ アセットをサポートしています。 Unity は、次のオーディオ ファイル形式をサポートしています。 <b>.aif</b>、<b>.wav</b>、<b>.mp3</b>、 <b>.ogg</b>および次の <a href="../Manual/TrackerModules.html">トラッカー モジュール ファイル形式: <b>.xm</b>、<b>.mod</b>、<b>.it</b>および <b>.s3m</b></a> 。 トラッカー モジュール アセットは、波形プレビューをアセット インポート インスペクタにレンダリングできないこと以外は、Unity のその他のオーディオ アセットと同じ働きをします。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/class-AudioClip-0.jpg' /><br />「オーディオ クリップ <span class='doc-keyword'>Inspector</span>」</div>
+<div class='vspace'></div><h2>プロパティ</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Audio Format</span></td><td  align='left'>ランタイム時に音声に使用される特定の形式。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Native</span></span></td><td  align='left'>ファイル サイズが大きくなるにつれ、品質が高くなります。  非常に短い音響効果に最適です。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Compressed</span></span></td><td  align='left'>ファイル サイズが小さくなるにつれ、品質が低くなるか、変わりやすくなります。  中程度の長さの音響効果や音楽に最適です。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>3D Sound</span></td><td  align='left'>有効にすると、3D スペースで音声が再生されます。  モノとステレオの音声の両方を 3D で再生できます。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Force to mono</span></td><td  align='left'>有効にすると、オーディオ クリップが 1 つのチャンネル音声にダウンミックスされます。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Load Type</span></td><td >Unity がランタイムで音声をロードする方法。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Decompress on load</span></span></td><td  align='left'>ロード時に音声を解凍します。 オン ザ フライの解凍の性能オーバーヘッドを回避するため、より小さい圧縮音声に使用します。 ロード時の音声の解凍では、メモリ内で圧縮状態を維持する場合の 10 倍以上のメモリを使用するため、大きなファイルには使用しないでください。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Compressed in memory</span></span></td><td >メモリ内で圧縮状態を維持し、再生時には解凍します。 若干の性能オーバーヘッドが生じるため （Ogg/Vorbis 圧縮ファイルの esp.）、大きいファイルにのみ使用してください。技術的な制約により、このオプションはFMODオーディオを使用するプラットフォーム上でOgg Vorbisについて”Steam From Disc”（下記参照）に切り換わることに注意してください。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Stream from disc</span></span></td><td >ディスクから直接オーディオ データを流します。これは、メモリの元の音声サイズの一部を使用します。 音楽や非常に長いトラックに使用してください。 一般的に、ハードウェアに応じて、1 ～ 2 の同時ストリームに抑えてください。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Compression</span></td><td  align='left'>「圧縮」クリップに適用される圧縮の量。 ファイル サイズに関する統計はスライダの下で確認できます。 スライダをドラッグして、再生を「十分良好」な状態にすべきですが、ファイルや配布上のニーズに見合うよう、十分小さいサイズにしてください。</td></tr>
+</table><div class='specific-ios' style='display: block;' id='specific-ios' > 
+<table width='100%'><tr ><td  align='left'><span class='doc-prop'>Hardware Decoding</span></td><td >(iOS のみ) iOS 機器上の圧縮オーディオに使用できます。 解凍時の CPU への負担を減らすため、Apple のハードウェア デコーダを使用します。 詳細については、プラットフォーム固有の詳細を確認してください。</td></tr>
+</table></div>
+<table width='100%'><tr ><td  align='left'><span class='doc-prop'>Gapless looping</span></td><td >(Android/iOS のみ) 完全ループのオーディオ ソース ファイル （非圧縮 PCM 形式） を圧縮する際に、そのループを残すために使用します。 標準の MPEG　エンコーダは、ループ点周辺にサイレンスを取り込んでいますが、これはちょっとした「クリック」または「ポップ」として再生します。 Unity ではこれは円滑に扱われます。</td></tr>
+</table>
+<div class='vspace'></div><h2>オーディオ アセットのインポート</h2>
+<p>Unity は「圧縮」と「ネイティブ」オーディオの両方をサポートしています。  どのファイルも （MP3/Ogg Vorbis を除く） 最初は「ネイティブ」としてインポートされます。 ゲーム稼働中、圧縮オーディオ ファイルは CPU　によって解凍される必要がありますが、ファイル サイズは小さくなります。 「Stream」にチェックを入れると、オーディオは「オン ザ フライ」で解凍されるか、そうでない場合は、オーディオはロード時に全体的に解凍されます。 ネイティブの PCM 形式 （WAV、AIFF） には CPU への負担を増やすことなく、高い忠実性があるという利点がありますが、作成されるファイルのサイズははるかに大きくなります。 モジュール ファイル （.mod、.it、.s3m..xm） は、極めて低いフットプリントで非常に高い音質を提供できます。
+</p>
+<p class='vspace'>一般的に、「圧縮」オーディオ （またはモジュール） は、BGM や会話などの長いファイルに最適で、非圧縮オーディオは、短い音響効果により適しています。 高圧縮から始めて、圧縮スライダで圧縮の量を弱め、音質の差が著しくなる前後で適切に微調整します。
+</p>
+<p class='vspace'><a name='PositionalAudio' id='PositionalAudio'></a>
+</p><h2>3D オーディオの使用</h2>
+<p>オーディオ クリップに「3D 音声」と表示されている場合、このクリップは、ゲームの世界の 3D　スペースでの位置をシミュレートするために再生されます。 3D　音声は、音量を減らし、スピーカー間でパンすることで、音声の距離や位置をエミュレートします。 モノとマルチ チャンネルの音声の両方を 3D に配置できます。 マルチ チャンネル オーディオの場合、<a href="../Components/class-AudioSource.html">Audio Source</a> の「Spread」オプションを使用して、スピーカー スペースで個々のチャンネルを拡散および分割します。 Unity は、3D スペースでのオーディオ の動作を制御および微調整するための各種オプションを提供しています。 <a href="../Components/class-AudioSource.html">Audio Source</a> を参照してください。   
+</p>
+<div class='vspace'></div><h2>プラットフォーム固有の詳細</h2>
+<a class='iosRef' id='iosRef' href="javascript:ShowHideDiv('iosRef','specific-ios', 'iOS');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>iOS</h1></a>
+<div class='specific-ios' style='display: block;' id='specific-ios' > 
+<p>携帯プラットフォーム上では、解凍時の CPU の負担を減らするため、圧縮オーディオは MP3 として符号化されます。 
+</p>
+<p class='vspace'>パフォーマンス上の理由から、オーディオ クリップは、Apple ハードウェア コーデックを使用して再生できます。 これを有効にするには、オーディオ インポータの「ハードウェア デコーディング」チェックボックスにチェックを入れます。 
+バックグラウンドの iPod オーディオを含む、ハードウェア オーディオ ストリームは 1 回につき、1 つしか回答できません。 
+</p>
+<p class='vspace'>ハードウェア デコーダを使用できない場合は、解凍はソフトウェア デコーダで行われます （iPhone 3GS 以降では、Apple のソフトウェア デコーダが Unity（FMOD） 自身のデコーダ上で使用されます）。
+</p></div>
+<a class='androidRef' id='androidRef' href="javascript:ShowHideDiv('androidRef','specific-android', 'Android');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>Android</h1></a>
+<div class='specific-android' style='display: block;' id='specific-android' > 
+<p>携帯プラットフォーム上では、解凍時の CPU の負担を減らするため、圧縮オーディオは MP3 として符号化されます。 
+</p>
+<div class='vspace'></div></div>
+</p><small>Page last updated: 2012-11-10</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/comp-AssetsGroup.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/class-Cubemap.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

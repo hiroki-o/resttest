@@ -1,0 +1,261 @@
+<!--#set var="HUMAN_TITLE" value='アニメーションビューの活用（旧バージョン）' -->
+<!--#set var="PATH" value='<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/AnimationEditorGuide.html">アニメーションビューの手引き（Animation View Guide）</a> &gt; <a href="../Components/animeditor-UsingAnimationEditor.html">アニメーションビューの活用（旧バージョン）</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/AnimationEditorGuide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/animeditor-AnimationCurves.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<p><span class='doc-keyword'>Animation View</span>を使って、 Unityの<span class='doc-keyword'>Game Objects</span>のアニメーションするために<span class='doc-keyword'>Animation Clips</span>のプレビューと編集ができます。<span class='doc-keyword'>Animation View</span>はメニューから<span class='doc-menu'>Window-&gt;Animation</span>を選択して開きます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-0.jpg' /></div>
+<div class='vspace'></div><h2>GameObjectのアニメーションを表示する</h2>
+<p><span class='doc-keyword'>Animation View</span>は<span class='doc-keyword'>Hierarchy View</span>、<span class='doc-keyword'>Scene View</span>および<span class='doc-keyword'>Inspector</span>と強力に統合されています。インスペクターと同様に、アニメーションビューでは選択されているどんなゲームオブジェクト（<span class='doc-keyword'>Game Object</span>）も表示されます。<span class='doc-keyword'>Hierarchy View</span>あるいは<span class='doc-keyword'>Scene View</span>を使用して 
+ゲームオブジェクトを選択することができます。(Prefabを<span class='doc-keyword'>Project View</span>で選択すると、同様に、そのアニメーションカーブを参照はできるものの、カーブを編集できるためには、シーンビューにプレハブをドラッグする必要があります。)
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-1.jpg' /><br /><em><span class='doc-keyword'>Animation View</span>が<span class='doc-keyword'>Hierarchy View</span>で選択された<span class='doc-keyword'>Game Object</span>を表示します。</em></div>
+<p class='vspace'>アニメーションビュー（<span class='doc-keyword'>Animation View</span>）の左側に表示されているのは、選択されたゲームオブジェクト(<span class='doc-keyword'>Game Object</span>)のアニメーションプロパティの階層的なリストです。リストはインスペクタ(<span class='doc-keyword'>Inspector</span>)のように、ゲームオブジェクトにアタッチされた、コンポーネント（<span class='doc-keyword'>Components</span>）とマテリアル（<span class='doc-keyword'>Materials</span>）の順に並んでいます。コンポーネントやマテリアルの折りたたみ、展開にはその横にある小さな三角形をクリックします。選択されたゲームオブジェクトに子ゲームオブジェクトがある場合、すべてのコンポーネントおよびマテリアルの後に表示されます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-2.jpg' /><br /><em>アニメーションビュー（<span class='doc-keyword'>Animation View</span>）の左側にプロパティリストがあり、インスペクタ（<span class='doc-keyword'>Inspector</span>)）のように、選択したゲームオブジェクトのコンポーネントやマテリアルを表示します。</em></div>
+<div class='vspace'></div><h2>新しいアニメーションクリップの作成</h2>
+<p>Unityでアニメーションを行うゲームオブジェクト<span class='doc-keyword'>Game Object</span>は、アニメーションを制御するアニメーションコンポーネント（<span class='doc-keyword'>Animation Component</span>）が必要です。ゲームのオブジェクトが既にアニメーションコンポーネントを持っていない場合は、新しい<span class='doc-keyword'>Animation Clip</span>を作成するときか、<span class='doc-keyword'>Animation Mode</span>に入るときに、アニメーションビュー（<span class='doc-keyword'>Animation View</span>）が自動追加を行います。
+</p>
+<p class='vspace'>選択した<span class='doc-keyword'>Game Object</span>で新しい<span class='doc-keyword'>Animation Clip</span>を作成するには、アニメーションビュー（<span class='doc-keyword'>Animation View</span>）の右上にある2つの選択ボックスのうち右側をクリックして、<span class='doc-menu'>[Create New Clip]</span>を選択します。その後、<span class='doc-keyword'>Assets</span>フォルダ内のどこかにアニメーションクリップを保存するためのプロンプトが表示されます。ゲームのオブジェクトが既にアニメーションコンポーネント（<span class='doc-keyword'>Animation Component</span>）を持っていない場合は、このときに自動追加されます。新しい<span class='doc-keyword'>Animation Clip</span>は自動的にアニメーションコンポーネントのアニメーションのリストに追加されます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-3.jpg' /><br /><em>新しい<span class='doc-keyword'>Animation Clip</span>の作成</em></div>
+<p class='vspace'>アニメーションビュー（<span class='doc-keyword'>Animation View</span>）では常にアニメーションしてるゲームオブジェクト（<span class='doc-keyword'>Game Object</span>）と編集しているアニメーションクリップ（<span class='doc-keyword'>Animation Clip</span>）が表示されます。アニメーションビューの左上に2つの選択ボックスがあります。左の選択ボックスは、<span class='doc-keyword'>Game Object</span>とアタッチされた<span class='doc-keyword'>Animation Component</span>を表示し、右の選択ボックスは、編集している<span class='doc-keyword'>Animation Clip</span>を表示します。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-4.jpg' /><br /><em>左の選択ボックスは、<span class='doc-keyword'>Game Object</span>とアタッチされた<span class='doc-keyword'>Animation Component</span>を表示し、右の選択ボックスは、編集している<span class='doc-keyword'>Animation Clip</span>を表示します。</em></div>
+<div class='vspace'></div><h2>ゲームオブジェクトのアニメーション化</h2>
+<p>選択されたゲームオブジェクトのアニメーション・クリップの編集を開始するには、<span class='doc-menu'>Animation Mode button</span>をクリックしてください。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-5.jpg' />  <span class='doc-menu'>Animation Mode button</span>をクリックして<span class='doc-keyword'>Animation Mode</span>に入ります。</div>
+<p class='vspace'>これにより、<span class='doc-keyword'>Animation Mode</span>に入り、ゲームオブジェクトへの変更は<span class='doc-keyword'>Animation Clip</span>に格納されます。（ゲームオブジェクトが既に<span class='doc-keyword'>Animation Component</span>を持っていない場合、このときに自動的に追加されます。既存の<span class='doc-keyword'>Animation Clip</span>が存在しない場合は、<span class='doc-keyword'>Assets</span>フォルダのどこかに保存するためのプロンプトが表示されます。）
+</p>
+<p class='vspace'><span class='doc-keyword'>Animation Mode</span>は<span class='doc-menu'>Animation Mode button</span>を再度クリックすることでいつでも停止できます。 これによりゲームオブジェクト（<span class='doc-keyword'>Game Object</span>）は、アニメーションモードに入る前にあった状態に戻ります。
+</p>
+<p class='vspace'>アニメーションビュー（<span class='doc-keyword'>Animation View</span>）のプロパティリストに表示されるプロパティもすべてアニメーションすることができます。プロパティをアニメーション化するには、そのプロパティの <span class='doc-menu'>Key Indicator</span>をクリックしてと、メニューから<span class='doc-menu'>Add Curve</span>を選択します。さらに複数のプロパティを範囲選択し、右クリックすることで
+選択したすべてのプロパティにカーブを追加することが出来ます。（<span class='doc-prop'>Transform</span>プロパティは<span class='doc-prop'>.x</span>、<span class='doc-prop'>.y</span>、<span class='doc-prop'>.z</span>プロパティがリンクされている意味で特殊であり、3つとも同時に追加されます。）
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-6.jpg' />  <img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-7.jpg' /><br />''すべてのプロパティは、<span class='doc-menu'>Key Indicator</span>をクリックするか、名前を右クリックすることでアニメーション化することができます。</div>
+<p><span class='doc-prop'>Transform</span>プロパティについては<span class='doc-menu'>.x</span>、<span class='doc-menu'>.y</span>、<span class='doc-menu'>.z</span> のカーぶは同時に追加されます。''
+</p>
+<p class='vspace'>アニメーションモード（<span class='doc-keyword'>Animation Mode</span>）では、<span class='doc-keyword'>Animation Clip</span>のどのフレームがプレビューされているか、赤の縦線で表示します。インスペクタ（<span class='doc-keyword'>Inspector</span>）とシーンビュー（<span class='doc-keyword'>Scene View</span>）では、アニメーションクリップのそのフレームでゲームオブジェクトが表示されます。そのフレームでのアニメーション化されたプロパティの値は、プロパティ名の右の列に示されます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-8.jpg' /><br />''<span class='doc-keyword'>Animation Mode</span>で'は赤い縦線で現在プレビューしているフレームを表示します。そのフレームでアニメーション化された値は、<span class='doc-keyword'>Inspector</span>、<span class='doc-keyword'>Scene View</span>および<span class='doc-keyword'>Animatipon View</span>のプロパティ名の右で、プレビューされます。</div>
+<p class='vspace'>タイムライン（<span class='doc-menu'>Time Line</span>）上の任意の場所をクリックしてアニメーションクリップのフレームをプレビューまたは変更することが出来ます。タイムライン（<span class='doc-menu'>Time Line</span>）の数字は秒とフレームとして表示されるので、1:30は1秒と30フレームを意味します。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-9.jpg' /> <span class='doc-menu'>Time Line</span>をクリックして特定のフレームをプレビューします。<br /><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-10.jpg' /> 特定のフレームに直接移動するにはキーボードから入力するか、またはボタンを使用して前後の<span class='doc-keyword'>keyframe</span>に移動できます。</div>
+<p class='vspace'>また、フレーム間を移動するには、次のキーボードショートカットを使用することができます。
+</p>
+<div class='vspace'></div><ul><li>カンマ（<span class='doc-menu'>Comma</span>） (<span class='doc-menu'>,</span>)　前のフレームに移動
+</li><li>ピリオド（<span class='doc-menu'>Period</span>） (<span class='doc-menu'>.</span>)　次のフレームに移動
+</li><li>Alt+カンマ（<span class='doc-menu'>Comma</span>） (<span class='doc-menu'>,</span>)　前のキーフレーム（<span class='doc-keyword'>keyframe</span>）に移動
+</li><li>Alt+ピリオド（<span class='doc-menu'>Period</span>） (<span class='doc-menu'>.</span>)　次のキーフレーム（<span class='doc-keyword'>keyframe</span>）に移動
+</li></ul><p class='vspace'>アニメーションモード（<span class='doc-keyword'>Animation Mode</span>）では、シーンビュー（<span class='doc-keyword'>Scene View</span>）でゲームオブジェクト（<span class='doc-keyword'>Game Object</span>）移動、回転、またはスケールできます。これにより<span class='doc-keyword'>Animation Clip</span>の位置、回転、スケールプロパティの<span class='doc-keyword'>Animation Curves</span>がない場合は自動作成され、それらの<span class='doc-keyword'>Animation Curves</span>のキーが現在のフレームに自動作成され、変更した<span class='doc-menu'>Transform</span>の値を対応する場所に格納します。
+</p>
+<p class='vspace'><span class='doc-keyword'>Inspector</span>を使用して<span class='doc-keyword'>Game Object</span>のアニメーション化できるプロパティを変更することもできます。この場合も同様に<span class='doc-keyword'>Animation Curves</span>が必要に応じて作成され、現在プレビューしているフレームでアニメーションカーブにキー（<span class='doc-keyword'>keys</span>）を作成して変更した値を格納します。アニメーション化が出来ないプロパティは、アニメーションモードのとき<span class='doc-keyword'>Inspector</span>で灰色表示されます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-11.jpg' />　<span class='doc-menu'>Keyframe button</span>により現在プレビューしているフレームのカーブ上で<span class='doc-keyword'>keyframe</span>を作成します。（ショートカット：「<span class='doc-menu'>K</span>」キー）</div>
+<p class='vspace'>手動でキーフレーム（<span class='doc-keyword'>keyframe</span>）を作成する場合は<span class='doc-menu'>Keyframe button</span>を使用します。これにより、現在<span class='doc-keyword'>Animation View</span>に表示されているすべてのカーブでキーを作成します。プロパティリストの一部のプロパティのみカーブを表示した場合は、それらのプロパティを選択できます。特定プロパティのみに選択的にキーを追加するときに便利です。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-12.jpg' /><br /><em>プロパティリストでプロパティを選択する場合、そのプロパティのカーブだけが表示されます。</em></div>
+<div class='vspace'></div><h2>プレイバック（Playback）</h2>
+<p>アニメーション・クリップ（<span class='doc-keyword'>Animation Clip</span>）は、アニメーションビュー（<span class='doc-keyword'>Animation View</span>）の<span class='doc-menu'>Play button</span>をクリックすることにより、いつでも再生することができます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-UsingAnimationEditor-13.jpg' />　^Play button^^をクリックして<span class='doc-keyword'>Animation Clip</span>を再生</div>
+<p class='vspace'>再生のプレイバックはタイムライン（<span class='doc-menu'>Time Line</span>）で表示されている時間範囲内でループします。これにより<span class='doc-keyword'>Animation Clip</span>全体の時間を再生しなくても、作業中の　の小さな部分を見直すことに注力できます。. <span class='doc-keyword'>Animation Clip</span>全体をプレイバックするには、ズームアウトして時間範囲の全体を表示するか、キー（<span class='doc-keyword'>keys</span>）が選択されてない状態で「<span class='doc-menu'>F</span>」キーを押します。<span class='doc-menu'>Curve View</span>のナビゲーションの詳細については<a href="../Components/animeditor-AnimationCurves.html">Editing Animation Curves</a> を参照下さい。
+</p>
+</p><small>Page last updated: 2012-11-26</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/AnimationEditorGuide.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/animeditor-AnimationCurves.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

@@ -1,0 +1,262 @@
+<!--#set var="HUMAN_TITLE" value='アニメーションカーブの活用（旧バージョン）' -->
+<!--#set var="PATH" value='<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/AnimationEditorGuide.html">アニメーションビューの手引き（Animation View Guide）</a> &gt; <a href="../Components/animeditor-AnimationCurves.html">アニメーションカーブの活用（旧バージョン）</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/animeditor-UsingAnimationEditor.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/EditingCurves.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<h2>プロパティリスト</h2>
+<p><span class='doc-keyword'>Animation Clip</span>ではあらゆるアニメーション化できるプロパティは<span class='doc-keyword'>Animation Curve</span>を保持することが出来ます、すなわちAnimation Clipでそのプロパティを制御できます。<span class='doc-keyword'>Animation View</span>のプロパティリストで、<span class='doc-keyword'>Animation Curves</span>をもったプロパティは色つきのカーブインジケータがあります。アニメーションプロパティにカーブを追加する方法については、<a href="../Components/animeditor-UsingAnimationEditor.html">Using the Animation View</a> のセクションを参照してください。
+</p>
+<p class='vspace'><span class='doc-keyword'>Game Object</span>はかなりの数のコンポーネントおよびプロパティリストを持つことが出来るため、<span class='doc-keyword'>Animation View</span>のプロパティリストもとても長くなることがあります。<span class='doc-keyword'>Animation Curves</span>をもつプロパティのみ表示するためには<span class='doc-keyword'>Animation View</span>の左下にあるボタンをクリックし状態を<span class='doc-menu'>Show: Animated</span>にします。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-AnimationCurves-0.jpg' /><br /><em>左下にあるトグルボタンを<span class='doc-menu'>Show: Animated</span>にセットしてプロパティリストのなかで<span class='doc-keyword'>Animation Curves</span>を持たないプロパティを隠します。</em></div>
+<div class='vspace'></div><h2>カーブ、キー、キーフレームを理解する</h2>
+<p><span class='doc-keyword'>Animation Curve</span>には複数のキー（<span class='doc-keyword'>keys</span>）があり、カーブが通過するポイントを制御できます。 これらは<span class='doc-keyword'>Curve Editor</span>上の小さな菱形の記号で表現される。ひとつか複数かのキー（<span class='doc-keyword'>key</span>）を持つフレームは、キーフレーム（<span class='doc-keyword'>keyframe</span>）と呼ばれています。キーフレーム（<span class='doc-keyword'>keyframes</span>）は白い菱形の記号として <span class='doc-menu'>Keyframe Line</span>に表示されます。
+</p>
+<p class='vspace'>あるプロパティが現在プレビューしているフレームにキー（<span class='doc-keyword'>key</span>）を持つ場合、カーブのインジケータは菱形になります。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-AnimationCurves-1.jpg' /><br />''<span class='doc-menu'>Rotation.y</span>プロパティが現在プレビューしているフレームでキー（<span class='doc-keyword'>key</span>）を持っています。 <span class='doc-menu'>Keyframe Line</span>は全てのキーフレーム（<span class='doc-keyword'>keyframes</span> ）をマーキングします。</div>
+<p class='vspace'><span class='doc-menu'>Keyframe Line</span>は表示されているカーブのみのキーフレームを表示します。プロパティリストでプロパティが選択されている場合はそのプロパティのみが表示され、そして<span class='doc-menu'>Keyframe Line</span>は表示されていないカーブのキーをマーキングしません。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-AnimationCurves-2.jpg' /><br /><em>プロパティが選択されている場合、他のプロパティは表示されず、そのカーブのキーはキーフレームライン（<span class='doc-menu'>Keyframe Line</span>）には表示されません^。</em></div>
+<div class='vspace'></div><h2>キーフレームの追加と移動</h2>
+<div><img class='figure' src='../Images/manual/animeditor-AnimationCurves-3.jpg' /><br /><span class='doc-menu'>Keyframe Line</span>は現在表示されているカーブの<span class='doc-keyword'>keyframes</span>を表示します。<span class='doc-menu'>Keyframe Line</span>をダブルクリックするか、<span class='doc-menu'>Keyframe button</span>を使用して<span class='doc-keyword'>keyframe</span>を追加できます。</div>
+<p class='vspace'>現在プレビューしてるフレームで<span class='doc-menu'>Keyframe button</span>をクリックするか、<span class='doc-keyword'>keyframe</span>を配置すべき任意のフレームで<span class='doc-menu'>Keyframe Line</span>をダブルクリックすることで<span class='doc-keyword'>keyframe</span>を追加することが出来ます。
+これにより一度に表示されている全てのカーブにキー（<span class='doc-keyword'>key</span>）を追加します。キーフレーム（<span class='doc-keyword'>keyframe</span>）を追加するには<span class='doc-menu'>Keyframe Line</span>を右クリックしてコンテキストメニューから<span class='doc-menu'>Add Keyframe</span>を選択することも出来ます。配置した後は、マウスを使って<span class='doc-keyword'>keyframes</span>をドラッグして動かすことができます。一度に複数のキーフレーム（<span class='doc-keyword'>keyframes）を選択してドラッグすることも出来ます。キーフレーム（</span>Keyframes$$）を削除するには、選択して<span class='doc-menu'>Delete</span>を押すか、その上で右クリックしてコンテキストメニューから<span class='doc-menu'>Delete Keyframe</span>を選択します。
+</p>
+<div class='vspace'></div><h2>繰り返し再生モード（Wrap Mode）</h2>
+<p>Unityのアニメーションクリップ（<span class='doc-keyword'>Animation Clip</span>）で様々な繰り返し再生モード（<span class='doc-keyword'>Wrap Mode</span>）を設定し、たとえばアニメーション・クリップをループさせることができます。詳細についてはスクリプト・リファレンス<a class='urllink' href='../ScriptReference/WrapMode.html' rel='nofollow'>WrapMode</a> を参照下さい。アニメーション・クリップの繰り返し再生モード(Wrap Mode)は、<span class='doc-keyword'>Animation View</span>の右下の選択ボックスで設定できます。＾＾Curve View^^で選択した<span class='doc-keyword'>Wrap Mode</span>をアニメーションクリップの時間範囲の外の白い枠線としてプレビューします。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-AnimationCurves-4.jpg' /><br />アニメーション・クリップ（<span class='doc-keyword'>Animation Clip</span>）で<span class='doc-keyword'>Wrap Mode</span>を設定すると、<span class='doc-menu'>Curve View</span>でプレビューします。</div>
+<div class='vspace'></div><h2>アニメーション化できるプロパティ（Supported Animatable Properties）</h2>
+<p>アニメーションビュー<span class='doc-keyword'>Animation View</span>を使って、<span class='doc-keyword'>Game Object</span>の単なる位置、回転、スケールよりもはるかに多くをアニメーション化することが出来ます。任意の<span class='doc-keyword'>Component</span>や<span class='doc-keyword'>Material</span>のプロパティはアニメーションさせることができます、それはユーザで作成したスクリプトコンポーネントのパブリック変数さえも出来ます。複雑な視覚効果や動作をもつアニメーションを作るには、関連するプロパティに<span class='doc-keyword'>Animation Curves</span>を追加するだけです。
+</p>
+<p class='vspace'>次のプロパティの種類で、アニメーションシステムがサポートされています：
+</p>
+<div class='vspace'></div><ul><li>Float
+</li><li>Color
+</li><li>Vector2
+</li><li>Vector3
+</li><li>Vector4
+</li><li>Quaternion
+</li></ul><p class='vspace'>配列はサポートされておらず、構造体や上記以外のオブジェクトも同様です。
+</p>
+<p class='vspace'>スクリプトコンポーネントでのBooleanは、アニメーションシステムによってサポートされていませんが、特定の内臓コンポーネントではサポートされています。それらのBooleanについては、<span class='doc-menu'>0</span>の値は<span class='doc-menu'>False</span>と等しく、それ以外の値は<span class='doc-menu'>True</span>と等しくなります。
+</p>
+<p class='vspace'>次は、<span class='doc-keyword'>Animation View</span>を使用できる多様なことの中のひとつの例です：
+</p>
+<div class='vspace'></div><ul><li><span class='doc-prop'>Light`の</span>Color<span class='doc-prop'>、</span>Intensity``をアニメーション化し、点滅、ちらつき、脈動させます。
+</li><li>ループ再生中の<span class='doc-prop'>Audio Source</span>の<span class='doc-prop'>Pitch</span>、<span class='doc-prop'>Volume</span> をアニメーション化して、風の吹く音、エンジン音、水の流れる音を再現しつつサウンドアセットの容量を最小限に抑えます。
+</li><li><span class='doc-prop'>Material</span>の<span class='doc-prop'>Texture Offset</span>をアニメーション化し、ベルトコンベヤー、線路、流れる水、特殊効果をシミュレートします。
+</li><li>複数の楕円パーティクルエミッター（<span class='doc-prop'>Ellipsoid Particle Emitters</span>）の<span class='doc-prop'>Emit</span>状態、<span class='doc-prop'>Velocities</span>をアニメーション化することで壮大な花火や噴水のディスプレイを作成します。
+</li><li>ユーザ定義のスクリプトコンポーネントをアニメーション化して、時間の経過とともに動作に変化をもたせます。
+</li></ul><p class='vspace'><span class='doc-keyword'>Animation Curves</span>を用いてゲームロジックを制御する場合、Unityで<span style='font-size: 110%; font-weight: bold; color: yellow; background-color: red; padding: 2px;'>プレイバックおよびサンプリング</span> している方法に注意する必要があります。
+</p>
+<div class='vspace'></div><h2>回転の補間方法の種類について（Rotation Interpolation Types）</h2>
+<p>Unityでは回転は内部でクォータニオン（<span class='doc-prop'>Quaternions</span>）として表されます。クォータニオンは<span class='doc-prop'>.x</span>, <span class='doc-prop'>.y</span>, <span class='doc-prop'>.z</span>および <span class='doc-prop'>.w</span>から構成されていて、一般的には、これらの使い方を熟知していないかぎりこれらの値を手動で変更しません。 その代わりに、回転は一般的にオイラー角（<em>Euler Angles</em>）で操作し、<span class='doc-prop'>.x</span>、<span class='doc-prop'>.y</span>、<span class='doc-prop'>.z</span>の値がそれぞれの3つの軸の周りの回転を表しています。
+</p>
+<p class='vspace'>2つの回転の間を補間方法は、<span class='doc-prop'>Quaternion</span>か<span class='doc-prop'>Euler Angles</span>の値のどちらかで実行することになります。アニメーションビュー（<span class='doc-keyword'>Animation View</span>）を使用すると、<span class='doc-prop'>Transform</span>回転をアニメーション化するときに使用する補間方法を選択することができます。しかし回転は、どの補間方法を選択しているかにかかわらず、常に<span class='doc-prop'>Euler Angles</span>の形で表示されます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-AnimationCurves-5.jpg' /><br /><em>Transform回転は<span class='doc-prop'>Euler Angles</span>による補間あるいは<span class='doc-prop'>Quaternion</span>による補間を使用できます</em></div>
+<div class='vspace'></div><h3>クォータニオン補間（Quaternion Interpolation）</h3>
+<p>クォータニオン補間は、2つの回転の間の最短経路に沿って常に良い補間を生成します。これがジンバルロックなどの回転補間の乱れを回避することができます。しかしクォータニオン補間は180度以上の回転を表すことはできず、それは逆方向のほうが短いためです。クォータニオン補間を使用して二つのキーを180度以上離すと、実際に回転がスムーズであるにも関わらず、カーブは不連続に見えます、単純に逆方向が短いからそちらに回転しまうためです。180度より大きい回転が必要な場合は、追加のキーを間に配置する必要があります。クォータニオン補間を使用する場合、ひとつのカーブにおけるキーや接線を変更すると、他の2つのカーブも形状が変更されてしまい、それは3つのカーブ全て内部ではクォータニオンで表されているためです。クォータニオン補間を使用するときは、キーは常リンクされているため、3つのうち1つのカーブで特定のタイミングにおいてキーを作成すると、残り2つのカーブもそのタイミングでキーが作成されます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/animeditor-AnimationCurves-6.jpg' /><br />クォータニオン補間を使用するとき、270度離れて二つのキーを配置していた場合は逆方向、すなわち90度、に値が補間されます。</div>
+<div class='vspace'></div><h3>オイラー角補間（Euler Angles Interpolation）</h3>
+<p>オイラー角の補間は、ほとんどの人々が作業に慣れているものです。オイラー角は任意の大きな回転を表すことが出来、<span class='doc-prop'>.x</span>、 <span class='doc-prop'>.y</span>、<span class='doc-prop'>.z</span>のカーブは互いに独立しています。オイラー角の補間は、複数の軸の周りを同時に回転するときに発生する、ジンバルロックなどの回転の乱れが生じるｋとがあるが、作業は直感的で一度に1つの軸の周りを回転させるのでシンプルです。オイラー角補間が使用されている場合、Unityは内部で内部的に使用しているクォータニオン表現にカーブの焼き込みを行っています。これは、外部のプログラムからUnityにアニメーションをインポートするときに起こることに似ています。このカーブの焼き込みは処理過程で余分なキーを追加する可能性があり、接線の種類が<span class='doc-menu'>Constant</span>の場合、サブフレームのレベルでは完全には正確でない場合があることに留意下さい。
+</p>
+</p><small>Page last updated: 2012-11-26</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/animeditor-UsingAnimationEditor.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/EditingCurves.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

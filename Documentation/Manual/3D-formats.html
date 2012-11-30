@@ -1,0 +1,230 @@
+<!--#set var="HUMAN_TITLE" value='3Dフォーマット' -->
+<!--#set var="PATH" value='<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Asset Import and Creation.html">Asset Import and Creation</a> &gt; <a href="../Manual/Meshes.html">Mesh</a> &gt; <a href="../Manual/3D-formats.html">3Dフォーマット</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Meshes.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Animations (Legacy).html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<p>Unityにメッシュをインポートするには主に2つのファイルからできます：
+</p><ol><li><b>エクスポートされた3Dファイルフォーマット</b>。例えば .FBX あるいは .OBJ 
+</li><li><b>3Dアプリケーションの専用ファイル</b>、たとえば<code>.Max</code> または <code>.Blend</code>など3D Studio Maxか、Blenderのファイル形式をサポートします。
+</li></ol><p class='vspace'>どちらでもUnityにメッシュに取り込むことができますが、どちらを選ぶかにあたって考慮事項があります。
+</p>
+<div class='vspace'></div><h2>エクスポートされた3Dファイル形式</h2>
+<p>Unityは<a href="../Manual/HOWTO-exportFBX.html">.FBX</a> 、<b>.dae</b> (Collada)、<b>.3DS</b>、<b>.dxf</b> および<b>.obj</b>、FBXエクスポータファイルを読み込むことができ、FBXエクスポータは<a class='urllink' href='http://autodesk.com/fbx' rel='nofollow'>ここ</a>  多くのアプリケーションでobjやColladaのエクスポータを見つけることが出来ます。
+</p>
+<p class='vspace'><b>長所</b>
+</p><ul><li>　必要なデータのみエクスポート
+</li><li>　検証可能なデータ（Unityに持っていく前に3Dパッケージに再インポートできます）
+</li><li>　一般的にファイルサイズが小さい
+</li><li>　モジュール単位のアプローチを推進できる（例． Collisionの型や相互関係性ごとにことなるコンポーネント）
+</li><li>　直接サポートしていないその他の3Dパッケージで独自形式があっても、この形式にすればサポートできます
+</li></ul><p class='vspace'><b>短所</b>
+</p><ul><li>　プロトタイプや反復作業としては時間のかかるパイプラインとなります
+</li><li>　ソース（作業ファイル）とゲームデータ（例えば、FBXでエクスポート）の間のバージョン管理を見失いないがちになります
+</li></ul><div class='vspace'></div><h2>独自の3Dアプリケーションファイル形式</h2>
+<p>Unityが変換を通してインポートできるファイル形式:  <b>Max</b>、<b> Maya</b>、<b>Blender</b>、<b>Cinema4D</b>、<b>Modo</b>、<b>Lightwave</b>、<b>Cheetah3D</b>、たとえば<b>.MAX</b>、<b>.MB</b>、<b>.MA</b>など
+</p>
+<p class='vspace'><b>長所</b>
+</p><ul><li>　反復作業の時間がかからない（ソースファイルを保存すればUnityが自動で再インポート）
+</li><li>　最初の作業がシンプル
+</li></ul><p class='vspace'><b>短所</b>
+</p><ul><li>　Unityプロジェクトを使用しているすべてのマシンに当該ソフトウェアのライセンスをインストールする必要があります
+</li><li>　ファイルは、不要なデータにより肥大化することがありえます
+</li><li>　容量の大きいファイルはUnityの更新を遅らせます
+</li><li>　検証が少ないデータ （問題のトラブルシューティングが困難）
+</li></ul>
+</p><small>Page last updated: 2012-11-18</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Meshes.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Animations (Legacy).html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

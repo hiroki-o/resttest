@@ -1,0 +1,238 @@
+<!--#set var="HUMAN_TITLE" value='Animator Component and Animator Controller' -->
+<!--#set var="PATH" value='<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Creating Gameplay.html">ゲームプレイの作成</a> &gt; <a href="../Manual/Mecanim Animation System.html">Mecanim Animation System</a> &gt; <a href="../Manual/Bringing characters to life.html">Bringing characters to life</a> &gt; <a href="../Manual/Animator Component and Window.html">Animator Component and Animator Controller</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Looping Animation Clips.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Animation State Machines.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<h1>アニメーター　コンポーネント</h1>
+<p>アバターを持っている任意のゲームオブジェクトは’’アニメーターコンポーネント’’を持つことになり、またキャラクターとその動作の関係が定義されます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Animator Component and Window-0.jpg' /></div>
+<p class='vspace'><em>アニメーター</em>コンポーネントは<em>アニメーターコントローラ</em>を参照し、これによりキャラクタの動作を設定します。<a href="../Manual/Animation State Machines.html">ステートマシン</a> , <a href="../Manual/Animation Blend Trees.html">ブレンドツリー</a> およびスクリプトから制御可能なイベントも設定できます。
+</p>
+<div class='vspace'></div><h2>プロパティ</h2>
+<table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Controller</span></td><td >このキャラクターにアタッチされたアニメーターコントローラ</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Avatar</span></td><td  align='left'>このキャラクターの<a href="../Components/class-Avatar.html">アバター</a></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Apply Root Motion</span></td><td >　キャラクターの位置をアニメーション自体から制御するかスクリプトから制御するかどうか</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Animate Physics</span></td><td >アニメーションが物理挙動と連動する必要があるか</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Culling Mode</span></td><td >アニメーションのカリングモード</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Always animate</span></span></td><td >つねにアニメーションし、カリングを行わない</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Based on Renderers</span></span></td><td >レンダラが非表示の場合ルートモーションのみがアニメーションされます。キャラクターが非表示の場合、体の他の部分はすべてスタティックとなります。</td></tr>
+</table>
+<div class='vspace'></div><h1>Animator Controller</h1>
+<p><span class='doc-inspector'>Animator Controller</span>ビューからキャラクター動作を表示、セットアップすることができます。（メニューから<span class='doc-menu'>Window &gt; Animator Controller</span>を選択）
+</p>
+<p class='vspace'><span class='doc-prop'>Animator Controller</span>は<span class='doc-inspector'>Project View</span>から作成することができます。（メニューから<span class='doc-menu'>Create &gt; Animator Controller</span>を選択）
+これにより <code>.controller</code>アセットがディスク上に作成され、<span class='doc-inspector'>Project Browser</span>で次のように表示されます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Animator Component and Window-1.jpg' /></div>
+<p>ディスク上のAnimator Controllerアセット
+</p>
+<p class='vspace'>ステートマシンのセットアップが行われた後、<span class='doc-inspector'>Hierarchy View</span>でAvatarで任意のキャラクターのAnimatorコンポーネント上にコントローラをドラッグ＆ドロップすることができます。
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Animator Component and Window-2.jpg' /></div>
+<div class='indent'>Animator Controllerウィンドウ
+</div><p class='vspace'><span class='doc-inspector'>Animator Controllerウィンドウ</span>は以下を含みます： 
+</p><ul><li><span class='doc-inspector'>Animation Layerウィジェット</span> (左上隅、<a href="../Manual/Animation Layers.html">Animation Layers</a> を参照)
+</li><li><span class='doc-inspector'>Event Parameters ウィジェット</span> (左下、 <a href="../Manual/Animation Parameters.html">Animation Parameters</a> を参照)
+</li><li><a href="../Manual/Animation State Machines.html">ステートマシン自体</a> の表示。
+</li></ul><p class='vspace'><span class='doc-inspector'>Animator Controller ウィンドウ</span>は現在読み込まれているかのシーンが何であるかにかかわらず、常に最近選択された<code>.controller</code>アセットからステートマシンを表示することに注意して下さい。
+</p>
+<p class='vspace'>(back to <a href="../Manual/Mecanim Animation System.html">Mecanim introduction</a>)
+</p>
+</p><small>Page last updated: 2012-10-18</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Looping Animation Clips.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Animation State Machines.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

@@ -1,0 +1,256 @@
+<!--#set var="HUMAN_TITLE" value='内蔵シェーダガイド' -->
+<!--#set var="PATH" value='<a href="../Components/index.html">Reference Manual</a> &gt; <a href="../Components/Built-in Shader Guide.html">内蔵シェーダガイド</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/net-SocialAPI.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-Performance.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<p>Unity内蔵に関する最良の情報を見つけるにはここが最適です。Unityには40以上の内蔵シェーダがあり、当然ながら自ら記述することも出来ます。このガイドは内臓シェーダの群（Family）について説明したうえで個別のシェーダについて詳細に入ります。このガイドにより、Unityシェーダを、実現したいエフェクトが得るため、最大に活用できるようになります。
+</p>
+<div class='vspace'></div><h2>シェーダの使用</h2>
+<p>Unityシェーダは<span class='doc-keyword'>Materials</span>を通して使用され、本質的にシェーダのコードをテクスチャのようなパラメータと合成します。シェーダとマテリアルの関係性の詳細については<a href="../Manual/Materials.html">ここ</a> で詳細を確認できます。
+</p>
+<p class='vspace'>マテリアルのプロパティは、マテリアルが選択されたときかマテリアルを使用するゲームオブジェクトが選択されたときに、<span class='doc-keyword'>Inspector</span>で表示されます。マテリアルInspectorは次のように表示されます：
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Built-in Shader Guide-0.jpg' /></div>
+<p class='vspace'>各マテリアルはインスペクタで使用するシェーダによって少し異なって見えます。シェーダ自体によりインスペクタで調整できるパラメータの種類が決まります。マテリアルInspectorは<a href="../Components/class-Material.html">Material reference page</a> で詳細に説明があります。シェーダがマテリアルを通して実装されることを覚える必要があります。シェーダがインスペクタで表示されるプロパティを定義し、各マテリアルはスライダー、カラーやテクスチャの調整されたデータを実際に含みます。覚えておくべき重要なこととして、ひとつのシェーダを複数のマテリアルに使用できますが、ひとつのマテリアルに複数のシェーダを使用することは出来ません。
+</p>
+<div class='vspace'></div><h2>Unity内蔵のシェーダ</h2>
+<ul><li class='toclink'><a href="../Components/shader-Performance.html">Unityシェーダのパフォーマンス</a>
+</li><li class='toclink'><a href="../Components/shader-NormalFamily.html">Normal Shader Family</a>
+<ul><li class='toclink'><a href="../Components/shader-NormalVertexLit.html">頂点ライティング</a>
+</li><li class='toclink'><a href="../Components/shader-NormalDiffuse.html">ディフューズ</a>
+</li><li class='toclink'><a href="../Components/shader-NormalSpecular.html">Specular（鏡面）</a>
+</li><li class='toclink'><a href="../Components/shader-NormalBumpedDiffuse.html">Bumped Diffuse</a>
+</li><li class='toclink'><a href="../Components/shader-NormalBumpedSpecular.html">Normal Bumped Specular</a>
+</li><li class='toclink'><a href="../Components/shader-NormalParallaxDiffuse.html">Parallax Diffuse</a>
+</li><li class='toclink'><a href="../Components/shader-NormalParallaxSpecular.html">Parallax Bumped Specular</a>
+</li><li class='toclink'><a href="../Components/shader-NormalDecal.html">Decal</a>
+</li><li class='toclink'><a href="../Components/shader-NormalDiffuseDetail.html">Diffuse Detail</a>
+</li></ul></li><li class='toclink'><a href="../Components/shader-TransparentFamily.html">透明シェーダ ファミリ</a>
+<ul><li class='toclink'><a href="../Components/shader-TransVertexLit.html">透明頂点ライティング</a>
+</li><li class='toclink'><a href="../Components/shader-TransDiffuse.html">透明デフューズ</a>
+</li><li class='toclink'><a href="../Components/shader-TransSpecular.html">Transparent Specular</a>
+</li><li class='toclink'><a href="../Components/shader-TransBumped Diffuse.html">透明バンプ型デフューズ</a>
+</li><li class='toclink'><a href="../Components/shader-TransBumped Specular.html">Transparent Bumped Specular</a>
+</li><li class='toclink'><a href="../Components/shader-TransParallax Diffuse.html">Transparent Parallax Diffuse</a>
+</li><li class='toclink'><a href="../Components/shader-TransParallax Specular.html">Transparent Parallax Specular</a>
+</li></ul></li><li class='toclink'><a href="../Components/shader-TransparentCutoutFamily.html">Transparent Cutout Shader Family</a>
+<ul><li class='toclink'><a href="../Components/shader-TransCutVertexLit.html">透明カットアウト頂点ライティング</a>
+</li><li class='toclink'><a href="../Components/shader-TransCutDiffuse.html">透明カットアウト デフューズ</a>
+</li><li class='toclink'><a href="../Components/shader-TransCutSpecular.html">Transparent Cutout Specular</a>
+</li><li class='toclink'><a href="../Components/shader-TransCutBumpedDiffuse.html">透明カットアウト デフューズ</a>
+</li><li class='toclink'><a href="../Components/shader-TransCutBumpedSpecular.html">Transparent Cutout Bumped Specular</a>
+</li></ul></li><li class='toclink'><a href="../Components/shader-SelfIllumFamily.html">Self-Illuminated Shader Family</a>
+<ul><li class='toclink'><a href="../Components/shader-SelfIllumVertexLit.html">自己発光頂点ライティング</a>
+</li><li class='toclink'><a href="../Components/shader-SelfIllumDiffuse.html">shader-SelfIllumDiffuse</a>
+</li><li class='toclink'><a href="../Components/shader-SelfIllumSpecular.html">自己発光スペキュラ</a>
+</li><li class='toclink'><a href="../Components/shader-SelfIllumBumpedDiffuse.html">Self-Illuminated Normal mapped Diffuse</a>
+</li><li class='toclink'><a href="../Components/shader-SelfIllumBumpedSpecular.html">Self-Illuminated Normal mapped Specular</a>
+</li><li class='toclink'><a href="../Components/shader-SelfIllumParallaxDiffuse.html">Self-Illuminated Parallax Diffuse</a>
+</li><li class='toclink'><a href="../Components/shader-SelfIllumParallaxSpecular.html">Self-Illuminated Parallax Specular</a>
+</li></ul></li><li class='toclink'><a href="../Components/shader-ReflectiveFamily.html">Reflective Shader Family</a>
+<ul><li class='toclink'><a href="../Components/shader-ReflectiveVertexLit.html">反射頂点ライティング</a>
+</li><li class='toclink'><a href="../Components/shader-ReflectiveDiffuse.html">反射デフューズ</a>
+</li><li class='toclink'><a href="../Components/shader-ReflectiveSpecular.html">Reflective Specular</a>
+</li><li class='toclink'><a href="../Components/shader-ReflectiveBumpedDiffuse.html">反射バンプ型デフューズ</a>
+</li><li class='toclink'><a href="../Components/shader-ReflectiveBumpedSpecular.html">Reflective Bumped Specular</a>
+</li><li class='toclink'><a href="../Components/shader-ReflectiveParallaxDiffuse.html">Reflective Parallax Diffuse</a>
+</li><li class='toclink'><a href="../Components/shader-ReflectiveParallaxSpecular.html">Reflective Parallax Specular</a>
+</li><li class='toclink'><a href="../Components/shader-ReflectiveBumpedUnlit.html">Reflective Normal Mapped Unlit</a>
+</li><li class='toclink'><a href="../Components/shader-ReflectiveBumpedVertexLit.html">Reflective Normal mapped Vertex-lit</a>
+</li></ul></li></ul>
+</p><small>Page last updated: 2012-11-30</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Components/net-SocialAPI.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Components/shader-Performance.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

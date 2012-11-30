@@ -1,0 +1,228 @@
+<!--#set var="HUMAN_TITLE" value='A Glossary of Animation and Mecanim terms' -->
+<!--#set var="PATH" value='<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Creating Gameplay.html">ゲームプレイの作成</a> &gt; <a href="../Manual/Mecanim Animation System.html">Mecanim Animation System</a> &gt; <a href="../Manual/A glossary of animation and Mecanim terms.html">A Glossary of Animation and Mecanim terms</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Mecanim Animation System.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Asset Preparation and Import.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<table border='1' ><tr ><th  align='right'>Icon</th><th  align='center'>Term</th><th  align='center'>Description</th><th  align='right'>Type of Concept</th><th  align='center'>Usage/Comments</th></tr>
+<tr ><th  align='center' colspan='5'>Animation Clip related terms</th></tr>
+<tr ><td ><img class='figure' src='../Images/manual/A glossary of animation and Mecanim terms-0.jpg' /></td><td  align='left'>Animation Clip</td><td >Animation data that can be used for animated characters or simple animations. It is a simple "unit" piece of motion, such as (one specific instance of) "Idle", "Walk" or "Run"</td><td >sub-Asset</td><td >&nbsp;</td></tr>
+<tr ><td ><img class='figure' src='../Images/manual/A glossary of animation and Mecanim terms-1.jpg' /></td><td  align='left'>Body Mask</td><td  align='left'>A specification for which body parts to include or exclude for a skeleton</td><td >Asset (<code>.mask</code>)</td><td >Used in Animation Layers and in the importer</td></tr>
+<tr ><td >&nbsp;</td><td >Animation<br clear='all' />Curves</td><td >Curves can be attached to animation clips and controlled by various parameters from the game</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><th  align='center' colspan='5'>Avatar related terms</th></tr>
+<tr ><td ><img class='figure' src='../Images/manual/A glossary of animation and Mecanim terms-2.jpg' /></td><td >Avatar</td><td >An interface for retargeting one skeleton to another</td><td >sub-Asset</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td >Retargeting</td><td >Applying animations created for one model to another</td><td  align='left'>Process</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td  align='left'>Rigging</td><td  align='left'>The prcoess of building a skeleton hierarchy of bone joints for your mesh</td><td  align='left'>Process</td><td >done in an external tool, such as Max or Maya</td></tr>
+<tr ><td >&nbsp;</td><td  align='left'>Skinning</td><td  align='left'>The process of binding bone joints to the character's mesh or 'skin'</td><td  align='left'>Process</td><td >done in an external tool, such as Max or Maya</td></tr>
+<tr ><td >&nbsp;</td><td >Muscle Definition</td><td  align='left'>A Mecanim concept, which allows you to have a more intuitive control over the character's skeleton. When an Avatar is in place, Mecanim works in muscle space, which is more intuitive than bone space</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td >T-pose</td><td  align='left'>The pose in which the character has his arms straight out to the sides, forming a "T". The required pose for the character to be in, in order to make an Avatar</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td >Bind-pose</td><td  align='left'>The pose at which the character was modelled</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><td ><img class='figure' src='../Images/manual/A glossary of animation and Mecanim terms-3.jpg' /></td><td >Human template</td><td >A pre-defined bone-mapping</td><td >Asset (<code>.ht</code>)</td><td >Used for matching bones from FBX files to the Avatar.</td></tr>
+<tr ><th  align='center' colspan='5'>Animator and Animator Controller related terms</th></tr>
+<tr ><td >&nbsp;</td><td  align='left'>Animator Component</td><td >Component on a model that animates that model using the Mecanim animation system. The component has a reference to an Animator Controller asset that controls the animation.</td><td >Component</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td >Root Motion</td><td  align='left'>Motion of character's root, whether it's controlled by the animation itself or externally.</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><td ><img class='figure' src='../Images/manual/A glossary of animation and Mecanim terms-4.jpg' /></td><td >Animator Controller (Asset) <br clear='all' /></td><td >The Animator Controller controls animation through Animation Layers with Animation State Machines and Animation Blend Trees, controlled by Animation Parameters. The same Animator Controller can be referenced by multiple models with Animator components.</td><td >Asset (<code>.controller</code>)</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td >Animator Controller (Window)</td><td  align='left'>The window where the Animator Controller Asset is visualized and edited.</td><td >Window</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td  align='left'>Animation Layer</td><td  align='left'>An Animation Layer contains an Animation State Machine that controls animations of a model or part of it. An example of this is if you have a full-body layer for walking / jumping and a higher layer for upper-body motions such as throwing object / shooting. The higher layers take precedence for the body parts they control.</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td >Animation State Machine</td><td >A graph controlling the interaction of Animation States. Each state references an Animation Blend Tree or a single Animation Clip.</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td >Animation Blend Tree</td><td  align='left'>Used for continuous blending between similar Animation Clips based on float Animation Parameters.</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td >Animation Parameters</td><td  align='left'>Used to communicate between scripting and the Animator Controller. Some parameters can be set in scripting and used by the controller, while other parameters are based on Custom Curves in Animation Clips and can be sampled using the scripting API.</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><td >&nbsp;</td><td >Inverse Kinematics (IK)</td><td  align='left'>The ability to control the character's body parts based on various objects in the world.</td><td >&nbsp;</td><td >&nbsp;</td></tr>
+<tr ><th  align='center' colspan='5'>Non-Mecanim animation terms</th></tr>
+<tr ><td >&nbsp;</td><td  align='left'>Animation Component</td><td >The component needed for non-Mecanim animations</td><td >Component</td><td >&nbsp;</td></tr>
+</table>
+</p><small>Page last updated: 2012-11-07</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Mecanim Animation System.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Asset Preparation and Import.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

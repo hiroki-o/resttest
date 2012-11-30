@@ -1,0 +1,228 @@
+<!--#set var="HUMAN_TITLE" value='Asset Preparation and Import' -->
+<!--#set var="PATH" value='<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Creating Gameplay.html">ゲームプレイの作成</a> &gt; <a href="../Manual/Mecanim Animation System.html">Mecanim Animation System</a> &gt; <a href="../Manual/Asset Preparation and Import.html">Asset Preparation and Import</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/A glossary of animation and Mecanim terms.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Preparing your own character.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	
+<h2>Humanoid meshes</h2>
+<p>In order to take full advantage of Mecanim's humanoid animation system and retargeting, you need to have a <span class='doc-keyword'>rigged</span> and <span class='doc-keyword'>skinned</span> humanoid type mesh.
+</p>
+<div class='vspace'></div><ol><li>A character <span class='doc-keyword'>model</span> is generally made up of polygons in a 3D package or converted to polygon or triangulated mesh, from a more complex mesh type before export.
+<div class='vspace'></div></li><li>A <span class='doc-keyword'>joint hierarchy</span> or <span class='doc-keyword'>skeleton</span> which defines the bones inside the mesh and their movement in relation to one another, must be created to control the movement of the character. The process for creating the joint hierarchy is known as <span class='doc-keyword'>rigging</span>.
+<div class='vspace'></div></li><li>The mesh or <em>skin</em> must then be connected to the joint hierarchy in order to define which parts of the character mesh move when a given joint is animated. The process of connecting the skeleton to the mesh is known as <span class='doc-keyword'>skinning</span>.
+</li></ol><div class='vspace'></div><div class='indent'><img class='figure' src='../Images/manual/Asset Preparation and Import-0.jpg' />
+</div><div class='indent'>  Stages for preparing a character (modeling, rigging, and skinning)
+</div><div class='vspace'></div><h2>How to obtain humanoid models</h2>
+<p>There are three main ways to obtain humanoid models for with the Mecanim Animation system:
+</p>
+<div class='vspace'></div><ol><li>Use a procedural character system or character generator such as <em>Poser</em>, <em>Makehuman</em> or <a class='urllink' href='http://www.mixamo.com/' rel='nofollow'><em>Mixamo</em></a>. Some of these systems will rig and skin your mesh (eg, Mixamo) while others will not. Furthermore, these methods may require that you reduce the number of polygons in your original mesh to make it suitable for use in Unity.
+<div class='vspace'></div></li><li>Purchase demo examples and character content from the <a class='urllink' href='http://unity3d.com/unity/asset-store/' rel='nofollow'>Unity Asset Store</a>.
+<div class='vspace'></div></li><li>Also, you can of course <a href="../Manual/Preparing your own character.html">prepare your own character</a> from scratch.
+</li></ol><div class='vspace'></div><h2>Export &amp; Verify</h2>
+<p>Unity imports a number of different generic and native 3D file formats. The format we recommend for exporting and verifying your model is FBX 2012 since it will allow you to:
+</p>
+<div class='vspace'></div><ul><li>Export the mesh with the skeleton hierarchy, normals, textures and animation 
+</li><li>Re-import into your 3D package to verify your animated model has exported as you expected
+</li><li>Export animations without meshes
+</li></ul><div class='vspace'></div><h2>Further details</h2>
+<p>The following pages cover the stages of preparing and importing animation assets in greater depth
+</p><ul><li class='toclink'><a href="../Manual/Preparing your own character.html">Preparing your own character</a>
+</li><li class='toclink'><a href="../Manual/Importing Animations.html">Importing Animations</a>
+</li><li class='toclink'><a href="../Manual/Splitting animations.html">Splitting Animations</a>
+</li></ul><p class='vspace'>(back to <a href="../Manual/Mecanim Animation System.html">Mecanim introduction</a>)
+</p>
+</p><small>Page last updated: 2012-11-01</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/A glossary of animation and Mecanim terms.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Preparing your own character.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->

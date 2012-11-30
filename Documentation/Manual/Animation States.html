@@ -1,0 +1,222 @@
+<!--#set var="HUMAN_TITLE" value='Animation States' -->
+<!--#set var="PATH" value='<a href="../Manual/index.html">Unity Manual</a> &gt; <a href="../Manual/User Guide.html">User Guide</a> &gt; <a href="../Manual/Creating Gameplay.html">ゲームプレイの作成</a> &gt; <a href="../Manual/Mecanim Animation System.html">Mecanim Animation System</a> &gt; <a href="../Manual/Bringing characters to life.html">Bringing characters to life</a> &gt; <a href="../Manual/Animation State Machines.html">Animation State Machines</a> &gt; <a href="../Manual/Animation States.html">Animation States</a>' -->
+<!--#include virtual="/developer/document/manual/common/header.html" -->
+<div class="content" id="content">
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Animation State Machines.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Animation Transitions.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+	<section class="content">
+	<h2>Animation State</h2>
+<p><span class='doc-keyword'>Animation State</span>は<span class='doc-keyword'>Animation State Machines</span>の基本構成要素です。各ステート（状態）は、個々のアニメーションシーケンス（またはブレンドツリー）が含まれていて、キャラクターがそのステートの時に再生されます。ゲーム内のイベントで、ステート遷移をトリガすると、キャラクターは新しいステートにに移行し、対応するアニメーションシーケンスに動作が遷移します。
+</p>
+<p class='vspace'><span class='doc-inspector'>アニメーターコントローラー</span>のステートを選択すると、インスペクタ上で、そのステートに対応するプロパティが表示されます。:-
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Animation States-0.jpg' /></div>
+<div class='vspace'></div><table width='100%'><tr class='tableheader'><td  class='prop'></td><td class='function'></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Speed</span></td><td >アニメーションのデフォルトの速度</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Motion</span></td><td >ステートに割り当てられているアニメーションクリップ</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Foot IK</span></td><td >ステートで足のIKを有効にするか</td></tr>
+<tr ><td ><span class='doc-prop'>Transitions</span></td><td >ステートの遷移先ステート一覧</td></tr>
+</table>
+<p class='vspace'>茶色で表示されるデフォルトのステートは、最初に起動されたときのステートです。デフォルトの状態を変更したい場合は、別のステート上で右クリックし、コンテキストメニューから<span class='doc-menu'>Set As Default</span>を選択します。各遷移上soloおよびmuteのチェックボックスは<span class='doc-keyword'>Animation View</span>の動作を制御するために使用されています。詳細は<a href="../Manual/Animation State Machine Preview (solo and mute).html">このページ</a> を参照のこと。
+</p>
+<p class='vspace'>新しいステートの追加時はが<span class='doc-inspector'>Animator Controller Window</span>のどこかを右クリックし、コンテキストメニューで<span class='doc-menu'>Create State→Empty</span>を選択します。別の方法としては、AnimatorControllerWindowにアニメーションをドラッグすることで、そのアニメーションを含むステートを作成することが出来ます。（コントローラーにはメカニムアニメーションをドラッグできることに留意してください。 非メカニムアニメーションはリジェクトされます。）ステートは<a href="../Manual/Animation Blend Trees.html">ブレンドツリー</a> を含みます。
+</p>
+<div class='vspace'></div><h3>Any State</h3>
+<p>Any Stateは常駐している特殊なステートです。現在どのステートにいるかに影響を受けることなく、特定のステートに遷移したい場合のために存在している。これは、全ステートに同じ遷移先を追加するのと同じ効果がある。<span class='doc-keyword'>Any State</span>は、その特殊の機能により、ステートの遷移先とすることはできません。（次の遷移先としてランダムなステートを選択するための手段としてはAny Stateは使用できませんので留意下さい。）
+</p>
+<div class='vspace'></div><div><img class='figure' src='../Images/manual/Animation States-1.jpg' /></div>
+<p class='vspace'>(<a href="../Manual/Animation State Machines.html">Animation State Machines</a> に戻る)
+</p>
+</p><small>Page last updated: 2012-10-18</small></p>
+    <script type="text/javascript">
+
+
+    var allHTMLTags = new Array();
+    document.divs = new Array();
+
+    function getElementByClass(theClass) {
+
+	    var allHTMLTags=document.getElementsByTagName("*");
+
+	    for (var i=0; i<allHTMLTags.length; i++) {
+
+		    if (allHTMLTags[i].className==theClass) {
+			    return true;
+		    }
+	    }
+	    return false;
+    }
+
+    function ShowHideDiv(containerName, className, content){
+	var container = document.getElementById(containerName);
+	if(container == null)
+		return;
+	if(content == '') {//In case there are no divs in the page we still can change the icons.
+		if(containerName == 'desktopRef') {
+			if(container.innerHTML == "<img src=\"../Images/DesktopNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'iosRef') {
+			if(container.innerHTML == "<img src=\"../Images/iPhoneNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}
+		}
+		if(containerName == 'androidRef') {
+			if(container.innerHTML == "<img src=\"../Images/AndroidNO.png\" alt=\"\">") {
+				container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\">";
+				SetCookie(containerName, 'set', 30);
+			} else {
+				container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\">";
+				UnSetCookie(containerName);
+			}	
+		}
+	} else {
+		if(container.innerHTML == "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\"> " + content + "</h1>") {
+		container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\">" + content + "</h1>";
+			SetCookie(containerName, 'set', 30);
+		} else {
+			container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\">" + content + "</h1>";
+			UnSetCookie(containerName);
+		}
+	}
+	for(var i = 0; i < document.divs.length; i++) {
+		var divClassName = document.divs[i];
+		var matched = false;
+		if(divClassName.className == className)
+			   matched = true;
+		if(matched) {
+			
+			if(divClassName != null) {
+				if (divClassName.style.display == 'block') {
+					divClassName.style.display = 'none';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopNO.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneNO.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidNO.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowRight.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					UnSetCookie(containerName);
+				} else {
+					divClassName.style.display = 'block';
+					if(content == '') {
+						if(className == 'specific-desktop')
+							container.innerHTML = "<img src=\"../Images/DesktopYES.png\" alt=\"\" />";
+						if(className == 'specific-ios')
+							container.innerHTML = "<img src=\"../Images/iPhoneYES.png\" alt=\"\" />";
+						if(className == 'specific-android')
+							container.innerHTML = "<img src=\"../Images/AndroidYES.png\" alt=\"\" />";
+					} else {
+						container.innerHTML = "<h1><img src=\"../Images/PlatformArrowDown.png\" alt=\"\" /> " + content + "</h1>";
+					}
+					SetCookie(containerName, 'set', 30);
+				}
+			}
+		}	
+        }			   
+    }
+    function UnSetCookie(cn) {
+    	SetCookie(cn,'',30);
+    }
+
+    function GetCookie(cName) {
+	if (document.cookie.length > 0) {
+            cStart = document.cookie.indexOf(cName + "=");
+	    if(cStart != -1) {
+	        cStart = cStart + cName.length + 1;
+	        cEnd = document.cookie.indexOf(";", cStart);
+	        if (cEnd == -1) {
+	            cEnd = document.cookie.length;
+	        }
+	        return unescape(document.cookie.substring(cStart, cEnd));;
+	    }
+	}
+	return "";
+    }
+
+    function SetCookie(cName, value, expireDays) {
+	var exDate = new Date();
+	exDate.setDate(exDate.getDate()+expireDays);
+	document.cookie = cName + "=" + escape(value) + ((expireDays ==null) ? "" : ";expires=" + exDate.toGMTString()) + ";path=/";
+    }
+
+    function DocLoaded() {
+	document.divs = document.getElementsByTagName('div');
+	var prefDesktop = GetCookie('desktopRef');
+	var prefiOS = GetCookie('iosRef');
+	var prefAndroid = GetCookie('androidRef');
+	var firstTime = GetCookie('FT');
+	if (firstTime == null || firstTime == "" ) {
+	    SetCookie('FT', 'no', 30);
+	    SetCookie('desktopRef', 'set', 30)
+	} else if (prefDesktop == null || prefDesktop =="") {
+	    if(getElementByClass('desktopRefIMG')) {
+	        ShowHideDiv('desktopRef','specific-desktop','');
+	    } else {
+	        ShowHideDiv('desktopRef','specific-desktop','Desktop');
+	    }
+	}
+	if (prefiOS == null || prefiOS =="") {
+	    if(getElementByClass('iosRefIMG')) {
+	        ShowHideDiv('iosRef','specific-ios','');
+	    } else {
+	        ShowHideDiv('iosRef','specific-ios','iOS');
+	    }
+	}
+	if (prefAndroid == null || prefAndroid =="") {
+	    if(getElementByClass('androidRefIMG')) {
+	        ShowHideDiv('androidRef','specific-android','');
+	    } else {
+	        ShowHideDiv('androidRef','specific-android','Android');
+	    }
+	}	
+    }
+    </script>
+    
+	</section>
+	<nav class="doc-paging">
+		<div class="nav-prev">
+			<a href='../Manual/Animation State Machines.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Previous</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	
+		<div class="nav-next">
+			<a href='../Manual/Animation Transitions.html'>
+				<div class="nav-left"></div>
+				<div class="nav-main">Next</div>
+				<div class="nav-right"></div>
+			</a>
+		</div>
+	</nav>
+</div>
+<!--#include virtual="/developer/document/manual/common/footer.html" -->
