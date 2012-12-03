@@ -1,0 +1,550 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+  <title>DocWiki | Main / class-PlayerSettings40 </title>
+  <meta http-equiv='Content-Style-Type' content='text/css' />
+  <link rel='stylesheet' href='http://docwiki.unity3d.co.jp/pub/skins/unitywiki/unitywiki.css' type='text/css' />
+  <!--HTMLHeader--><style type='text/css'><!--
+  ul, ol, pre, dl, p { margin-top:0px; margin-bottom:0px; }
+  code.escaped { white-space: nowrap; }
+  .vspace { margin-top:1.33em; }
+  .indent { margin-left:40px; }
+  .outdent { margin-left:40px; text-indent:-40px; }
+  a.createlinktext { text-decoration:none; border-bottom:1px dotted gray; }
+  a.createlink { text-decoration:none; position:relative; top:-0.5em;
+    font-weight:bold; font-size:smaller; border-bottom:none; }
+  img { border:0px; }
+  
+span.anchor {
+	float: left;
+	font-size: 10px;
+	margin-left: -10px;
+	width: 10px;
+    position:relative; top:-0.1em;
+	text-align: center;
+}
+span.anchor a { text-decoration: none; }
+span.anchor a:hover { text-decoration: underline; }
+ol.toc { text-indent:-20px; list-style: none; }
+ol.toc ol.toc { text-indent:-40px; }
+div.tocfloat { font-size: smaller; margin-bottom: 10px;
+    border-top: 1px dotted #555555; border-bottom: 1px dotted #555555;
+    padding-top: 5px; padding-bottom: 5px; 
+    width: 38%; float: right; margin-left: 10px; clear: right;
+    margin-right:-13px; padding-right: 13px; padding-left: 13px;
+    background-color: #eeeeee; }
+div.toc { font-size: smaller; 
+    padding: 5px; border: 1px dotted #cccccc;
+    background: #f7f7f7;
+    margin-bottom: 10px; }
+div.toc p { background-color: #f9f6d6;
+    margin-top:-5px;   padding-top: 5px;
+    margin-left:-5px;  padding-left: 5px;
+    margin-right:-5px; padding-right: 5px;
+    padding-bottom: 3px;
+    border-bottom:  1px dotted #cccccc; }.editconflict { color:green; 
+  font-style:italic; margin-top:1.33em; margin-bottom:1.33em; }
+
+  table.markup { border:2px dotted #ccf; width:90%; }
+  td.markup1, td.markup2 { padding-left:10px; padding-right:10px; }
+  table.vert td.markup1 { border-bottom:1px solid #ccf; }
+  table.horiz td.markup1 { width:23em; border-right:1px solid #ccf; }
+  table.markup caption { text-align:left; }
+  div.faq p, div.faq pre { margin-left:2em; }
+  div.faq p.question { margin:1em 0 0.75em 0; font-weight:bold; }
+  div.faqtoc div.faq * { display:none; }
+  div.faqtoc div.faq p.question 
+    { display:block; font-weight:normal; margin:0.5em 0 0.5em 20px; line-height:normal; }
+  div.faqtoc div.faq p.question * { display:inline; }
+   
+    .frame 
+      { border:1px solid #cccccc; padding:4px; background-color:#f9f9f9; }
+    .lfloat { float:left; margin-right:0.5em; }
+    .rfloat { float:right; margin-left:0.5em; }
+a.varlink { text-decoration:none; }
+
+--></style><script type="text/javascript">
+function toggle(obj) {
+    var elstyle = document.getElementById(obj).style;
+    var text    = document.getElementById(obj + "tog");
+    if (elstyle.display == 'none') {
+        elstyle.display = 'block';
+        text.innerHTML = "hide";
+    } else {
+        elstyle.display = 'none';
+        text.innerHTML = "show";
+    }
+}
+</script>  <meta name='robots' content='index,follow' />
+
+</head>
+<body>
+<!--PageHeaderFmt-->
+  <div id='wikilogo'><a href='http://docwiki.unity3d.co.jp/index.php'><img src='http://docwiki.unity3d.co.jp/pub/skins/unitywiki/unitywiki.png'
+    alt='DocWiki' border='0' /></a>
+        <span id='wikititle'>
+          <span class='pagegroup'><a href='http://docwiki.unity3d.co.jp/index.php?n=Main'>Main</a> /</span>
+          <span class='pagetitle'>class-PlayerSettings40</span>
+        </span>
+  </div>
+  <div id='wikihead'>
+  <form action='http://docwiki.unity3d.co.jp/index.php'>
+    <span class='headnav'><a href='http://docwiki.unity3d.co.jp/index.php?n=Site.AllRecentChanges'
+      accesskey='c'>Recent Changes</a> -</span>
+    <input type='hidden' name='n' value='Main.class-PlayerSettings40' />
+    <input type='hidden' name='action' value='search' />
+    <a href='http://docwiki.unity3d.co.jp/index.php?n=Site.Search'>Search</a>:
+    <input type='text' name='q' value='' class='inputbox searchbox' />
+    <input type='submit' class='inputbutton searchbutton'
+      value='Go' /></form></div>
+<!--/PageHeaderFmt-->
+  <table id='wikimid' width='100%' cellspacing='0' cellpadding='0'><tr>
+<!--PageLeftFmt-->
+      <td id='wikileft' valign='top'>
+        <ul><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.HomePage'>Home Page</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Site.SideBar?action=login'>Login</a>
+</li></ul><p class='vspace sidehead'> 4.x Unity doc
+</p>
+<div class='vspace'></div><ul><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.UnityManual'>Unity Manual</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.Reference'>Reference Manual</a> 
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.Components'>Components</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.Built-inShaderGuide'>Built-in Shader Guide</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.iphone-GettingStarted'>iPhone Guide</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.android-GettingStarted'>Android Guide</a>
+</li><li><a class='createlinktext' rel='nofollow' 
+    href='http://docwiki.unity3d.co.jp/index.php?n=Main.xbox360-gettingstarted?action=edit'>360 Guide</a><a rel='nofollow' 
+    class='createlink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.xbox360-gettingstarted?action=edit'>?</a>
+</li><li><a class='createlinktext' rel='nofollow' 
+    href='http://docwiki.unity3d.co.jp/index.php?n=Main.wii-gettingstarted?action=edit'>Wii Guide</a><a rel='nofollow' 
+    class='createlink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.wii-gettingstarted?action=edit'>?</a>
+</li><li><a class='createlinktext' rel='nofollow' 
+    href='http://docwiki.unity3d.co.jp/index.php?n=Main.ps3-gettingstarted?action=edit'>PS3 Guide</a><a rel='nofollow' 
+    class='createlink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.ps3-gettingstarted?action=edit'>?</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.flash-gettingstarted'>Flash Guide</a>
+</li><li><a class='createlinktext' rel='nofollow' 
+    href='http://docwiki.unity3d.co.jp/index.php?n=Main.wiiu-gettingstarted?action=edit'>WiiU Guide</a><a rel='nofollow' 
+    class='createlink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.wiiu-gettingstarted?action=edit'>?</a>
+<div class='vspace'></div></li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.TableOfContents'>Table Of Contents</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.IncludedPages'>Included Pages</a>
+<div class='vspace'></div></li><li><a class='urllink' href='http://docwiki.hq.unity3d.com/3x/index.php' rel='nofollow'>3.x docs</a>
+</li></ul><p class='vspace sidehead'> Website bits
+</p>
+<div class='vspace'></div><ul><li><a class='createlinktext' rel='nofollow' 
+    href='http://docwiki.unity3d.co.jp/index.php?n=Website.HomePage?action=edit'>Home Page</a><a rel='nofollow' 
+    class='createlink' href='http://docwiki.unity3d.co.jp/index.php?n=Website.HomePage?action=edit'>?</a>
+</li><li><a class='createlinktext' rel='nofollow' 
+    href='http://docwiki.unity3d.co.jp/index.php?n=Website.TableOfContents?action=edit'>Table Of Contents</a><a rel='nofollow' 
+    class='createlink' href='http://docwiki.unity3d.co.jp/index.php?n=Website.TableOfContents?action=edit'>?</a>
+</li><li><a class='createlinktext' rel='nofollow' 
+    href='http://docwiki.unity3d.co.jp/index.php?n=Website.AssetServerInstallation?action=edit'>Asset Server</a><a rel='nofollow' 
+    class='createlink' href='http://docwiki.unity3d.co.jp/index.php?n=Website.AssetServerInstallation?action=edit'>?</a>
+<div class='vspace'></div></li><li><a class='createlinktext' rel='nofollow' 
+    href='http://docwiki.unity3d.co.jp/index.php?n=SourceCode.HomePage?action=edit'>Source code</a><a rel='nofollow' 
+    class='createlink' href='http://docwiki.unity3d.co.jp/index.php?n=SourceCode.HomePage?action=edit'>?</a>
+</li></ul><p class='vspace sidehead'> Misc
+</p><ul><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.PageList'>All pages</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Site.AllRecentChanges?action=rss'>RSS</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.HomePage?action=refcount'>Refcount</a>
+</li><li><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.WikiSandbox'>WikiSandbox</a>
+</li></ul><p class='vspace'  style='text-align: right;'> <span style='font-size:83%'><a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Site.SideBar?action=edit'>edit SideBar</a></span>
+</p>
+</td>
+<!--/PageLeftFmt-->
+      <td id='wikibody' valign='top'>
+<!--PageActionFmt-->
+        <div id='wikicmds'><ul><li class='browse'><a accesskey=''  class='selflink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.class-PlayerSettings40'>View</a>
+</li><li class='edit'><a accesskey='e'  rel='nofollow'  class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.class-PlayerSettings40?action=edit'>Edit</a>
+</li><li class='diff'><a accesskey='h'  rel='nofollow'  class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.class-PlayerSettings40?action=diff&amp;source=y'>History</a>
+</li><li class='backlink'><a accesskey='ak_backlink'  rel='nofollow'  class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.class-PlayerSettings40?action=search&amp;q=link=Main.class-PlayerSettings40'>Backlinks</a>
+</li></ul>
+</div>
+<!--PageText-->
+<div id='wikitext'>
+<h1>Player Settings</h1>
+<p>Unityで構築するゲームの最終版のために様々なパラメータを（プラットフォーム固有の）定義する場所が<span class='doc-keyword'>Player Settings</span>（プレイヤー設定）です。例えば、これらの値の一部は、スタンドアロンゲームを開いたときに起動する<span class='doc-keyword'>Resolution Dialog</span>で使用されているものもあれば、XcodeでiOSデバイス用のゲームを構築する際に使用されるものもあるので、それらを正しく記入することが重要です。
+</p>
+<p class='vspace'>Player Settingsを見るにはメニューで<span class='doc-menu'>Edit-&gt;Project Settings-&gt;Player</span>を選択します。
+</p>
+<div class='vspace'></div><div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetInspTop.png' alt='' title='' /><br /><em>作成した全てのプロジェクトに適用されるグローバル設定</em>'</div>
+<div class='vspace'></div><table width='100%'><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><th  align='left' colspan='2'>Cross-Platform Properties</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Company Name</span></td><td >会社の名前設定ファイルのロケーションとして使用</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Product Name</span></td><td >ゲーム実行時にメニューバーに表示される名前であり、設定ファイルのロケーションとして使用。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Icon</span></td><td >全てのプラットフォームでアプリケーションが使用するデフォルトのアイコン（プラットフォーム固有のニーズに合わせて後でこれを上書きすることができます）</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Cursor</span></td><td >サポートされるすべてのプラットフォーム上でアプリケーションが使用するデフォルトのカーソル。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Cursor Hotspot</span></td><td >カーソルのホットスポット位置をデフォルトのカーソルの左上隅からピクセル単位で指定</td></tr>
+</table>
+<div class='vspace'></div><h1>Per-Platform Settings</h1>
+<a class='desktopRef' id='desktopRef' href="javascript:ShowHideDiv('desktopRef','specific-desktop','Desktop');"><img src="./uploadks/Main/PlatformArrowDown.png"><h1>Desktop</h1> </a>
+<div class='specific-desktop' style='display: block;' id='specific-desktop' > 
+<h2>Web Player</h2>
+<h4><em>Resolution And Presentation（解像度およびスクリーン）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetWebResPres.png' alt='' title='' /></div>
+<div class='vspace'></div><table width='100%'><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left' colspan='2'><b><em>Resolution</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Width</span></td><td >生成されるWeb Playerのスクリーン幅</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Height</span></td><td >生成されるWeb Playerのスクリーン高さ</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Run in background</span></td><td >Web Playerがフォーカスを失った場合もゲームの実行を止めたくない場合にチェック</td></tr>
+<tr ><td  align='left'><b><em>WebPlayer Template</em></b></td><td >詳細については<a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.UsingWebPlayertemplates'>"Using WebPlayer templates page"</a> をチェックする必要があります、本項では各々の内臓、カスタムのテンプレートについては、アイコンで示しています。</td></tr>
+</table>
+<div class='vspace'></div><h4><em>Icon（アイコン）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetWebIcon4b7.png' alt='' title='' /></div>
+<p class='vspace'>アイコンはWebPlayerビルドでは無効（Player Settingsの各ネイティブ　クライアント　ビルドのセクションでアイコンを設定できます）
+</p>
+<div class='vspace'></div><h4><em>Other Settings</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetWebOther4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table width='100%'><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left'><b><em>Rendering</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Rendering Path</span></td><td >このプロパティは、スタンドアロンおよびWebPlayerコンテンツ間で共有されます。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Vertex Lit</span></span></td><td >ライティング再現性はもっとも低く、シャドウはサポートしていない。古いマシンや限られたモバイルプラットフォーム上での使用に最適。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Forward with Shaders</span></span></td><td >ライティング機能のサポートは良い、シャドウはサポートは限定的</td></tr>
+</table>
+<table ><tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Deferred Lighting</span></span></td><td >ライティングとシャドウ機能は、最良のサポートを提供するものの、ハードウェアで一定水準のサポートが必要。多くのリアルタイムのライトがある場合に最適。Unity Proのみ。</td></tr>
+<tr ><td ><span class='doc-prop'>Color Space</span></td><td >レンダリングに使用する色空間</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>GammaSpace Rendering</span></span></td><td >レンダリングのガンマ補正</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Linear Rendering Hardware Sampling</span></span></td><td >レンダリングを線形空間で実行</td></tr>
+<tr ><td ><span class='doc-prop'>Use Direct3D 11</span></td><td >レンダリングにDirect3D 11を使用。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Static Batching</span></td><td >ビルドでStatic Batchを使用する場合に設定（WebPlayerではデフォルトで無効））。Unity Proのみ。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Dynamic Batching</span></td><td >ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効） 。</td></tr>
+<tr ><td  align='left' colspan='2'><b><em>Streaming</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>First Streamed Level</span></td><td >Streamed Web Playerを公開する場合、Resources.Loadアセットにアクセスできる最初のレベルのインデックス</td></tr>
+<tr ><td  colspan='2'><b><em>Configuration</em></b></td></tr>
+<tr ><td ><span class='doc-prop'>Scripting Define Symbols</span></td><td >カスタム　コンパイル　フラグ（詳細は<a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.PlatformDependentCompilation'>platform dependent compilationのページ</a> を参照）。</td></tr>
+<tr ><td  colspan='2'><b><em>Optimization</em></b></td></tr>
+<tr ><td ><span class='doc-prop'>Optimize Mesh Data</span></td><td >メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）</td></tr>
+</table><h2>Standalone（スタンドアロン）</h2>
+<h4>''Resolution And Presentation'（解像度およびスクリーン）'</h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetPCResPres4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left' colspan='2'><b><em>Resolution</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Width</span></td><td >スタンドアロン　ゲームがデフォルトで使用するスクリーン幅。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Height</span></td><td >Playerががデフォルトで使用するスクリーンの高さ。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Run in background</span></td><td >フォーカスを失った場合もゲームの実行を止めたくない場合にチェック。</td></tr>
+<tr ><td  colspan='2'><b><em>Standalone Player Options</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default is Full Screen</span></td><td >ゲーム起動時にデフォルトでフルスクリーンモードとしたい場合、これをチェックします。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Capture Single Screen</span></td><td >オンにした場合、スタンドアロンゲームはフルスクリーンモードのゲームはマルチモニターの設定において2つめのモニタを暗くしません。</td></tr>
+<tr ><td  align='left' colspan='2'><span class='doc-prop'>DisplayResolution Dialog</span></td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Disabled</span></span></td><td >ゲーム開始時にResolution （解像度）ダイアログを表示しない。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Enabled</span></span></td><td >ゲーム開始時にResolution （解像度）ダイアログを表示。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Hidden by default</span></td><td >Resolution（解像度）Playerを、ゲーム起動時に "Alt"キーを押した場合のみ表示。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Use Player Log</span></td><td >デバッグ情報を含むログを書きこむ。Mac App Storeに申請を提出する予定がある場合は、このオプションのチェック解除しておきます。デフォルトはチェックがオンになってます。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Resizable Window</span></td><td >スタンドアロンのFlash Playerウィンドウサイズをユーザーで変更できるようにします。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Mac App Store Validation</span></td><td >MacのApp StoreのReceipt Validationを有効化。</td></tr>
+<tr ><td ><span class='doc-prop'>Mac Fullscreen Mode</span></td><td >Macビルドでフルスクリーンモードのオプション。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Capture Display</span></span></td><td >Unityがディスプレイ全体をコントロール（すなわち、他のアプリでGUIが表示されず、ユーザーはフルスクリーンモードを終了するまでアプリを切り替えることはできません）。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Fullscreen Window</span></span></td><td >Unityが画面全体を覆うデスクトップの解像度でウィンドウ実行します。他のアプリのGUIは正しく表示され、OSX 10.7以上でCmd +Tabまたはトラックパッドのジェスチャーでアプリを切り替えることが可能。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Fullscreen Window with Menu Bar and Dock</span></span></td><td >フルスクリーンウィンドウモードと同様だが、標準のメニューバーとDockにも表示。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Supported Aspect Ratios</span></td><td >Resolutionダイアログで選択できるアスペクト比は、このリストで有効なアイテムであり、モニターがサポートする解像度になります。</td></tr>
+</table>
+<div class='vspace'></div><h4><em>Icon（アイコン）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetPCIcon4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Override for Standalone</span></td><td >スタンドアロンのゲームに使用したいカスタムアイコンを割り当る場合はオンにします。異なるサイズのアイコンを、以下の箱の中に収めます。</td></tr>
+</table>
+<div class='vspace'></div><h4><em>Splash Image（スプラッシュ画像）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetPCSplash4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Config Dialog Banner</span></td><td >ゲーム開始時に表示されるカスタムのスプラッシュ画像を追加。</td></tr>
+</table>
+<div class='vspace'></div><h4>''他の設定</h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetPCOther4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left'><b><em>Rendering</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Rendering Path</span></td><td >このプロパティは、スタンドアロンおよびWebPlayerコンテンツ間で共有されます。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Vertex Lit</span></span></td><td >ライティング再現性はもっとも低く、シャドウはサポートしていない。古いマシンや限られたモバイルプラットフォーム上での使用に最適。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Forward with Shaders</span></span></td><td >ライティング機能のサポートは良い、シャドウのサポートは限定的</td></tr>
+</table><p>ライティングとシャドウ機能は、最良のサポートを提供するものの、ハードウェアで一定水準のサポートが必要。
+多くのリアルタイムのライトがある場合に最適。Unity Proのみ。||
+</p><table ><tr ><td ><span class='doc-prop'>Color Space</span></td><td >レンダリングに使用する色空間。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>GammaSpace Rendering</span></span></td><td >レンダリングのガンマ補正。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Linear Rendering Hardware Sampling</span></span></td><td >レンダリングを線形空間で実行</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Static Batching</span></td><td >ビルドでStatic Batchを使用する場合に設定（WebPlayerではデフォルトで無効））。Unity Proのみ。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Dynamic Batching</span></td><td  colspan='2'>ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効） 。</td></tr>
+<tr ><td  colspan='2'><b><em>Configuration</em></b></td></tr>
+<tr ><td ><span class='doc-prop'>Scripting Define Symbols</span></td><td >カスタム　コンパイル　フラグ（詳細は<a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.PlatformDependentCompilation'>platform dependent compilationのページ</a> を参照）。</td></tr>
+<tr ><td  colspan='2'><b><em>Optimization</em></b></td></tr>
+<tr ><td  align='left' colspan='2'><span class='doc-prop'>API Compatibility Level</span></td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>.Net 2.0</span></span></td><td >.Net 2.0ライブラリ。.Net互換性が最大、ファイルサイズ最大。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>.Net 2.0 Subset</span></span></td><td >.NET互換性は全体の一部、ファイルサイズは小さく。</td></tr>
+<tr ><td ><span class='doc-prop'>Optimize Mesh Data</span></td><td  colspan='2'>メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）</td></tr>
+</table></div>
+<p class='vspace'><a name='iOS' id='iOS'></a>
+</p><a class='iosRef' id='iosRef' href="javascript:ShowHideDiv('iosRef','specific-ios', 'iOS');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>iOS</h1></a>
+<div class='specific-ios' style='display: block;' id='specific-ios' > 
+<h4><em>Resolution And Presentation（解像度およびスクリーン）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetiOSResPres.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left' colspan='2'><b><em>Resolution</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Orientation</span></td><td >(このプロパティは、iOSおよびAndroid間で共有されます。)</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Portrait</span></span></td><td >デバイスはPortraitモード、持ち方は縦向きでホームボタンが下。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Portrait Upside Down</span></span></td><td >デバイスはPortraitモードで逆さま、持ち方は縦向きでホームボタンが上。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Landscape Right</span></span></td><td >デバイスはLandscapeモード、持ち方は横向きでホームボタンが<b>左</b>。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Landscape Left</span></span></td><td >デバイスはLandscapeモード、持ち方は横向きでホームボタンが<b>右</b>。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Auto Rotation</span></span></td><td >画面の向きが自動的に物理デバイスの向きに基づいて設定されます。</td></tr>
+<tr ><td  align='left' colspan='2'><b><em>Auto Rotation settings</em></b></td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Use Animated Autorotation</span></span></td><td >チェックがオンの場合、向きの変更が適用される。Default orientationが Auto Rotation.の場合のみ適用。</td></tr>
+<tr ><td  align='left' colspan='2'><b><em>Auto Rotationで許容される解像度</em></b></td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Portrait</span></span></td><td >オンのときはPortraitモードを許可。Default OrientationがAuto Rotationに設定されている場合にのみ適用。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Portrait Upside Down</span></span></td><td >オンのときはPortraitモード（逆さま）を許可。デフォルトの向きはDefault OrientationがAuto Rotationに設定されている場合にのみ適用。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Landscape Right</span></span></td><td >オンのときはLandscapeモード（ホームボタンが<b>左</b>）を許可。Default orientationが Auto Rotation.の場合のみ適用。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Landscape Left</span></span></td><td >オンのときはLandscapeモード（ホームボタンが<b>左</b>）を許可。Default OrientationがAuto Rotationに設定されている場合にのみ適用。</td></tr>
+<tr ><td  align='left' colspan='2'><b><em>Status Bar</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Status Bar Hidden</span></td><td >アプリケーションの起動時にステータスバーが最初に隠されているかどうかを指定します。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Status Bar Style</span></td><td >アプリケーションの起動時の、ステータスバーのスタイルを指定します</td></tr>
+<tr ><td  align='left' colspan='2'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Default</span></span></td></tr>
+<tr ><td  align='left' colspan='2'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Black Translucent</span></span></td></tr>
+<tr ><td  align='left' colspan='2'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Black Opaque</span></span></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Use 32-bit Display Buffer</span></td><td >32ビットカラー値を保持するためにディスプレイバッファを作成するよう指定（デフォルトでは16ビット）。使用するのは、バンディングが見られる場合や、ImageEffects（画像効果）でアルファを必要とする場合であり、理由はディスプレイバッファと同じ形式にRTを作成するためです。</td></tr>
+<tr ><td ><span class='doc-prop'>Show Loading Indicator</span></td><td >ローディング　インジケータのオプション</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Don't Show</span></span></td><td >インジケータなし。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>White Large</span></span></td><td >白色で大きいインジケータを表示。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>White</span></span></td><td >白色で通常の大きさのインジケータを表示。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Gray</span></span></td><td >灰色で通常サイズのインジケータを表示。</td></tr>
+</table>
+<div class='vspace'></div><h4><em>Icon（アイコン）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetiOSIcon4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Override for iOS</span></td><td >iPhone / iPadのゲームに使用したいカスタムアイコンを割り当てる場合オンにします。異なるサイズのアイコンを、以下の箱の中に収めます。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Prerendered icon</span></td><td >オフの場合iOSはアプリケーションアイコンに光沢やベベル効果を適用します。</td></tr>
+</table>
+<div class='vspace'></div><h4><em>Splash Image（スプラッシュ画像）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetiOSSplash40.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td ><span class='doc-prop'>Mobile Splash Screen (Unity Proのみ)</span></td><td >iOSのスプラッシュ画面に使用されるべきテクスチャを指定。標準のスプラッシュ画面サイズは320×480になります。（このプロパティは、iOSおよびAndroid間で共有されます。）| |</td></tr>
+<tr ><td ><span class='doc-prop'>High Res. iPhone (Unity Proのみ)</span></td><td >iOSの第四世代デバイスのスプラッシュ画面に使用されるべきテクスチャを指定。スプラッシュ画面サイズは640x960。</td></tr>
+<tr ><td ><span class='doc-prop'>iPad Portrait (Unity Proのみ)</span></td><td >iPadの縦向きのスプラッシュ画面として使用されるべきテクスチャーを指定。標準のスプラッシュ画面サイズは768x1024。</td></tr>
+<tr ><td ><span class='doc-prop'>High Res. iPad Portrait</span></td><td >iPadの縦向きの高解像度スプラッシュ画面として使用されるべきテクスチャーを指定。標準のスプラッシュ画面サイズは1536x2048。</td></tr>
+<tr ><td ><span class='doc-prop'>iPad Landscape (Unity Proのみ)</span></td><td >iPadの横向きのスプラッシュ画面として使用されるべきテクスチャーを指定。標準のスプラッシュ画面サイズは1024x768。</td></tr>
+<tr ><td ><span class='doc-prop'>High res. iPad Landscape (Unity Proのみ)</span></td><td >iPad横向きの高解像度スプラッシュ画面として使用されるべきであるテクスチャーを指定。標準のスプラッシュ画面サイズは2048×1536。</td></tr>
+</table>
+<div class='vspace'></div><h4><em>Other Settings（他の設定）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetiOSOther4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+</table><p>レンダリング
+</p><table ><tr ><td  align='left'><span class='doc-prop'>Static Batching</span></td><td  colspan='2'>ビルドでStatic Batchを使用する場合に設定（デフォルトで有効））。Unity Proのみ。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Dynamic Batching</span></td><td  align='left'>ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効）。</td></tr>
+<tr ><td  align='left' colspan='2'><b><em>Identification</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bundle Identifier</span></td><td >お使いのApple Developer Networkのアカウントからプロビジョニング証明書で使用される文字列（これはiOSとAndroidの間で共有されます）。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bundle Version</span></td><td >バンドルのビルドバージョン番号を指定、ビルドバージョンが上がったことを示す（リリースされたかどうかにかかわらず）。単調に増加する、ピリオドで区切られた一つ以上の数字。</td></tr>
+<tr ><td  align='left'><b><em>Configuration</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Target Device</span></td><td >アプリケーションのターゲット　デバイスの種類を指定。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPhone Only</span></span></td><td >アプリケーションのターゲット　デバイスをiPhoneのみとします。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPad Only</span></span></td><td >アプリケーションのターゲット　デバイスをiPadのみとします。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>iPhone + iPad</span></span></td><td >アプリケーションのターゲット　デバイスをiPadおよびiPhoneとします。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Target Resolution</span></td><td >デプロイしたデバイスで使用したい解像度。(この設定は、480×320の最大解像度を持つデバイスには何の影響もありません。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Native(Default Device Resolution)</span></span></td><td >デバイスのネイティブ解像度を使用します。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Auto (Best Performance)</span></span></td><td >解像度を自動選択し、グラフィック品質より性能を重視。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Auto (Best Quality)</span></span></td><td >解像度を自動選択し、性能よりグラフィック品質を重視。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>320p (iPhone)</span></span></td><td >Retina以前 iPhone ディスプレイ</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>640p (iPhone Retina Display)</span></span></td><td >iPhone Retinaディスプレイ</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>768p (iPad)</span></span></td><td >iPadディスプレイ。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Graphics Level</span></td><td >OpenGLバージョン。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>OpenGL ES 1.x</span></span></td><td >OpenGL ES 1.xバージョン。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>OpenGL ES 2.0</span></span></td><td >OpenGL ES 2.0。</td></tr>
+<tr ><td ><span class='doc-prop'>Accelerometer Frequency</span></td><td >加速度計のサンプリング頻度。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Disabled</span></span></td><td >加速度はサンプリングされません。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>15Hz</span></span></td><td >毎秒15サンプル。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>30Hz</span></span></td><td >毎秒30サンプル。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>60Hz</span></span></td><td >毎秒60サンプル。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>100Hz</span></span></td><td >毎秒100サンプル。</td></tr>
+<tr ><td ><span class='doc-prop'>Override iPod Music</span></td><td >オンの場合、アプリケーションはユーザーのiPodの音楽を消音します。オフの場合、ユーザーのiPodの音楽はバックグラウンドで再生され続けます。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>UI Requires Persistent WiFi</span></td><td >アプリケーションで、Wi-Fi接続が必要かどうかを指定。アプリケーションの実行中にiOSがアクティブなWi-Fi接続を切断せずに維持します。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Exit on Suspend</span></td><td >マルチタスクをサポートするiOSのバージョンの場合、バックグラウンドにサスペンドされた際にアプリケーションが終了するかを指定。</td></tr>
+<tr ><td ><span class='doc-prop'>Scripting Define Symbols</span></td><td >カスタム コンパイル フラグ（詳細は<a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.PlatformDependentCompilation'>プラットフォーム依存のコンパイル</a> を参照）。</td></tr>
+<tr ><td  align='left' colspan='2'><b><em>Optimization（最適化）</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Api Compatibility Level</span></td><td >アクティブ.NET APIのプロフィールを指定。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>.Net 2.0</span></span></td><td >.Net 2.0ライブラリ。.Net互換性が最大、ファイルサイズ最大。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>.Net 2.0 Subset</span></span></td><td >.NET互換性は全体の一部、ファイルサイズは小さく。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>AOT compilation options</span></td><td >追加のAOTコンパイラ　オプション。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>SDK Version</span></td><td >XcodeでビルドするiPhone OSのSDKバージョンを指定</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Device SDK</span></span></td><td >実際のハードウェア上で実行するためのSDK。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Simulator SDK</span></span></td><td >シミュレータ上でのみ実行するためのSDK。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Target iOS Version</span></td><td >最終的なアプリケーションを実行することができる最も古いiOSのバージョンを指定し、iOS4.0-6.0の範囲。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Stripping Level (Unity Proのみ)</span></td><td >ビルドされたプレーヤーのファイル容量を小さくするためスクリプト機能の一部を削減するオプション（この設定はiOSとAndroidプラットフォームの間で共有されます）</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Disabled</span></span></td><td >削減は行われません。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Strip Assemblies</span></span></td><td >レベル1の削減。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Strip ByteCode</span></span></td><td >レベル2の削減（レベル1からの削減を含む）。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Use micro mscorlib</span></span></td><td >レベル3の削減（レベル1、2からの削減を含む）。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Script Call Optimization</span></td><td >実行時に速度向上のために例外処理を無効にするオプション。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Slow and Safe</span></span></td><td >完全な例外処理がデバイス上で行われ、若干パフォーマンスに影響します。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Fast but no Exceptions</span></span></td><td >デバイス上の例外データが提供されず、ゲーム実行速度を高めます。</td></tr>
+<tr ><td ><span class='doc-prop'>Optimize Mesh Data</span></td><td >メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）。</td></tr>
+</table>
+<p class='vspace'><b>注意：</b> 例えば、iPhone OS 3.2用にビルドし、Xcode上でSimulator 3.2を選択した場合、エラーが大量に発生します。Unityエディタで<b>必ず</b> 適切なターゲットSDKを選択してください。
+</p></div>
+<p><a name='Android' id='Android'></a>
+</p><a class='androidRef' id='androidRef' href="javascript:ShowHideDiv('androidRef','specific-android', 'Android');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>Android</h1></a>
+<div class='specific-android' style='display: block;' id='specific-android' > 
+<h4><em>Resolution And Presentation（解像度およびスクリーン）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetAndroidResPres4b7.png' alt='' title='' /><br />''Androidビルドのプロジェクト向けの解像度とスクリーン'</div>
+<table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left' colspan='2'><b><em>Resolution</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Orientation</span></td><td >(このプロパティは、iOSおよびAndroid間で共有されます。)</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Portrait</span></span></td><td >デバイスはPortraitモード、持ち方は縦向きでホームボタンが下。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Portrait Upside Down</span></span></td><td >デバイスはPortraitモードで逆さま、持ち方は縦向きでホームボタンが上。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Landscape Right</span></span></td><td >デバイスはLandscapeモード、持ち方は横向きでホームボタンが<b>左</b>。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Landscape Left</span></span></td><td >デバイスはLandscapeモード、持ち方は横向きでホームボタンが<b>右</b>。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Use 32-bit Display Buffer</span></td><td >ディスプレイバッファが32ビットカラー値（デフォルトでは16ビット）を保持するために作成するかを指定。。使用するのは、バンディングが見られる場合や、ImageEffects（画像効果）でアルファを必要とする場合であり、理由はディスプレイバッファと同じ形式にRTを作成するためです。Gingerbread以前のOSではサポートされてません（強制的に16ビットになります）。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Use 24-bit Depth Buffer</span></td><td >（少なくとも）24ビットカラー値を保持するためディスプレイバッファを作成するよう指定。パフォーマンスに影響を及ぼす可能性があるので、'z-fighting'やその他の画像の乱れがある場合のみ使用して下さい。</td></tr>
+<tr ><th >&nbsp;</th><th ></th></tr>
+<tr ><td  colspan='2'>&nbsp;</td></tr>
+<tr ><th  align='left' colspan='2'>Icon（アイコン）</th></tr>
+</table><div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetAndroidIcon4b7.png' alt='' title='' /><br /><em>プロジェクトをビルドしたとき保持するさまざまなアイコン。</em></div>
+<table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Override for Android</span></td><td >Androidゲームで使用したいカスタムアイコンを割り当てる場合、オンにします。異なるサイズのアイコンを、以下の箱の中に収めます。</td></tr>
+<tr ><th >&nbsp;</th><th ></th></tr>
+<tr ><td  colspan='2'>&nbsp;</td></tr>
+<tr ><th  align='left' colspan='2'>Splash Image（スプラッシュ画像）</th></tr>
+</table><div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetAndroidSplash4b7.png' alt='' title='' /><br /><em>プロジェクト起動時に表示されるスプラッシュ画像。</em></div>
+<table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td ><span class='doc-prop'>Mobile Splash Screen (Unity Proのみ)</span></td><td >iOSのスプラッシュ画面に使用されるべきテクスチャを指定。標準のスプラッシュ画面サイズは320×480になります。（これは、AndroidとiOSの間で共有されます）</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Splash Scaling</span></td><td >デバイス上のスプラッシュ画像の拡大・縮小の方法を指定します。</td></tr>
+<tr ><th >&nbsp;</th><th ></th></tr>
+<tr ><td  colspan='2'>&nbsp;</td></tr>
+<tr ><th  align='left' colspan='2'>Other Settings（他の設定）</th></tr>
+</table><div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetAndroidOther4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><td  align='left' colspan='2'><b><em>Rendering</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Static Batching</span></td><td >ビルドでStatic Batchを使用する場合に設定（WebPlayerではデフォルトで無効）。Unity Proのみ。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Dynamic Batching</span></td><td  colspan='2'>ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効） 。</td><td >&nbsp;</td></tr>
+<tr ><td  align='left' colspan='2'><b><em>Identification</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bundle Identifier</span></td><td >お使いのApple Developer Networkのアカウントからプロビジョニング証明書で使用される文字列（これはiOSとAndroidの間で共有されます）。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bundle Version</span></td><td >バンドルのビルドバージョン番号を指定、ビルドバージョンが上がったことを示す（リリースされたかどうかにかかわらず）。単調に増加する、ピリオドで区切られた一つ以上の数字。（これは、iOSとAndroidの間で共有されます）</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Bundle Version Code</span></td><td >内部バージョン番号。この番号はひとつのバージョンが、別のバージョンより新しいかどうかを判断するための数字で、高いほうが新しいです。ユーザーに表示するバージョン番号ではなく、その番号はversionName属性によって設定されます。値は "100"のように、整数として設定しなければなりません。次のバージョンが、より高い数値であるかぎり好きに定義することができます。例えば、ビルド番号でも問題ありません。あるいは"x.y"の形式として、でバージョン番号または、下限と上限の16ビットで個別に "x"と "y"をエンコードし、整数に変換することができます。それとも、単に新しいバージョンをリリースするたびに、1つ数を増やすことができます。</td></tr>
+<tr ><td ><span class='doc-prop'>Minimum API Level</span></td><td >ビルドをサポートするのに最低限必要なAPIの最小バージョン。</td></tr>
+<tr ><td  align='left'><b><em>Configuration</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Graphics Level</span></td><td >ES 1.1（ "固定機能"）またはES 2.0（ 'シェーダベース'）のOpen GLバージョンのいずれかを選択します。AVD（エミュレータ）を使用する場合はES 1.xのみサポートされています。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Install Location</span></td><td >アプリケーションをデバイス上にインストールするロケーションを指定（詳細については、<a class='urllink' href='http://developer.android.com/guide/appendix/install-location.html%e3%82%92%e5%8f%82%e7%85%a7%ef%bc%89%e3%80%82' rel='nofollow'>http://developer.android.com/guide/appendix/install-location.htmlを参照）。</a></td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Automatic</span></span></td><td >OSで自動判断。ユーザーが後からアプリを相互に移動することができます。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Prefer External</span></span></td><td >可能であれば外部ストレージ（SDカード）にアプリをインストールします。OSでは保証されないため、出来ない場合はアプリは内部メモリにインストールされます。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Force Internal</span></span></td><td >強制的に内部メモリにアプリをインストールします。ユーザーはアプリを外部ストレージに移動することができません。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Internet Access</span></td><td >Requireにすると、スクリプトがこれを使用していない場合でも、ネットワークのアクセス許可が有効になります。開発ビルドでは、自動的に有効化されます。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Write Access</span></td><td >External (SDCard)に設定すると、SDカードなどの外部記憶装置への書き込みアクセスを可能にします。開発ビルドでは、自動的に有効化されます。</td></tr>
+<tr ><td ><span class='doc-prop'>Scripting Define Symbols</span></td><td >カスタム コンパイル フラグ（詳細は<a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.PlatformDependentCompilation'>プラットフォーム依存のコンパイル</a> を参照）。</td></tr>
+<tr ><td  align='left' colspan='2'><b><em>Optimization</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Api Compatibility Level</span></td><td >アクティブな.NET API プロファイルを指定。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>.Net 2.0</span></span></td><td >.Net 2.0ライブラリ。.Net互換性が最大、ファイルサイズ最大。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>.Net 2.0 Subset</span></span></td><td >.NET互換性は全体の一部、ファイルサイズは小さく。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Stripping Level (Unity Proのみ)</span></td><td >ビルドされたプレーヤーのファイル容量を小さくするためスクリプト機能の一部を削減するオプション（この設定はiOSとAndroidプラットフォームの間で共有されます）</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Disabled</span></span></td><td >削減は行われません。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Strip Assemblies</span></span></td><td >レベル1の削減。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Strip ByteCode</span></span></td><td >レベル2の削減（レベル1からの削減を含む）。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Use micro mscorlib</span></span></td><td >レベル3の削減（レベル1、2からの削減を含む）。</td></tr>
+<tr ><td ><span class='doc-prop'>Enable "logcat" profiler</span></td><td >プロジェクトのテスト時に、デバイスからフィードバックを取得したい場合はこれを有効にしてください。adbのlogcatを、デバイスからコンソール（開発ビルドでのみ使用可能）にログを出力します。</td></tr>
+<tr ><td ><span class='doc-prop'>Optimize Mesh Data</span></td><td >メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）。</td></tr>
+</table>
+<div class='vspace'></div><table ><tr ><th  align='left' colspan='2'>Publishing Settings（公開設定）</th></tr>
+</table><div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetAndroidPublish40.png' alt='' title='' /><br /><em> Androidマーケット向けの公開設定</em></div>
+<table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left' colspan='2'><b><em>Keystore</em></b></td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Use Existing Keystore / Create New Keystore</span></span></td><td >新しいキーストアを作成するか、既存のものを使用するか、選択するために使用します。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Browse Keystore</span></span></td><td >既存のキーストアを選択します。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Keystore password</span></span></td><td >キーストアのパスワード。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Confirm password</span></span></td><td >パスワード確認、Create New Keystoreオプションが選択された場合にのみ有効。</td></tr>
+<tr ><td  align='left' colspan='2'><b><em>Key</em></b></td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Alias</span></span></td><td >キーのエイリアス。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>Password</span></span></td><td >キーエイリアスのパスワード。</td></tr>
+<tr ><td ><span  style='padding-left: 1.5em;'><span class='doc-prop'>Split Application Binary</span></span></td><td >アプリケーションをExpansion Fileに分割するためのフラグ。Google Playストアで最終ビルドが50MB超えたときにかぎり便利です。</td></tr>
+</table>
+<p class='vspace'>セキュリティ上の理由から、Unityがキーストアのパスワードも、キーのパスワードも、保存しないことに注意してください。また、署名はUnityのプレーヤーの設定から行う必要がありますので注意下さい、jarsignerを使用した場合は機能しません。
+</p></div>
+<div class='vspace'></div><h2>Flash</h2>
+<h4><em>Resolution And Presentation（解像度とスクリーン）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetFlashResPres.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left' colspan='2'><b><em>Resolution</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Width</span></td><td >生成されるPlayerのスクリーン幅。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Height</span></td><td >生成されるPlayerのスクリーン高さ。</td></tr>
+</table>
+<div class='vspace'></div><h4><em>Other Settings</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetFlashOther4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  colspan='2'><b><em>Optimization</em></b></td></tr>
+<tr ><td ><span class='doc-prop'>Stripping</span></td><td >ビルドの際にバイトコードを削減するオプションです。</td></tr>
+<tr ><td ><span class='doc-prop'>Strip Physics Code</span></td><td >必要でない場合に物理エンジンのコードを削減します。</td></tr>
+<tr ><td ><span class='doc-prop'>Optimize Mesh Data</span></td><td >メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）</td></tr>
+</table>
+<div class='vspace'></div><h2>Google Native Client</h2>
+<h4><em>Resolution and Presentation（解像度とスクリーン）</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetNaClResPres4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left' colspan='2'><b><em>Resolution</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Width</span></td><td >生成されるPlayerのスクリーン幅。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Default Screen Height</span></td><td >生成されるPlayerのスクリーン高さ。</td></tr>
+</table>
+<div class='vspace'></div><h4><em>Icon</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetNaClIcon4b7.png' alt='' title='' /><br />プロジェクトをビルドしたとき保持するさまざまなアイコン。''</div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left'><span class='doc-prop'>Override for Web</span></td><td  colspan='2'>ネイティブクライアントのゲームで使用したいカスタムアイコンを割り当てる場合、オンにします。異なるサイズのアイコンを、以下の箱の中に収めます。</td></tr>
+</table>
+<div class='vspace'></div><h4><em>Other Settings</em></h4>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/PlayerSetNaClOther4b7.png' alt='' title='' /></div>
+<div class='vspace'></div><table ><tr ><th  align='left'>Property:</th><th  align='left'>Function:</th></tr>
+<tr ><td  align='left'><b><em>Rendering</em></b></td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Static Batching</span></td><td >ビルドでStatic Batchを使用する場合に設定（WebPlayerではデフォルトで無効））。Unity Proのみ。</td></tr>
+<tr ><td  align='left'><span class='doc-prop'>Dynamic Batching</span></td><td >ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効） 。</td></tr>
+<tr ><td  colspan='2'><b><em>Configuration</em></b></td></tr>
+<tr ><td ><span class='doc-prop'>Scripting Define Symbols</span></td><td >カスタム　コンパイル　フラグ（詳細は<a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.PlatformDependentCompilation'>platform dependent compilationのページ</a> を参照）。</td></tr>
+<tr ><td  colspan='2'><b><em>Optimization</em></b></td></tr>
+<tr ><td  align='left' colspan='2'><span class='doc-prop'>API Compatibility Level</span></td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>.Net 2.0</span></span></td><td >.Net 2.0ライブラリ。.Net互換性が最大、ファイルサイズ最大。</td></tr>
+<tr ><td  align='left'><span  style='padding-left: 1.5em;'><span class='doc-prop'>.Net 2.0 Subset</span></span></td><td >.NET互換性は全体の一部、ファイルサイズは小さく。</td></tr>
+<tr ><td ><span class='doc-prop'>Strip Physics Code</span></td><td >必要でない場合に物理エンジンのコードを削減します。</td></tr>
+<tr ><td ><span class='doc-prop'>Optimize Mesh Data</span></td><td >メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）。</td></tr>
+</table>
+<div class='vspace'></div><h1>Details</h1>
+<a class='desktopRef' id='desktopRef' href="javascript:ShowHideDiv('desktopRef','specific-desktop','Desktop');"><img src="./uploadks/Main/PlatformArrowDown.png"><h1>Desktop</h1> </a>
+<div class='specific-desktop' style='display: block;' id='specific-desktop' > 
+<p>Player Settingsウィンドウで、多くの技術的な設定のデフォルト値がセットされています。<a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.class-QualitySettings'>Quality Settings</a> も参照して、さまざまなグラフィックの品質レベルを設定できることを確認下さい。
+</p>
+<div class='vspace'></div><h3>WebPlayerの公開</h3>
+<p><span class='doc-prop'>Default Web Screen Width</span>および<span class='doc-prop'>Default Web Screen Height</span>で、htmlファイルが使用するサイズを決定します。後からhtmlファイルでサイズを変更できます。
+</p>
+<p class='vspace'><span class='doc-prop'>Default Screen Width</span>および<span class='doc-prop'>Default Screen Height</span> は、Web Player実行時にコンテキストメニューからフルスクリーンモードに入るときに、Web Playerで使用されます。
+</p>
+<div class='vspace'></div><h3>Resolution（解像度）ダイアログのカスタマイズ</h3>
+<div><img src='http://docwiki.unity3d.co.jp/uploads/Main/Resolution-GameLauncher.png' alt='' title='' /><br /><em>エンドユーザに表示されるResolution（解像度）ダイアログ</em></div>
+<p class='vspace'>スタンドアロン　プレーヤーのScreen Resolution（画面解像度）ダイアログにカスタムバナー画像を追加するオプションがあります。画像の最大サイズは432×163ピクセルです。画像は、画面セレクタに合わせて拡大されません。代わりに、センタリングしてトリミングされます。
+</p>
+<div class='vspace'></div><h3>MacのApp Storeへの公開</h3>
+<p><span class='doc-prop'>Use Player Log</span>（プレイヤーログの使用）によりデバッグ情報を含むログファイルの書き込みを有効にします。これはゲームに問題がある場合に、何が起こったかを調べるのに便利です。AppleのMac App Storeのゲームを公開するとき、これをオフにすることを推奨します、そうしなければAppleが提出を拒否することがあります。ログファイルの詳細については<a class='wikilink' href='http://docwiki.unity3d.co.jp/index.php?n=Main.LogFiles'>this manual page</a> を参照下さい。
+</p>
+<p class='vspace'><span class='doc-prop'>Use Mac App Store Validation</span>でMacのApp StoreのReceipt Validationが有効になります。有効にした場合は、Mac App Storeから有効な領収書（Receipt）が含まれている場合のみゲームが実行されます。App Storeで公開するためにAppleにゲームを提出する際に、これを使用します。これにより、購入したもの以外のどれかのコンピュータ上でゲームが実行されることを防ぐことができます。この機能は、強力なコピー防止機能はまったく実装していないことに注意してください。特に、1つのUnityのゲームに対する潜在的なクラックは、他のUnityコンテンツに対しても有効となります。このような理由から、Unityのプラグイン機能を使って独自の領収書のValidationコードを実装し、この設定とあわせて使用することを推奨します。しかし、Appleで画面設定ダイアログを表示する前に初期的にプラグインによるValidationを行うことが必要であることから、このオプションをオンにするべきであり、そうしないとAppleが提出を拒否することがあります。
+</p></div>
+<div class='vspace'></div><a class='iosRef' id='iosRef' href="javascript:ShowHideDiv('iosRef','specific-ios', 'iOS');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>iOS</h1></a>
+<div class='specific-ios' style='display: block;' id='specific-ios' > 
+<h3>バンドル識別子</h3>
+<p><span class='doc-prop'>Bundle Identifier</span>の文字列は、ビルドしたゲームのプロビジョニングプロファイルと一致する必要があります。識別子の基本的な構成は<span class='doc-prop'>com.CompanyName.GameName</span>です。この構成は、あなたが居住している国によって異なりますので、必ずあなたの開発者アカウントでアップルから提供された文字列をデフォルトとして下さい。GameNameは、AppleのiPhone Developer CenterのWebサイトから管理できるプロビジョニング証明書でセットアップされています。どう実行されるかの詳細については<a class='urllink' href='http://developer.apple.com/iphone/' rel='nofollow'>Apple iPhone Developer Center website</a> を参照下さい。
+</p>
+<div class='vspace'></div><h3>Stripping Level(Unity Proのみ)</h3>
+<p>ほとんどのゲームでは必要なすべてのDLLを使用しません。このオプションを使用すると、使用されない部分を削減して、iOSデバイス上のビルドしたプレーヤーのファイル容量を減らすことができます。もしこのオプションにより通常削減されるクラスがゲームで使用されている場合は、ビルド時にデバッグメッセージが表示されます。
+</p>
+<div class='vspace'></div><h3>スクリプト呼び出しの最適化</h3>
+<p>iOSで良い開発を実践するには、例外処理（内部的なもの、またはtry /catchブロックを使用したもの）に依存しないことです。デフォルトの<span class='doc-prop'>Slow and Safe</span>`オプションを使用する場合は、デバイス上で発生した例外がキャッチされ、スタックトレースが提供されます。<span class='doc-prop'>Fast but no Exceptions</span>オプションを使用する場合、例外が発生するとゲームがクラッシュし、スタックトレースが提供されません。しかし、プロセッサが例外処理をする必要がないため、ゲームの実行速度が速くなります。ゲームを一般に向けてリリースするときは<span class='doc-prop'>Fast but no Exceptions</span>オプションを使用して公開することが最善です。
+</p></div>
+<div class='vspace'></div><a class='androidRef' id='androidRef' href="javascript:ShowHideDiv('androidRef','specific-android', 'Android');"><img src="./uploads/Main/PlatformArrowDown.png"><h1>Android</h1></a>
+<div class='specific-android' style='display: block;' id='specific-android' > 
+<h3>バンドル識別子</h3>
+<p><span class='doc-prop'>Bundle Identifier</span>の文字列は、Androidマーケットに公開され、デバイス上にインストールされたときのアプリケーションの一意の名前です。識別子の基本的な構成は<span class='doc-prop'>com.CompanyName.GameName</span>で、任意に選ぶことが出来ます。Unityではこのフィールドは、利便性のためにiOS Player Settingsと共有されています。
+</p>
+<div class='vspace'></div><h3>Stripping Level(Unity Proのみ)</h3>
+<p>ほとんどのゲームでは必要なすべてのDLLを使用しません。このオプションを使用すると、使用されない部分を削減して、Androidデバイス上のビルドしたプレーヤーのファイル容量を減らすことができます。
+</p></div>
+</div>
+
+      </td>
+    </tr></table>
+<!--PageFooterFmt-->
+  <div id='wikifoot'>
+    <div class='footnav'>
+      <a rel="nofollow" href='http://docwiki.unity3d.co.jp/index.php?n=Main.class-PlayerSettings40?action=edit'>Edit</a> -
+      <a rel="nofollow" href='http://docwiki.unity3d.co.jp/index.php?n=Main.class-PlayerSettings40?action=diff&source=y'>History</a> -
+      <a rel="nofollow" href='http://docwiki.unity3d.co.jp/index.php?n=Main.class-PlayerSettings40?action=print' target='_blank'>Print</a> -
+      <a href='http://docwiki.unity3d.co.jp/index.php?n=Site.AllRecentChanges'>Recent Changes</a> -
+      <a href='http://docwiki.unity3d.co.jp/index.php?n=Site.Search'>Search</a> - 
+      <a href='http://docwiki.unity3d.co.jp/index.php?n=Main.class-PlayerSettings40?action=search&q=link=Main.class-PlayerSettings40'>Backlinks</a></div>
+    <div class='lastmod'>Page last modified on 2012-11-24 23:38</div></div>
+<!--HTMLFooter-->
+</body>
+</html>

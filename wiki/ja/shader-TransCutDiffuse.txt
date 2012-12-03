@@ -1,0 +1,11 @@
+!透明カットアウト デフューズ
+
+Attach:Shaders./Shader-TransCutoutDiffuse.png
+
+(:include shader-TransCutFamilyImport:)
+
+(:include shader-DiffuseSubsetImport:)
+
+!! パフォーマンス
+
+一般に、このシェーダでは少ない費用でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

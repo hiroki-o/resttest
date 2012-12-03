@@ -1,0 +1,10 @@
+!透明カットアウト頂点ライティング
+
+Attach:Shaders./Shader-TransCutoutVertex.png
+
+(:include shader-TransCutFamilyImport:)
+
+(:include shader-VertexLitSubsetImport:)
+
+!! パフォーマンス
+一般に、このシェーダでは少ない費用でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

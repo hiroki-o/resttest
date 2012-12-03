@@ -1,0 +1,9 @@
+! UnityGUI グループ
+
+$$UnityGUI$$ は、Unity に組み込まれた GUI 作成システムです。  異なる $$Control$$ の作成およびこれら制御の内容と概観で構成されます。
+
+UnityGUI の $$Component$$ により、制御の外観を定義できます。
+
+(:tocportion:)
+
+UnityGUI を使用した制御の作成およびその内容の定義の詳細については、[[GUI Scripting Guide]] を参照してください。

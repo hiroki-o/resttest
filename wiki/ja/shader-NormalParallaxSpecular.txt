@@ -1,0 +1,11 @@
+! Parallax Bumped Specular
+
+Attach:Shaders./Shader-NormalParallaxBumpSpec.png
+
+(:include shader-ParallaxSubsetImport:)
+
+(:include shader-SpecularSubsetImport:)
+
+!!パフォーマンス
+
+一般に、このシェーダではレンダリングが高価です。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

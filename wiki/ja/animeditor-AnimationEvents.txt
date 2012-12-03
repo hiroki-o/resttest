@@ -1,0 +1,27 @@
+!アニメーションイベントの使用（Using Animation Events）
+
+$$Animation Events$$を使用することでアニメーションクリップを最大限に活用することが出来、タイムラインの特定のタイミングでオブジェクトのスクリプトに含まれる関数呼び出しを行うことが出来ます。
+
+関数はアニメーションイベントにより呼び出され、オプションとして引数をひとつ付加することが出来ます。引数はfloat, string, int, オブジェクト参照、あるいはAnimationEventオブジェクトとすることが出来ます。AnimationEventオブジェクトはメンバ変数を持ち、float, string, int, オブジェクト参照を、関数呼び出しをトリガーしたイベントに関する情報とともに、同時に関数に受け渡すことが出来ます。
+
+[@
+// This JavaScript function can be called by an Animation Event
+function PrintFloat (theValue : float) {
+	Debug.Log ("PrintFloat is called with a value of " + theValue);
+}
+@]
+
+クリップにアニメーションイベントを追加するには、現在の再生位置に^^Event button^^をクリックするか、アニメーションの任意の位置でイベントをトリガーしたいタイミングで、^^Event Line^^をダブルクリックします。イベントを追加した後、マウスでドラッグすることにより位置を再度変更することも出来ます。イベントを削除するには、選択して^^Delete^^を押すか、右クリックしてコンテキストメニューから^^Delete Event^^を選択します。
+
+Attach:AnimationEditorEventLine.png\\
+''$$Animation Events$$を^^Event Line^^に表示。新規に$$Animation Events$$を追加するには^^Event Line^^をダブルクリックするか、^^Event button^^を使用します。''
+
+イベントを追加すると、関数の名前と渡したい引数の値を入力するためにプロンプトがダイアログボックスとして表示されます。
+
+Attach:AnimationEditorEventPopup.png\\
+''$$Animation Event$$でポップアップするダイアログボックスで、どの関数にどの引数の値で呼び出しするか指定出来ます。''
+
+クリップに追加されたイベントはイベントラインでマーカー表示されます。マーカーの上をマウスオーバーすることで関数と引数値がヒント表示されます。
+
+Attach:AnimationEditorEventTooltip.png\\
+''アニメーションイベント　マーカー（^^Animation Event marker^^）の上をマウスオーバーすることで、呼出する関数と引数値が表示されます。''

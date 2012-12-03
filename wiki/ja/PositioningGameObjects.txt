@@ -1,0 +1,79 @@
+! GameObjects の配置
+
+ゲーム作成時に、ゲームの世界に各種オブジェクトを置くことになるでしょう。
+
+
+!! フォーカシング
+
+操作前にシーン ビュー カメラのフォーカスをオブジェクトに合わせると便利な場合があります。  GameObject を選択して、^^F^^ キーを押します。  これにより、選択範囲でシーン ビューおよびピボット点が中央に配置されます。  これはフレーム選択とも呼ばれます。
+
+
+!! 移動、回転および縮小拡大
+
+ツールバーのトランスフォーム ツールを使用して、個々の GameObject を移動、回転、縮小拡大します。  それぞれに、シーンビュー内で選択した GameObject 周辺に表示される対応するギズモがあります。  マウスを使用し、ギズモ軸を操作して、GameObject の $$Transform$$ コンポーネントを変更したり、またはインスペクタのトランスフォーム コンポーネントの数字フィールドに直接値を入力できます。Each of the three transform modes can be selected with a hotkey - __W__ for Translate, __E__ for Rotate and __R__ for Scale.
+
+Attach:TransformGizmo35.png
+(:comment Source psd is TransformGizmo35.psd :)
+
+* クリックして、ギズモの中心でドラッグすると、オブジェクトをすべての軸で一度に操作することができます。
+* At the center of the Translate gizmo, there are three small squares that can be used to drag the object within a single plane (ie, two axes can be moved at once while the third is kept still).
+* 3 ボタン マウスの場合、中央ボタンをクリックして、最後に調整した軸 (黄色に変わります) を直接クリックせずに、調整できます。
+* スケーリング ツール使用時は、不均一なスケール (1、2、1 など) により子オブジェクトに対して、異常なスケーリングが発生する場合があります。
+* GameObject の変形の詳細については、[[class-Transform|Transform Component]] ページを参照してください。
+
+
+!! Gizmo Display Toggles
+
+$$Gizmo Display Toggles$$ は、トランスフォーム ギズモの位置を定義します。 
+
+Attach:HandlePositionButtons.png\\
+''Gizmo Display Toggles''
+
+* 位置:
+** ^^Center^^ は、オブジェクトのレンダリング バウンドの中心にギズモを配置します。
+** ^^Pivot^^ は、メッシュの実際のピボット点にギズモを配置します。
+
+* 回転:
+** ^^Local^^ オブジェクトの回転に対して、ギズモの回転を維持します。
+** ^^Global^^ は、ギズモを世界空間の方向に固定します。
+
+
+!! Unit Snapping
+
+移動ツールを使用して、ギズモ軸をドラッグしたまま、^^Control^^ キー (Mac の場合、^^Command^^) を押したままにすると、$$Snap Settings$$ で定義された増分にスナップできます。
+
+メニュー ^^Edit->Snap Settings...^^ を使用して、単位スナッピングに使用される単位距離を変更できます。
+
+Attach:SceneViewUnitSnappingSettings.png\\
+''シーン ビューの単位スナッピング設定''
+
+
+!! Surface Snapping
+
+移動ツールを使用して、中心でドラッグしたまま、^^Shift^^ と　^^Control^^ キー (Mac の場合、^^Command^^) を押したままにすると、$$Collider$$ の交差部にオブジェクトをスナップできます。 これによって、オブジェクトを驚くほど素早く正確に配置できます。
+
+!! Look-At Rotation
+
+回転ツールを使用して、^^Shift^^ と　^^Control^^ キー (Mac の場合、^^Command^^) を押したままにすると、$$Collider$$ の表面の点に対して、オブジェクトを回転できます。 これにより、それぞれに対するオブジェクトの方向をシンプルできます。
+
+
+!! Vertex Snapping
+
+$$Vertex Snapping$$ 機能を使用して、世界をより簡単に組み立てることができます。 この機能は非常にシンプルですが、強力な Unity のツールです。 これにより、所定のメッシュから頂点を取り、マウスで、その頂点を選択したほかのメッシュからの頂点と同じ位置に配置できます。
+
+この機能を使えば、世界を実に素早く組み立てることができます。 例えば、レース ゲームで高精度の道路を置いたり、メッシュの頂点にパワアップアイテムを追加したりできます。
+
+Attach:SceneViewVertexSnapping.png\\
+''Vertex Snapping での道路の組み立て''
+
+Unityでの Vertex Snapping の使用は非常に簡単です。 次の手順に従うだけで使用できます。
+
+* 操作したいメッシュを選択し、トランスフォーム ツールがアクティブになるのを確認します。
+* ^^V^^ キーを押した__まま__にすると、Vertex Snapping モードが起動します。
+* ピボット点として使用したいメッシュ上の頂点にマウスのカーソルを合わせます。
+* カーソルを希望の頂点に合わせたら、左ボタンを__押したまま__にし、メッシュを別のメッシュ上の別の頂点の隣にドラッグします。
+* 結果に満足したら、マウスのボタンと ^^V^^ キーを離します。
+* ^^Shift-V^^ で、この機能のオンオフを切り替えることができます。
+* 頂点から頂点、頂点から表面、ピボットから頂点へとスナップできます。
+
+Vertex snapping の使用法を映したビデオは、[[http://vimeo.com/10945727 | here]] にあります。

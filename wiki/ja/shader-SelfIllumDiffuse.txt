@@ -1,0 +1,11 @@
+自己発光デフューズ
+
+Attach:Shaders./Shader-IllumDiffuse.png
+
+(:include shader-SelfIllumFamilyImport:)
+
+(:include shader-DiffuseSubsetImport:)
+
+!! パフォーマンス
+
+一般に、このシェーダでは少ない費用でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

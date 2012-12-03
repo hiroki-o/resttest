@@ -1,0 +1,90 @@
+! 枝のプロパティ（Branch Group Properties）
+
+Branch Group Nodeは枝や葉を生成する役割があります。枝、葉や枝+葉ノードを選択した場合、そのプロパティが表示されます。
+
+!! 枝の分布（Distribution）
+グループ内の枝の数と配置を調整します。カーブを使用して位置、回転、スケールを微調整して下さい。カーブは、親の枝、幹の場合は面積に対して相対的に作成されます。
+
+Attach:TreeNode-BranchPropertiesDistribution.png
+
+||``Group Seed``  ||枝（Branch Group）のシード。プロシージャルな自動生成（乱数）のバリエーションのために変更します。||
+||``Frequency``   ||各々の親に対する枝の数を調整。||
+||``Distribution``||親に対して配置する枝の分布。||
+||``Twirl``       ||一ステップの輪生ノード数、輪生（Whorled）分布の場合。本物の植物の場合、通常はフィボナッチ数である。||
+||``Growth Scale``||親ノードに沿ってノードのスケールを定義。カーブとスライダを使用してエフェクトをフェードイン、フェードアウトします。||
+||``Growth Angle``||親ノードに対する成長の初期角度を指定。カーブとスライダを使用してエフェクトをフェードイン、フェードアウトします。||
+
+
+！枝の形状（Geometry）
+枝（Branch Group）に使用される形状と、どのマテリアルが適用されるかを選択します。樹木の品質（``LOD Quality``）に対して``LOD Multiplier``を使って調整することができます``。
+
+Attach:TreeNode-BranchPropertiesGeometry.png
+
+||``LOD Multiplier`` ||樹木の品質（LOD Quality）に対して品質を調整し、樹木全体に対して品質を高くしたり低くなるようにします。||
+||``Geometry Mode``  ||枝（Branch Group）の形状。枝のみ（Branch Only）、枝＋葉（Branch + Fronds）、葉のみ（Fronds Only）。||
+||``Branch Material``||ブランチの主なマテリアル。||
+||``Break Material`` ||折れた枝の先端のマテリアル。
+||
+||``Frond Material`` ||葉のマテリアル。||
+
+
+!! 枝の形（Shape）
+枝の形や成長を調節します。カーブを使用して形の微調整を行います、すべてのカーブは枝自体を基準にしています。
+
+Attach:TreeNode-BranchPropertiesShape.png
+
+||``Length``            ||枝の長さを調整。||
+||``Relative Length``   ||枝の半径がその長さに影響されるかどうかを決定||
+||``Radius``            ||枝の半径を調整、カーブを使用して枝の長さに対する半径を微調整します。||
+||``Cap Smoothing``     ||枝の先端の丸さを定義。サボテンに便利です。||
+||!Growth               ||!枝の成長を調整します。||
+||``Crinkliness``       ||どれだけ曲がった/縮れたにするか、カーブを使用して微調整します。||
+||``Seek Sun``          ||カーブを使用して枝が上向き/下向に曲がるか調整し、スライダを使用してスケールを変更します。||
+||!Surface Noise        ||!枝の表面ノイズを調整します。||
+||``Noise``             ||全体的なノイズ要素の指定、カーブを使用して微調整します。||
+||``Noise Scale U``     ||枝の周りのノイズのスケール、値が小さいほどグラグラした外観となり、値が高いほど正規分布のような外観となる。||
+||``Noise Scale V``     ||枝に沿ったノイズのスケール、値が小さいほどグラグラした外観となり、値が高いほど正規分布のような外観となる。||
+||!Flare幹のフレアを定義します。||
+||``Flare Radius``      ||フレアの半径を幹の半径に加算します。ゼロの場合はフレアなしです。||
+||``Flare Height``      ||フレアが始まる幹の高さを定義||
+||``Flare Noise``       ||フレアのノイズを定義、値が小さいほどグラグラした外観となり、値が高いほど正規分布のような外観となる。||
+
+Attach:TreeNode-BranchPropertiesShapeFrond.png
+
+__これらのプロパティは幹でなく（子にあたる）枝で使用します。__
+||! Welding             ||!親枝に対する枝の溶けこみを定義します。二次的な枝に対してのみ有効です。||
+||``Weld Length``       ||溶けこみの広がりが始まる枝の高さを定義します。||
+||``Spread Top``        ||親の枝に対して枝の上のほうの溶け込みの広がり（spread）要素。ゼロの場合は広がり（spread）なしです。ゼロは広がり（spread）なしを意味します。||
+||``Spread Bottom``     ||親の枝に対して枝の下のほうの溶け込みの広がり（spread）要素。ゼロは広がり（spread）なしを意味します。||
+
+
+!! 折れた枝（Breaking）
+枝の折れ方を制御します。
+
+Attach:TreeNode-BranchPropertiesBreaking.png
+
+||``Break Chance``  ||枝の折れる確率、すなわち0で折れた枝なし、0.5で半分が折れた枝、1.0で全てが折れた枝になります。||
+||``Break Location``||折れた枝の範囲を指定。枝の長さを基準とします。||
+
+
+!! 葉（Fronds）
+葉の数とそのプロパティを調整することができます。あなたが``Geometry``タブでFrondsを有効にしている場合のみ表示されます。
+
+Attach:TreeNode-BranchPropertiesFronds.png
+
+||``Frond Count``   ||枝ごとの葉の数を定義。葉は常に均等に枝の周りに配置されます。||
+||``Frond Width``   ||葉の幅、カーブを使用して枝に沿って形を調整します。||
+||``Frond Range``   ||葉の開始点と終了点を定義します。||
+||``Frond Rotation``||親の枝のまわりの回転を定義します。||
+||``Frond Crease``  ||葉のしわ／折れを調整します。||
+
+
+!! アニメーション
+枝（Branch Group）をアニメーションするために使用されるパラメータを調整します。風（Wind Zone）は再生時のみ有効です。
+
+Attach:TreeNode-BranchPropertiesAnimation.png
+
+||``Main Wind``       ||一次的な風のエフェクト。緩やかに揺れるモーションが作成され、通常、一次的な枝で必要な唯一のパラメータです。||
+||``Main Turbulence`` ||二次的乱流（Turbulence）効果。枝ごとに個々の、正規分布のモーションをより多く生みます。典型的には、シダやヤシの木など、枝に葉が茂る木で使用します。||
+||``Edge Turbulence`` ||葉のエッジに沿った乱流（Turbulence）。シダ、ヤシの木などで役立ちます||
+||``Create Wind Zone``||風（[[class-WindZone | Wind Zone]] ）を作成します。||

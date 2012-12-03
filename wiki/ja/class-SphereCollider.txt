@@ -1,0 +1,34 @@
+!球体コライダ
+$$Sphere Collider$$ は、基本的な球体形状の衝突プリミティブです。
+
+Attach:Inspector-SphereCollider.png\\
+''球体コライダの積み重ね''
+
+
+!!プロパティ
+
+||PROPS
+(:include comp-ColliderProps:)
+||``Radius`` ||コライダのサイズ。 ||
+||``Center`` ||オブジェクトのローカル空間でのコライダの位置。 ||
+
+
+!!詳細
+
+球体コライダは、均一なスケールにサイズ変更できますが、個々の軸に沿ってサイズ変更はされません。 落下する医師や、卓球の球、ビー玉などに最適です。
+
+Attach:spherecollider.png
+''標準の球体コライダ''
+
+(:include comp-ColliderDetails:)
+
+
+!!合成物コライダ
+(:include comp-ColliderCompound:)
+
+
+!!ヒント
+(:include comp-ColliderHints:)
+* 爆発を作成したい場合、リジッドボディが衝突する壁から若干押し出すためには、何度もドラッグして、リジッドボディと球体コライダをそこに追加すると非常に有効な場合があります。
+
+(:include comp-ColliderAdvanced:)

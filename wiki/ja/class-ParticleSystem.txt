@@ -1,0 +1,19 @@
+!パーティクルシステム（Shuriken）
+
+Unityの中のパーティクルシステムは、大量の煙、蒸気、炎やその他の大気圏エフェクトを作るために使用されます。
+
+Attach:ShurikenFrontPageFlare.png
+
+新規にParticle Systemを作成するには``Particle System``ゲームオブジェクトを作成（メニューで^^GameObject^^ -> ^^Create Other^^ -> ^^Particle System^^を選択）するか、空の``GameObject``を作成して ``ParticleSystem``コンポーネントを追加します。（メニューで^^Component^^->^^Effects^^を選択）
+
+(:include ParticleSystemInspector:)
+
+!!シーンビューの編集
+パーティクルシステムを作成および編集するとき^^Inspector^^または拡張された^^Particle Editor^^を使用し、その変更内容は^^SceneView^^に反映されます。シーンビューには^^Preview Panel^^があり、現在選択した^^Particle Effect^^のプレイバックを編集モードで制御することが出来、アクションとして^^play^^、^^pause^^、^^stop^^および^^scrubbing playback time^^が用意されています。
+
+Attach:ShurikenPreviewPanel.png
+
+'Playback Time''ラベルをドラッグすることにより、プレイバック時間をこすって調整することができます。全てのプレイバックコントロールにはショートカットキーがあり、それらは[[Preferences|Preferencesウィンドウ]] にてカスタム設定できます。
+
+(:include ParticleSystemCurveEditor:) 
+(:include ParticleSystemColorEditor:)

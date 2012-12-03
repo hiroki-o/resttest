@@ -1,0 +1,13 @@
+!反射バンプ型デフューズ
+
+Attach:Shaders./Shader-ReflBump.png
+
+(:include shader-ReflectiveFamilyImport:)
+
+(:include shader-BumpSubsetImport:)
+
+(:include shader-DiffuseSubsetImport:)
+
+!!パフォーマンス
+
+一般に、このシェーダでは少ない費用でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

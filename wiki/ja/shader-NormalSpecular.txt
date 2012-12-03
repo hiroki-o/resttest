@@ -1,0 +1,9 @@
+! Specular（鏡面）
+
+Attach:Shaders./Shader-NormalSpec.png
+
+(:include shader-SpecularSubsetImport:)
+
+!!パフォーマンス
+
+一般に、このシェーダでは安価でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

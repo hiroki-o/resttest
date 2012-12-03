@@ -1,0 +1,11 @@
+!透明デフューズ
+
+Attach:Shaders./Shader-TransDiffuse.png
+
+(:include shader-TransFamilyImport:)
+
+(:include shader-DiffuseSubsetImport:)
+
+!! パフォーマンス
+
+一般に、このシェーダでは少ない費用でレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

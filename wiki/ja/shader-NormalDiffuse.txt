@@ -1,0 +1,9 @@
+! ディフューズ
+
+Attach:Shaders./Shader-NormalDiffuse.png
+
+(:include shader-DiffuseSubsetImport:)
+
+!!パフォーマンス
+
+一般に、このシェーダでは少ないコストでレンダリングできます。  詳細については、[[shader-Performance | Shader Peformance page]] を参照してください。

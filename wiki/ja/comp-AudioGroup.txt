@@ -1,0 +1,5 @@
+! オーディオ コンポーネント
+これらの $$Component$$ は、Unity の音声を実行します。
+
+* [[class-AudioListener|Audio Listener]] - これを $$Camera$$ に追加し、3D 位置音声を取得します。
+* [[class-AudioSource|Audio Source]] - このコンポーネントを $$GameObject$$ に追加し、音声を再生させます。

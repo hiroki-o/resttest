@@ -1,0 +1,15 @@
+!Reflective Parallax Specular
+
+Attach:Shaders./Shader-ReflParallaxBumpSpec.png
+
+このシェーダの考慮点は、ベーステクスチャのアルファチャネルが（Reflection Map）反射マップと（Specular Map）鏡面マップの両方として2倍になることです。
+
+(:include shader-ReflectiveFamilyImport:)
+
+(:include shader-ParallaxSubsetImport:)
+
+(:include shader-SpecularSubsetImport:)
+
+!!パフォーマンス
+
+一般に、このシェーダはよりレンダリングが高価です。詳細については[[shader-Performance | Shader Peformance page]] を参照下さい。

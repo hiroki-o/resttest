@@ -1,0 +1,7 @@
+! Assets　Component
+
+$$Assets$$はゲーム作成で使用するモデル、テクスチャ、サウンドやその他のコンテンツファイルです。 
+
+本項ではすべてのAssetsタイプにわたって$$Component$$について説明します。一般的なAssetsの概要については[[Asset Import and Creation| Assets概要ページ]] を参照のこと。
+
+(:tocportion:)

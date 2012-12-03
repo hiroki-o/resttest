@@ -1,0 +1,432 @@
+! Player Settings
+
+Unityで構築するゲームの最終版のために様々なパラメータを（プラットフォーム固有の）定義する場所が$$Player Settings$$（プレイヤー設定）です。例えば、これらの値の一部は、スタンドアロンゲームを開いたときに起動する$$Resolution Dialog$$で使用されているものもあれば、XcodeでiOSデバイス用のゲームを構築する際に使用されるものもあるので、それらを正しく記入することが重要です。
+
+Player Settingsを見るにはメニューで^^Edit->Project Settings->Player^^を選択します。
+
+Attach:PlayerSetInspTop.png\\
+''作成した全てのプロジェクトに適用されるグローバル設定'''
+
+||PROPS
+||!Cross-Platform Properties      ||||
+||``Company Name`` ||会社の名前設定ファイルのロケーションとして使用||
+||``Product Name`` ||ゲーム実行時にメニューバーに表示される名前であり、設定ファイルのロケーションとして使用。||
+||``Default Icon`` ||全てのプラットフォームでアプリケーションが使用するデフォルトのアイコン（プラットフォーム固有のニーズに合わせて後でこれを上書きすることができます）||
+||``Default Cursor`` ||サポートされるすべてのプラットフォーム上でアプリケーションが使用するデフォルトのカーソル。||
+||``Cursor Hotspot`` ||カーソルのホットスポット位置をデフォルトのカーソルの左上隅からピクセル単位で指定||
+
+!Per-Platform Settings
+!Desktop!
+>>desktop<<
+!!Web Player
+
+!!!!''Resolution And Presentation（解像度およびスクリーン）''
+
+Attach:PlayerSetWebResPres.png
+
+||PROPS
+||__''Resolution''__              ||||
+||``Default Screen Width``     ||生成されるWeb Playerのスクリーン幅||
+||``Default Screen Height``    ||生成されるWeb Playerのスクリーン高さ||
+||``Run in background``        ||Web Playerがフォーカスを失った場合もゲームの実行を止めたくない場合にチェック||
+||__''WebPlayer Template''__      ||詳細については[[UsingWebPlayertemplates | "Using WebPlayer templates page"]] をチェックする必要があります、本項では各々の内臓、カスタムのテンプレートについては、アイコンで示しています。||
+
+!!!!''Icon（アイコン）''
+
+Attach:PlayerSetWebIcon4b7.png
+
+アイコンはWebPlayerビルドでは無効（Player Settingsの各ネイティブ　クライアント　ビルドのセクションでアイコンを設定できます）
+
+!!!!''Other Settings''
+
+Attach:PlayerSetWebOther4b7.png
+
+||PROPS
+||__''Rendering''__               ||
+||``Rendering Path``           ||このプロパティは、スタンドアロンおよびWebPlayerコンテンツ間で共有されます。||
+||>>>``Vertex Lit``               ||ライティング再現性はもっとも低く、シャドウはサポートしていない。古いマシンや限られたモバイルプラットフォーム上での使用に最適。||
+||>>>``Forward with Shaders``     ||ライティング機能のサポートは良い、シャドウはサポートは限定的
+||
+||>>>``Deferred Lighting``        ||ライティングとシャドウ機能は、最良のサポートを提供するものの、ハードウェアで一定水準のサポートが必要。多くのリアルタイムのライトがある場合に最適。Unity Proのみ。||
+||``Color Space``||レンダリングに使用する色空間||
+||>>>``GammaSpace Rendering``||レンダリングのガンマ補正||
+||>>>``Linear Rendering Hardware Sampling``||レンダリングを線形空間で実行||
+||``Use Direct3D 11``||レンダリングにDirect3D 11を使用。||
+||``Static Batching``             ||ビルドでStatic Batchを使用する場合に設定（WebPlayerではデフォルトで無効））。Unity Proのみ。||
+||``Dynamic Batching``            ||ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効） 。||
+||__''Streaming''__               ||||
+||``First Streamed Level``     ||Streamed Web Playerを公開する場合、Resources.Loadアセットにアクセスできる最初のレベルのインデックス||
+||__''Configuration''__||||
+||``Scripting Define Symbols``||カスタム　コンパイル　フラグ（詳細は[[PlatformDependentCompilation|platform dependent compilationのページ]] を参照）。||
+||__''Optimization''__||||
+||``Optimize Mesh Data``||メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）||
+!!Standalone（スタンドアロン）
+!!!!''Resolution And Presentation'（解像度およびスクリーン）'
+
+Attach:PlayerSetPCResPres4b7.png
+
+||PROPS
+||__''Resolution''__              ||||
+||``Default Screen Width``     ||スタンドアロン　ゲームがデフォルトで使用するスクリーン幅。||
+||``Default Screen Height``    ||Playerががデフォルトで使用するスクリーンの高さ。||
+||``Run in background``        ||フォーカスを失った場合もゲームの実行を止めたくない場合にチェック。||
+||__''Standalone Player Options''__||||
+||``Default is Full Screen``   ||ゲーム起動時にデフォルトでフルスクリーンモードとしたい場合、これをチェックします。||
+||``Capture Single Screen``    ||オンにした場合、スタンドアロンゲームはフルスクリーンモードのゲームはマルチモニターの設定において2つめのモニタを暗くしません。||
+||``DisplayResolution Dialog`` ||||
+||>>>``Disabled``                 ||ゲーム開始時にResolution （解像度）ダイアログを表示しない。||
+||>>>``Enabled``                  ||ゲーム開始時にResolution （解像度）ダイアログを表示。||
+||``Hidden by default``        ||Resolution（解像度）Playerを、ゲーム起動時に "Alt"キーを押した場合のみ表示。||
+||``Use Player Log``          ||デバッグ情報を含むログを書きこむ。Mac App Storeに申請を提出する予定がある場合は、このオプションのチェック解除しておきます。デフォルトはチェックがオンになってます。||
+||``Resizable Window``        ||スタンドアロンのFlash Playerウィンドウサイズをユーザーで変更できるようにします。||
+||``Mac App Store Validation``          ||MacのApp StoreのReceipt Validationを有効化。||
+||``Mac Fullscreen Mode``||Macビルドでフルスクリーンモードのオプション。||
+||>>>``Capture Display``||Unityがディスプレイ全体をコントロール（すなわち、他のアプリでGUIが表示されず、ユーザーはフルスクリーンモードを終了するまでアプリを切り替えることはできません）。||
+||>>>``Fullscreen Window``||Unityが画面全体を覆うデスクトップの解像度でウィンドウ実行します。他のアプリのGUIは正しく表示され、OSX 10.7以上でCmd +Tabまたはトラックパッドのジェスチャーでアプリを切り替えることが可能。||
+||>>>``Fullscreen Window with Menu Bar and Dock``||フルスクリーンウィンドウモードと同様だが、標準のメニューバーとDockにも表示。||
+||``Supported Aspect Ratios``  ||Resolutionダイアログで選択できるアスペクト比は、このリストで有効なアイテムであり、モニターがサポートする解像度になります。||
+
+
+!!!!''Icon（アイコン）''
+
+Attach:PlayerSetPCIcon4b7.png
+
+||PROPS
+||``Override for Standalone``  ||スタンドアロンのゲームに使用したいカスタムアイコンを割り当る場合はオンにします。異なるサイズのアイコンを、以下の箱の中に収めます。||
+
+!!!!''Splash Image（スプラッシュ画像）''
+
+Attach:PlayerSetPCSplash4b7.png
+
+||PROPS
+||``Config Dialog Banner``     ||ゲーム開始時に表示されるカスタムのスプラッシュ画像を追加。||
+
+
+!!!!''他の設定
+
+Attach:PlayerSetPCOther4b7.png
+
+||PROPS
+||__''Rendering''__               ||
+||``Rendering Path``              ||このプロパティは、スタンドアロンおよびWebPlayerコンテンツ間で共有されます。||
+||>>>``Vertex Lit``               ||ライティング再現性はもっとも低く、シャドウはサポートしていない。古いマシンや限られたモバイルプラットフォーム上での使用に最適。||
+||>>>``Forward with Shaders``     ||ライティング機能のサポートは良い、シャドウのサポートは限定的||
+ライティングとシャドウ機能は、最良のサポートを提供するものの、ハードウェアで一定水準のサポートが必要。
+多くのリアルタイムのライトがある場合に最適。Unity Proのみ。||
+||``Color Space``||レンダリングに使用する色空間。||
+||>>>``GammaSpace Rendering``||レンダリングのガンマ補正。||
+||>>>``Linear Rendering Hardware Sampling``||レンダリングを線形空間で実行
+||``Static Batching``             ||ビルドでStatic Batchを使用する場合に設定（WebPlayerではデフォルトで無効））。Unity Proのみ。||
+||``Dynamic Batching``            ||ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効） 。||||
+||__''Configuration''__||||
+||``Scripting Define Symbols``||カスタム　コンパイル　フラグ（詳細は[[PlatformDependentCompilation|platform dependent compilationのページ]] を参照）。||
+||__''Optimization''__||||
+||``API Compatibility Level``     ||||
+||>>>``.Net 2.0``                 ||.Net 2.0ライブラリ。.Net互換性が最大、ファイルサイズ最大。|| 
+||>>>``.Net 2.0 Subset``          ||.NET互換性は全体の一部、ファイルサイズは小さく。||
+||``Optimize Mesh Data``||メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）||||
+>><<
+
+[[#iOS]]
+!iOS!
+>>ios<<
+!!!!''Resolution And Presentation（解像度およびスクリーン）''
+
+Attach:PlayerSetiOSResPres.png
+
+||PROPS
+||__''Resolution''__                    ||||
+||``Default Orientation``               ||(このプロパティは、iOSおよびAndroid間で共有されます。)||
+||>>>``Portrait``                       ||デバイスはPortraitモード、持ち方は縦向きでホームボタンが下。||
+||>>>``Portrait Upside Down``||デバイスはPortraitモードで逆さま、持ち方は縦向きでホームボタンが上。||
+||>>>``Landscape Right``     ||デバイスはLandscapeモード、持ち方は横向きでホームボタンが__左__。||
+||>>>``Landscape Left``                 ||デバイスはLandscapeモード、持ち方は横向きでホームボタンが__右__。||
+||>>>``Auto Rotation``                  ||画面の向きが自動的に物理デバイスの向きに基づいて設定されます。
+||__''Auto Rotation settings''__        ||||
+||>>>``Use Animated Autorotation``      ||チェックがオンの場合、向きの変更が適用される。Default orientationが Auto Rotation.の場合のみ適用。
+||__''Auto Rotationで許容される解像度''__    ||||
+||>>>``Portrait``                       ||オンのときはPortraitモードを許可。Default OrientationがAuto Rotationに設定されている場合にのみ適用。
+||>>>``Portrait Upside Down``           ||オンのときはPortraitモード（逆さま）を許可。デフォルトの向きはDefault OrientationがAuto Rotationに設定されている場合にのみ適用。
+||>>>``Landscape Right``                ||オンのときはLandscapeモード（ホームボタンが__左__）を許可。Default orientationが Auto Rotation.の場合のみ適用。
+||>>>``Landscape Left``                ||オンのときはLandscapeモード（ホームボタンが__左__）を許可。Default OrientationがAuto Rotationに設定されている場合にのみ適用。
+||__''Status Bar''__                    ||||
+||``Status Bar Hidden``        ||アプリケーションの起動時にステータスバーが最初に隠されているかどうかを指定します。||
+||``Status Bar Style``         ||アプリケーションの起動時の、ステータスバーのスタイルを指定します||
+||>>>``Default``                  ||||
+||>>>``Black Translucent``        ||||
+||>>>``Black Opaque``             ||||
+||``Use 32-bit Display Buffer``        ||32ビットカラー値を保持するためにディスプレイバッファを作成するよう指定（デフォルトでは16ビット）。使用するのは、バンディングが見られる場合や、ImageEffects（画像効果）でアルファを必要とする場合であり、理由はディスプレイバッファと同じ形式にRTを作成するためです。||
+||``Show Loading Indicator``||ローディング　インジケータのオプション||
+||>>>``Don't Show``||インジケータなし。||
+||>>>``White Large``||白色で大きいインジケータを表示。||
+||>>>``White``||白色で通常の大きさのインジケータを表示。||
+||>>>``Gray``||灰色で通常サイズのインジケータを表示。||
+
+!!!!''Icon（アイコン）''
+
+Attach:PlayerSetiOSIcon4b7.png
+
+||PROPS
+||``Override for iOS``      ||iPhone / iPadのゲームに使用したいカスタムアイコンを割り当てる場合オンにします。異なるサイズのアイコンを、以下の箱の中に収めます。||
+||``Prerendered icon``           ||オフの場合iOSはアプリケーションアイコンに光沢やベベル効果を適用します。||
+
+!!!!''Splash Image（スプラッシュ画像）''
+
+Attach:PlayerSetiOSSplash40.png
+
+||PROPS
+||``Mobile Splash Screen (Unity Proのみ)``||iOSのスプラッシュ画面に使用されるべきテクスチャを指定。標準のスプラッシュ画面サイズは320×480になります。（このプロパティは、iOSおよびAndroid間で共有されます。）| |
+||``High Res. iPhone (Unity Proのみ)``||iOSの第四世代デバイスのスプラッシュ画面に使用されるべきテクスチャを指定。スプラッシュ画面サイズは640x960。||
+||``iPad Portrait (Unity Proのみ)``||iPadの縦向きのスプラッシュ画面として使用されるべきテクスチャーを指定。標準のスプラッシュ画面サイズは768x1024。||
+||``High Res. iPad Portrait``||iPadの縦向きの高解像度スプラッシュ画面として使用されるべきテクスチャーを指定。標準のスプラッシュ画面サイズは1536x2048。||
+||``iPad Landscape (Unity Proのみ)``||iPadの横向きのスプラッシュ画面として使用されるべきテクスチャーを指定。標準のスプラッシュ画面サイズは1024x768。||
+||``High res. iPad Landscape (Unity Proのみ)``||iPad横向きの高解像度スプラッシュ画面として使用されるべきであるテクスチャーを指定。標準のスプラッシュ画面サイズは2048×1536。||
+
+!!!!''Other Settings（他の設定）''
+
+Attach:PlayerSetiOSOther4b7.png
+
+||PROPS
+レンダリング
+||``Static Batching``             ||ビルドでStatic Batchを使用する場合に設定（デフォルトで有効））。Unity Proのみ。||||
+||``Dynamic Batching``            ||ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効）。 ||
+||__''Identification''__          ||||
+||``Bundle Identifier``           ||お使いのApple Developer Networkのアカウントからプロビジョニング証明書で使用される文字列（これはiOSとAndroidの間で共有されます）。||
+||``Bundle Version``              ||バンドルのビルドバージョン番号を指定、ビルドバージョンが上がったことを示す（リリースされたかどうかにかかわらず）。単調に増加する、ピリオドで区切られた一つ以上の数字。
+||__''Configuration''__           ||
+||``Target Device``               ||アプリケーションのターゲット　デバイスの種類を指定。||
+||>>>``iPhone Only``              ||アプリケーションのターゲット　デバイスをiPhoneのみとします。||
+||>>>``iPad Only``                ||アプリケーションのターゲット　デバイスをiPadのみとします。||
+||>>>``iPhone + iPad``            ||アプリケーションのターゲット　デバイスをiPadおよびiPhoneとします。||
+||``Target Resolution``           ||デプロイしたデバイスで使用したい解像度。(この設定は、480×320の最大解像度を持つデバイスには何の影響もありません。||
+||>>>``Native(Default Device Resolution)``||デバイスのネイティブ解像度を使用します。||
+||>>>``Auto (Best Performance)``  ||解像度を自動選択し、グラフィック品質より性能を重視。||
+||>>>``Auto (Best Quality)``      ||解像度を自動選択し、性能よりグラフィック品質を重視。||
+||>>>``320p (iPhone)``            ||Retina以前 iPhone ディスプレイ||
+||>>>``640p (iPhone Retina Display)``||iPhone Retinaディスプレイ||
+||>>>``768p (iPad)``              ||iPadディスプレイ。||
+||``Graphics Level``              ||OpenGLバージョン。||
+||>>>``OpenGL ES 1.x``            ||OpenGL ES 1.xバージョン。||
+||>>>``OpenGL ES 2.0``            ||OpenGL ES 2.0。||
+||``Accelerometer Frequency``||加速度計のサンプリング頻度。||
+||>>>``Disabled``||加速度はサンプリングされません。||
+||>>>``15Hz``||毎秒15サンプル。||
+||>>>``30Hz``||毎秒30サンプル。||
+||>>>``60Hz``||毎秒60サンプル。||
+||>>>``100Hz``||毎秒100サンプル。||
+||``Override iPod Music``||オンの場合、アプリケーションはユーザーのiPodの音楽を消音します。オフの場合、ユーザーのiPodの音楽はバックグラウンドで再生され続けます。||
+||``UI Requires Persistent WiFi`` ||アプリケーションで、Wi-Fi接続が必要かどうかを指定。アプリケーションの実行中にiOSがアクティブなWi-Fi接続を切断せずに維持します。||
+||``Exit on Suspend`` ||マルチタスクをサポートするiOSのバージョンの場合、バックグラウンドにサスペンドされた際にアプリケーションが終了するかを指定。||
+||``Scripting Define Symbols``||カスタム コンパイル フラグ（詳細は[[PlatformDependentCompilation |プラットフォーム依存のコンパイル]] を参照）。
+||__''Optimization（最適化）''__            ||||
+||``Api Compatibility Level``     ||アクティブ.NET APIのプロフィールを指定。||
+||>>>``.Net 2.0``                 ||.Net 2.0ライブラリ。.Net互換性が最大、ファイルサイズ最大。||
+||>>>``.Net 2.0 Subset``          ||.NET互換性は全体の一部、ファイルサイズは小さく。||
+||``AOT compilation options``     ||追加のAOTコンパイラ　オプション。||
+||``SDK Version``                 ||XcodeでビルドするiPhone OSのSDKバージョンを指定||
+||>>>``Device SDK``               ||実際のハードウェア上で実行するためのSDK。||
+||>>>``Simulator SDK``            ||シミュレータ上でのみ実行するためのSDK。||
+||``Target iOS Version``          ||最終的なアプリケーションを実行することができる最も古いiOSのバージョンを指定し、iOS4.0-6.0の範囲。||
+||``Stripping Level (Unity Proのみ)`` ||ビルドされたプレーヤーのファイル容量を小さくするためスクリプト機能の一部を削減するオプション（この設定はiOSとAndroidプラットフォームの間で共有されます）||
+||>>>``Disabled``         ||削減は行われません。||
+||>>>``Strip Assemblies`` ||レベル1の削減。||
+||>>>``Strip ByteCode`` ||レベル2の削減（レベル1からの削減を含む）。||
+||>>>``Use micro mscorlib`` ||レベル3の削減（レベル1、2からの削減を含む）。||
+||``Script Call Optimization`` ||実行時に速度向上のために例外処理を無効にするオプション。||
+||>>>``Slow and Safe`` ||完全な例外処理がデバイス上で行われ、若干パフォーマンスに影響します。||
+||>>>``Fast but no Exceptions`` ||デバイス上の例外データが提供されず、ゲーム実行速度を高めます。||
+||``Optimize Mesh Data``||メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）。||
+
+__注意：__ 例えば、iPhone OS 3.2用にビルドし、Xcode上でSimulator 3.2を選択した場合、エラーが大量に発生します。Unityエディタで__必ず__ 適切なターゲットSDKを選択してください。
+>><<
+[[#Android]]
+!Android!
+>>android<<
+!!!!''Resolution And Presentation（解像度およびスクリーン）''
+Attach:PlayerSetAndroidResPres4b7.png\\
+''Androidビルドのプロジェクト向けの解像度とスクリーン'
+||PROPS
+||__''Resolution''__              ||||
+||``Default Orientation``         ||(このプロパティは、iOSおよびAndroid間で共有されます。)||
+||>>>``Portrait``                 ||デバイスはPortraitモード、持ち方は縦向きでホームボタンが下。||
+||>>>``Portrait Upside Down``     ||デバイスはPortraitモードで逆さま、持ち方は縦向きでホームボタンが上。||
+||>>>``Landscape Right``     ||デバイスはLandscapeモード、持ち方は横向きでホームボタンが__左__。||
+||>>>``Landscape Left``                 ||デバイスはLandscapeモード、持ち方は横向きでホームボタンが__右__。||
+||``Use 32-bit Display Buffer``        ||ディスプレイバッファが32ビットカラー値（デフォルトでは16ビット）を保持するために作成するかを指定。。使用するのは、バンディングが見られる場合や、ImageEffects（画像効果）でアルファを必要とする場合であり、理由はディスプレイバッファと同じ形式にRTを作成するためです。Gingerbread以前のOSではサポートされてません（強制的に16ビットになります）。||
+||``Use 24-bit Depth Buffer``        ||（少なくとも）24ビットカラー値を保持するためディスプレイバッファを作成するよう指定。パフォーマンスに影響を及ぼす可能性があるので、'z-fighting'やその他の画像の乱れがある場合のみ使用して下さい。||
+||!                               ||!||
+||                                ||||
+||!Icon（アイコン）                           ||||
+Attach:PlayerSetAndroidIcon4b7.png\\
+''プロジェクトをビルドしたとき保持するさまざまなアイコン。''
+||PROPS
+||``Override for Android``        ||Androidゲームで使用したいカスタムアイコンを割り当てる場合、オンにします。異なるサイズのアイコンを、以下の箱の中に収めます。||
+||!                               ||!||
+||                                ||||
+||!Splash Image（スプラッシュ画像）                    ||||
+Attach:PlayerSetAndroidSplash4b7.png\\
+''プロジェクト起動時に表示されるスプラッシュ画像。''
+||PROPS
+||``Mobile Splash Screen (Unity Proのみ)``||iOSのスプラッシュ画面に使用されるべきテクスチャを指定。標準のスプラッシュ画面サイズは320×480になります。（これは、AndroidとiOSの間で共有されます）||
+||``Splash Scaling``              ||デバイス上のスプラッシュ画像の拡大・縮小の方法を指定します。||
+||!                               ||!||
+||                                ||||
+||!Other Settings（他の設定）                 ||||
+Attach:PlayerSetAndroidOther4b7.png
+
+||__''Rendering''__               ||||
+||``Static Batching``             ||ビルドでStatic Batchを使用する場合に設定（WebPlayerではデフォルトで無効）。Unity Proのみ。||
+||``Dynamic Batching``            ||ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効） 。|||| ||
+||__''Identification''__          ||||
+||``Bundle Identifier``           ||お使いのApple Developer Networkのアカウントからプロビジョニング証明書で使用される文字列（これはiOSとAndroidの間で共有されます）。||
+||``Bundle Version``              ||バンドルのビルドバージョン番号を指定、ビルドバージョンが上がったことを示す（リリースされたかどうかにかかわらず）。単調に増加する、ピリオドで区切られた一つ以上の数字。（これは、iOSとAndroidの間で共有されます）||
+||``Bundle Version Code``         ||内部バージョン番号。この番号はひとつのバージョンが、別のバージョンより新しいかどうかを判断するための数字で、高いほうが新しいです。ユーザーに表示するバージョン番号ではなく、その番号はversionName属性によって設定されます。値は "100"のように、整数として設定しなければなりません。次のバージョンが、より高い数値であるかぎり好きに定義することができます。例えば、ビルド番号でも問題ありません。あるいは"x.y"の形式として、でバージョン番号または、下限と上限の16ビットで個別に "x"と "y"をエンコードし、整数に変換することができます。それとも、単に新しいバージョンをリリースするたびに、1つ数を増やすことができます。||
+||``Minimum API Level``||ビルドをサポートするのに最低限必要なAPIの最小バージョン。||
+||__''Configuration''__           ||
+||``Graphics Level``              ||ES 1.1（ "固定機能"）またはES 2.0（ 'シェーダベース'）のOpen GLバージョンのいずれかを選択します。AVD（エミュレータ）を使用する場合はES 1.xのみサポートされています。||
+||``Install Location``            ||アプリケーションをデバイス上にインストールするロケーションを指定（詳細については、http://developer.android.com/guide/appendix/install-location.htmlを参照）。||
+||>>>``Automatic``       ||OSで自動判断。ユーザーが後からアプリを相互に移動することができます。||
+||>>>``Prefer External`` ||可能であれば外部ストレージ（SDカード）にアプリをインストールします。OSでは保証されないため、出来ない場合はアプリは内部メモリにインストールされます。||
+||>>>``Force Internal``  ||強制的に内部メモリにアプリをインストールします。ユーザーはアプリを外部ストレージに移動することができません。||
+||``Internet Access``    ||Requireにすると、スクリプトがこれを使用していない場合でも、ネットワークのアクセス許可が有効になります。開発ビルドでは、自動的に有効化されます。||
+||``Write Access``    ||External (SDCard)に設定すると、SDカードなどの外部記憶装置への書き込みアクセスを可能にします。開発ビルドでは、自動的に有効化されます。||
+||``Scripting Define Symbols``||カスタム コンパイル フラグ（詳細は[[PlatformDependentCompilation |プラットフォーム依存のコンパイル]] を参照）。
+||__''Optimization''__            ||||
+||``Api Compatibility Level``     ||アクティブな.NET API プロファイルを指定。||
+||>>>``.Net 2.0``                 ||.Net 2.0ライブラリ。.Net互換性が最大、ファイルサイズ最大。||
+||>>>``.Net 2.0 Subset``          ||.NET互換性は全体の一部、ファイルサイズは小さく。||
+||``Stripping Level (Unity Proのみ)`` ||ビルドされたプレーヤーのファイル容量を小さくするためスクリプト機能の一部を削減するオプション（この設定はiOSとAndroidプラットフォームの間で共有されます）||
+||>>>``Disabled``         ||削減は行われません。||
+||>>>``Strip Assemblies`` ||レベル1の削減。||
+||>>>``Strip ByteCode`` ||レベル2の削減（レベル1からの削減を含む）。||
+||>>>``Use micro mscorlib`` ||レベル3の削減（レベル1、2からの削減を含む）。||
+||``Enable "logcat" profiler``||プロジェクトのテスト時に、デバイスからフィードバックを取得したい場合はこれを有効にしてください。adbのlogcatを、デバイスからコンソール（開発ビルドでのみ使用可能）にログを出力します。||
+||``Optimize Mesh Data``||メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）。||
+
+||!Publishing Settings（公開設定）            ||||
+Attach:PlayerSetAndroidPublish40.png\\
+'' Androidマーケット向けの公開設定''
+||PROPS
+||__''Keystore''__                               ||||
+||>>>``Use Existing Keystore / Create New Keystore``||新しいキーストアを作成するか、既存のものを使用するか、選択するために使用します。||
+||>>>``Browse Keystore``                            ||既存のキーストアを選択します。||
+||>>>``Keystore password``                       ||キーストアのパスワード。||
+||>>>``Confirm password``                        ||パスワード確認、Create New Keystoreオプションが選択された場合にのみ有効。||
+||__''Key''__                                    ||||
+||>>>``Alias``                                      ||キーのエイリアス。||
+||>>>``Password``                                   ||キーエイリアスのパスワード。||
+||>>>``Split Application Binary``||アプリケーションをExpansion Fileに分割するためのフラグ。Google Playストアで最終ビルドが50MB超えたときにかぎり便利です。||
+
+セキュリティ上の理由から、Unityがキーストアのパスワードも、キーのパスワードも、保存しないことに注意してください。また、署名はUnityのプレーヤーの設定から行う必要がありますので注意下さい、jarsignerを使用した場合は機能しません。
+>><<
+
+!!Flash
+
+!!!!''Resolution And Presentation（解像度とスクリーン）''
+
+Attach:PlayerSetFlashResPres.png
+
+||PROPS
+||__''Resolution''__              ||||
+||``Default Screen Width``     ||生成されるPlayerのスクリーン幅。||
+||``Default Screen Height``    ||生成されるPlayerのスクリーン高さ。||
+
+
+!!!!''Other Settings''
+
+Attach:PlayerSetFlashOther4b7.png
+
+||PROPS
+||__''Optimization''__||||
+||``Stripping``||ビルドの際にバイトコードを削減するオプションです。||
+||``Strip Physics Code``||必要でない場合に物理エンジンのコードを削減します。||
+||``Optimize Mesh Data``||メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）||
+
+!!Google Native Client
+
+!!!!''Resolution and Presentation（解像度とスクリーン）''
+
+Attach:PlayerSetNaClResPres4b7.png
+
+||PROPS
+||__''Resolution''__              ||||
+||``Default Screen Width``     ||生成されるPlayerのスクリーン幅。||
+||``Default Screen Height``    ||生成されるPlayerのスクリーン高さ。||
+
+!!!!''Icon''
+
+Attach:PlayerSetNaClIcon4b7.png\\
+プロジェクトをビルドしたとき保持するさまざまなアイコン。''
+
+||PROPS
+||``Override for Web``        ||ネイティブクライアントのゲームで使用したいカスタムアイコンを割り当てる場合、オンにします。異なるサイズのアイコンを、以下の箱の中に収めます。||||
+
+!!!!''Other Settings''
+
+Attach:PlayerSetNaClOther4b7.png
+
+||PROPS
+||__''Rendering''__               ||
+||``Static Batching``             ||ビルドでStatic Batchを使用する場合に設定（WebPlayerではデフォルトで無効））。Unity Proのみ。||
+||``Dynamic Batching``            ||ビルドでDynamic Batchを使用する場合に設定（デフォルトで有効） 。||
+||__''Configuration''__||||
+||``Scripting Define Symbols``||カスタム　コンパイル　フラグ（詳細は[[PlatformDependentCompilation|platform dependent compilationのページ]] を参照）。
+||__''Optimization''__||||
+||``API Compatibility Level``     ||||
+||>>>``.Net 2.0``                 ||.Net 2.0ライブラリ。.Net互換性が最大、ファイルサイズ最大。|| 
+||>>>``.Net 2.0 Subset``          ||.NET互換性は全体の一部、ファイルサイズは小さく。||
+||``Strip Physics Code``||必要でない場合に物理エンジンのコードを削減します。||
+||``Optimize Mesh Data``||メッシュについて、それが適用されたマテリアルが必要としていないデータを全て取り除く（接線、法線、色、UV）。||
+
+! Details
+
+!Desktop!
+>>desktop<<
+Player Settingsウィンドウで、多くの技術的な設定のデフォルト値がセットされています。[[class-QualitySettings|Quality Settings]] も参照して、さまざまなグラフィックの品質レベルを設定できることを確認下さい。
+
+!!! WebPlayerの公開
+
+``Default Web Screen Width``および``Default Web Screen Height``で、htmlファイルが使用するサイズを決定します。後からhtmlファイルでサイズを変更できます。
+
+``Default Screen Width``および``Default Screen Height`` は、Web Player実行時にコンテキストメニューからフルスクリーンモードに入るときに、Web Playerで使用されます。
+
+
+!!!Resolution（解像度）ダイアログのカスタマイズ
+
+Attach:Resolution-GameLauncher.png\\
+''エンドユーザに表示されるResolution（解像度）ダイアログ''
+
+スタンドアロン　プレーヤーのScreen Resolution（画面解像度）ダイアログにカスタムバナー画像を追加するオプションがあります。画像の最大サイズは432×163ピクセルです。画像は、画面セレクタに合わせて拡大されません。代わりに、センタリングしてトリミングされます。
+
+!!! MacのApp Storeへの公開
+
+``Use Player Log``（プレイヤーログの使用）によりデバッグ情報を含むログファイルの書き込みを有効にします。これはゲームに問題がある場合に、何が起こったかを調べるのに便利です。AppleのMac App Storeのゲームを公開するとき、これをオフにすることを推奨します、そうしなければAppleが提出を拒否することがあります。ログファイルの詳細については[[Log Files|this manual page]] を参照下さい。
+
+``Use Mac App Store Validation``でMacのApp StoreのReceipt Validationが有効になります。有効にした場合は、Mac App Storeから有効な領収書（Receipt）が含まれている場合のみゲームが実行されます。App Storeで公開するためにAppleにゲームを提出する際に、これを使用します。これにより、購入したもの以外のどれかのコンピュータ上でゲームが実行されることを防ぐことができます。この機能は、強力なコピー防止機能はまったく実装していないことに注意してください。特に、1つのUnityのゲームに対する潜在的なクラックは、他のUnityコンテンツに対しても有効となります。このような理由から、Unityのプラグイン機能を使って独自の領収書のValidationコードを実装し、この設定とあわせて使用することを推奨します。しかし、Appleで画面設定ダイアログを表示する前に初期的にプラグインによるValidationを行うことが必要であることから、このオプションをオンにするべきであり、そうしないとAppleが提出を拒否することがあります。
+>><<
+
+!iOS!
+>>ios<<
+!!! バンドル識別子
+
+``Bundle Identifier``の文字列は、ビルドしたゲームのプロビジョニングプロファイルと一致する必要があります。識別子の基本的な構成は``com.CompanyName.GameName``です。この構成は、あなたが居住している国によって異なりますので、必ずあなたの開発者アカウントでアップルから提供された文字列をデフォルトとして下さい。GameNameは、AppleのiPhone Developer CenterのWebサイトから管理できるプロビジョニング証明書でセットアップされています。どう実行されるかの詳細については[[http://developer.apple.com/iphone/ | Apple iPhone Developer Center website]] を参照下さい。
+
+!!! Stripping Level(Unity Proのみ)
+
+ほとんどのゲームでは必要なすべてのDLLを使用しません。このオプションを使用すると、使用されない部分を削減して、iOSデバイス上のビルドしたプレーヤーのファイル容量を減らすことができます。もしこのオプションにより通常削減されるクラスがゲームで使用されている場合は、ビルド時にデバッグメッセージが表示されます。
+
+!!! スクリプト呼び出しの最適化
+
+iOSで良い開発を実践するには、例外処理（内部的なもの、またはtry /catchブロックを使用したもの）に依存しないことです。デフォルトの``Slow and Safe```オプションを使用する場合は、デバイス上で発生した例外がキャッチされ、スタックトレースが提供されます。``Fast but no Exceptions``オプションを使用する場合、例外が発生するとゲームがクラッシュし、スタックトレースが提供されません。しかし、プロセッサが例外処理をする必要がないため、ゲームの実行速度が速くなります。ゲームを一般に向けてリリースするときは``Fast but no Exceptions``オプションを使用して公開することが最善です。
+>><<
+
+!Android!
+>>android<<
+!!! バンドル識別子
+
+``Bundle Identifier``の文字列は、Androidマーケットに公開され、デバイス上にインストールされたときのアプリケーションの一意の名前です。識別子の基本的な構成は``com.CompanyName.GameName``で、任意に選ぶことが出来ます。Unityではこのフィールドは、利便性のためにiOS Player Settingsと共有されています。
+
+!!! Stripping Level(Unity Proのみ)
+
+ほとんどのゲームでは必要なすべてのDLLを使用しません。このオプションを使用すると、使用されない部分を削減して、Androidデバイス上のビルドしたプレーヤーのファイル容量を減らすことができます。
+>><<

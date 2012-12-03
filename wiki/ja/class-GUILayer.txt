@@ -1,0 +1,7 @@
+! GUI レイヤー
+
+$$GUI Layer$$ コンポーネントは、2D GUI のレンダリングを可能にするためにカメラに追加されます。
+
+GUI レイヤーをカメラに追加すると、シーン内のすべての [[class-GuiTexture|GUI Textures]] と [[class-GuiText|GUI Texts]] をレンダリングします。  GUIレイヤーは、[[GUI Scripting Guide | UnityGUI]] には一切影響しません。
+
+$$Inspector$$ 内で GUI レイヤーのチェックボックスをクリックすることで、1 台のカメラでの GUI のレンダリングを有効・無効に出来ます。
